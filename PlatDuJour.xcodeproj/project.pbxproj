@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,19 @@
 		A9CB4AC62481581D007AACBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9CB4AC42481581D007AACBB /* LaunchScreen.storyboard */; };
 		A9CB4AD12481581D007AACBB /* PlatDuJourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4AD02481581D007AACBB /* PlatDuJourTests.swift */; };
 		A9CB4ADC2481581D007AACBB /* PlatDuJourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4ADB2481581D007AACBB /* PlatDuJourUITests.swift */; };
+		A9CB4AEB2481594F007AACBB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4AEA2481594F007AACBB /* Alamofire */; };
+		A9CB4AEE24815980007AACBB /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4AED24815980007AACBB /* AlamofireImage */; };
+		A9CB4AF1248159A1007AACBB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4AF0248159A1007AACBB /* SnapKit */; };
+		A9CB4AF4248159C2007AACBB /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4AF3248159C2007AACBB /* SwiftyUserDefaults */; };
+		A9CB4AF7248159EC007AACBB /* NSAttributedStringBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4AF6248159EC007AACBB /* NSAttributedStringBuilder */; };
+		A9CB4AFA24815A99007AACBB /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4AF924815A99007AACBB /* PromiseKit */; };
+		A9CB4AFD24815ABF007AACBB /* PaperOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4AFC24815ABF007AACBB /* PaperOnboarding */; };
+		A9CB4B0024815B5F007AACBB /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4AFF24815B5F007AACBB /* FacebookCore */; };
+		A9CB4B0224815B5F007AACBB /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4B0124815B5F007AACBB /* FacebookLogin */; };
+		A9CB4B0424815B5F007AACBB /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4B0324815B5F007AACBB /* FacebookShare */; };
+		A9CB4B0724815BE4007AACBB /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4B0624815BE4007AACBB /* KeychainAccess */; };
+		A9CB4B0A24815C13007AACBB /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4B0924815C13007AACBB /* IQKeyboardManagerSwift */; };
+		A9CB4B0D24815C44007AACBB /* TTGSnackbar in Frameworks */ = {isa = PBXBuildFile; productRef = A9CB4B0C24815C44007AACBB /* TTGSnackbar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +69,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CB4AFD24815ABF007AACBB /* PaperOnboarding in Frameworks */,
+				A9CB4AF7248159EC007AACBB /* NSAttributedStringBuilder in Frameworks */,
+				A9CB4AFA24815A99007AACBB /* PromiseKit in Frameworks */,
+				A9CB4B0D24815C44007AACBB /* TTGSnackbar in Frameworks */,
+				A9CB4AF1248159A1007AACBB /* SnapKit in Frameworks */,
+				A9CB4B0724815BE4007AACBB /* KeychainAccess in Frameworks */,
+				A9CB4B0A24815C13007AACBB /* IQKeyboardManagerSwift in Frameworks */,
+				A9CB4AEB2481594F007AACBB /* Alamofire in Frameworks */,
+				A9CB4B0224815B5F007AACBB /* FacebookLogin in Frameworks */,
+				A9CB4AEE24815980007AACBB /* AlamofireImage in Frameworks */,
+				A9CB4AF4248159C2007AACBB /* SwiftyUserDefaults in Frameworks */,
+				A9CB4B0424815B5F007AACBB /* FacebookShare in Frameworks */,
+				A9CB4B0024815B5F007AACBB /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +170,21 @@
 			dependencies = (
 			);
 			name = PlatDuJour;
+			packageProductDependencies = (
+				A9CB4AEA2481594F007AACBB /* Alamofire */,
+				A9CB4AED24815980007AACBB /* AlamofireImage */,
+				A9CB4AF0248159A1007AACBB /* SnapKit */,
+				A9CB4AF3248159C2007AACBB /* SwiftyUserDefaults */,
+				A9CB4AF6248159EC007AACBB /* NSAttributedStringBuilder */,
+				A9CB4AF924815A99007AACBB /* PromiseKit */,
+				A9CB4AFC24815ABF007AACBB /* PaperOnboarding */,
+				A9CB4AFF24815B5F007AACBB /* FacebookCore */,
+				A9CB4B0124815B5F007AACBB /* FacebookLogin */,
+				A9CB4B0324815B5F007AACBB /* FacebookShare */,
+				A9CB4B0624815BE4007AACBB /* KeychainAccess */,
+				A9CB4B0924815C13007AACBB /* IQKeyboardManagerSwift */,
+				A9CB4B0C24815C44007AACBB /* TTGSnackbar */,
+			);
 			productName = PlatDuJour;
 			productReference = A9CB4AB624815816007AACBB /* PlatDuJour.app */;
 			productType = "com.apple.product-type.application";
@@ -216,6 +257,19 @@
 				Base,
 			);
 			mainGroup = A9CB4AAD24815815007AACBB;
+			packageReferences = (
+				A9CB4AE92481594F007AACBB /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A9CB4AEC24815980007AACBB /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				A9CB4AEF248159A1007AACBB /* XCRemoteSwiftPackageReference "SnapKit" */,
+				A9CB4AF2248159C2007AACBB /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
+				A9CB4AF5248159EC007AACBB /* XCRemoteSwiftPackageReference "NSAttributedStringBuilder" */,
+				A9CB4AF824815A99007AACBB /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				A9CB4AFB24815ABF007AACBB /* XCRemoteSwiftPackageReference "paper-onboarding" */,
+				A9CB4AFE24815B5F007AACBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				A9CB4B0524815BE4007AACBB /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				A9CB4B0824815C13007AACBB /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				A9CB4B0B24815C44007AACBB /* XCRemoteSwiftPackageReference "TTGSnackbar" */,
+			);
 			productRefGroup = A9CB4AB724815816007AACBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -590,6 +644,165 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A9CB4AE92481594F007AACBB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.1;
+			};
+		};
+		A9CB4AEC24815980007AACBB /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+		A9CB4AEF248159A1007AACBB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		A9CB4AF2248159C2007AACBB /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		A9CB4AF5248159EC007AACBB /* XCRemoteSwiftPackageReference "NSAttributedStringBuilder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ethanhuang13/NSAttributedStringBuilder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.3;
+			};
+		};
+		A9CB4AF824815A99007AACBB /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.13.1;
+			};
+		};
+		A9CB4AFB24815ABF007AACBB /* XCRemoteSwiftPackageReference "paper-onboarding" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Ramotion/paper-onboarding.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.5;
+			};
+		};
+		A9CB4AFE24815B5F007AACBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		A9CB4B0524815BE4007AACBB /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		A9CB4B0824815C13007AACBB /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.5;
+			};
+		};
+		A9CB4B0B24815C44007AACBB /* XCRemoteSwiftPackageReference "TTGSnackbar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zekunyan/TTGSnackbar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A9CB4AEA2481594F007AACBB /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AE92481594F007AACBB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A9CB4AED24815980007AACBB /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AEC24815980007AACBB /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+		A9CB4AF0248159A1007AACBB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AEF248159A1007AACBB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		A9CB4AF3248159C2007AACBB /* SwiftyUserDefaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AF2248159C2007AACBB /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */;
+			productName = SwiftyUserDefaults;
+		};
+		A9CB4AF6248159EC007AACBB /* NSAttributedStringBuilder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AF5248159EC007AACBB /* XCRemoteSwiftPackageReference "NSAttributedStringBuilder" */;
+			productName = NSAttributedStringBuilder;
+		};
+		A9CB4AF924815A99007AACBB /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AF824815A99007AACBB /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		A9CB4AFC24815ABF007AACBB /* PaperOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AFB24815ABF007AACBB /* XCRemoteSwiftPackageReference "paper-onboarding" */;
+			productName = PaperOnboarding;
+		};
+		A9CB4AFF24815B5F007AACBB /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AFE24815B5F007AACBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		A9CB4B0124815B5F007AACBB /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AFE24815B5F007AACBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		A9CB4B0324815B5F007AACBB /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4AFE24815B5F007AACBB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+		A9CB4B0624815BE4007AACBB /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4B0524815BE4007AACBB /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		A9CB4B0924815C13007AACBB /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4B0824815C13007AACBB /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		A9CB4B0C24815C44007AACBB /* TTGSnackbar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9CB4B0B24815C44007AACBB /* XCRemoteSwiftPackageReference "TTGSnackbar" */;
+			productName = TTGSnackbar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A9CB4AAE24815816007AACBB /* Project object */;
 }
