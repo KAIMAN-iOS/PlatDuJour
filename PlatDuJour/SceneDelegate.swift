@@ -1,24 +1,42 @@
 //
 //  SceneDelegate.swift
-//  PlatDuJour
+//  CovidApp
 //
-//  Created by GG on 29/05/2020.
-//  Copyright © 2020 GG. All rights reserved.
+//  Created by jerome on 25/03/2020.
+//  Copyright © 2020 Jerome TONNELIER. All rights reserved.
 //
 
 import UIKit
+import FacebookCore
+import IQKeyboardManagerSwift
 
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    // coordinator
+    private lazy var appNavigationController: UINavigationController = UINavigationController()
+    private lazy var appRouter: RouterType = Router(navigationController: self.appNavigationController)
+    lazy var appCoordinator: AppCoordinator = AppCoordinator(router: self.appRouter)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = appCoordinator.toPresentable()
+        window?.backgroundColor = .white
+        window?.makeKeyAndVisible()
+        appCoordinator.start()
+        IQKeyboardManager.shared.enable = true
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let context: UIOpenURLContext = URLContexts.first {
+            appCoordinator.application(UIApplication.shared, open: context.url, sourceApplication: context.options.sourceApplication, annotation: context.options.annotation)
+        }
+    }    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

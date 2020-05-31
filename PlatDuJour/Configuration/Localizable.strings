@@ -1,0 +1,118 @@
+/*
+ Localizable.strings
+ CovidApp
+ 
+ Created by jerome on 26/03/2020.
+ Copyright © 2020 Jerome TONNELIER. All rights reserved.
+ */
+
+"drippingNose description" = "Avez-vous le nez qui coule ?";
+"cough description" = "Avez-vous de la toux ?";
+"fever description" = "Avez-vous de la fièvre ?";
+"throatSoreness description" = "Avez-vous mal à la gorge ?";
+"breathingIssues description" = "Avez-vous des complications respiratoires ?";
+
+"yes" = "oui";
+"no" = "non";
+"dontKnow" = "je ne sais pas";
+"notApplicable" = "non applicable";
+"ratherNotAnswer" = "je préfère ne pas répondre";
+
+"initial fever" = "Pensez-vous avoir ou avoir eu de la fièvre ces 48 dernières heures (frissons, sueurs) ?";
+"initial cough" = "Ces derniers jours, avez-vous une toux ou une augmentation de votre toux habituelle ?";
+"initial taste" = "Ces derniers jours, avez-vous noté une forte diminution ou perte de votre goût ou de votre odorat ?";
+"initial throatSoreness" = "Ces derniers jours, avez-vous eu un mal de gorge et/ou des douleurs musculaires et/ou des courbatures inhabituelles ?";
+"initial diarrhea" = "Ces dernières 24 heures, avez-vous de la diarrhée ? Avec au moins 3 selles molles.";
+"initial tired" = "Ces derniers jours, avez-vous une fatigue inhabituelle ?";
+"initial eatDrink" = "Êtes vous dans l'impossibilité de vous alimenter ou de boire DEPUIS 24 HEURES OU PLUS ?";
+"initial breathingIssues" = "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?";
+"initial age" = "Quel est votre âge ? Ceci, afin de calculer un facteur de risque spécifique.";
+"initial height" = "Quel est votre taille ? Afin de calculer l’indice de masse corporelle qui est un facteur influençant le risque de complications de l’infection.";
+"initial weight" = "Quel est votre poids ? Afin de calculer l’indice de masse corporelle qui est un facteur influençant le risque de complications de l’infection.";
+"initial heartDisease" = "Avez-vous de l’hypertension artérielle mal équilibrée ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez vous un traitement à visée cardiologique ?";
+"initial diabetese" = "Êtes-vous diabétique ?";
+"initial cancer" = "Avez-vous ou avez-vous eu un cancer ces trois dernières années ?";
+"initial breathingIllness" = "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?";
+"initial kidney" = "Avez-vous une insuffisance rénale chronique dialysée ?";
+"initial liver" = "Avez-vous une maladie chronique du foie ?";
+"initial pregnant" = "Êtes-vous enceinte ?";
+"initial immunodefense" = "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?";
+"initial immunosupressant" = "Prenez-vous un traitement immunosuppresseur ? C’est un traitement qui diminue vos défenses contre les infections. Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (initial liste non exhaustive).";
+"initial postalCode" = "Quel est votre code postal ? Cette information nous permet de réaliser un suivi épidémiologique";
+
+"Onboarding welcome title" = "Bienvenue dans l'application Covid'App";
+"Onboarding purpose title" = "Pourquoi Covid'App ?";
+"Onboarding governement title" = "Collecte anonyme des données";
+"Onboarding betterWhenShare title" = "C'est meilleur quand on partage";
+"Onboarding letsGo title" = "C'est parti";
+
+"Onboarding welcome subtitle" = "Nous allons vous présenter l'application en quelques points rapides. Cela ne sera pas long 😊";
+"Onboarding purpose subtitle" = "Covid'App répond à un besoin immédiat : informer en temps réel. Elle fournit aux institutions une cartographie de l'état du virus en France et vous permet de rester facilement en contact avec vos proches";
+"Onboarding governement subtitle" = "Les données anonymisées (nous ne collectons aucune donnée nominative) que vous fournissez chaque jour permettent d'aider le gouvernement et les personnels soignants dans la gestion de l'épidémie";
+"Onboarding betterWhenShare subtitle" = "En autorisant vos proches à avoir accès à vos données, Covid'App vous permet, sans aucun effort, de donner et prendre des nouvelles de vos proches";
+"Onboarding letsGo subtitle" = "";
+
+"The email address entered is not valid" = "Email invalide";
+"Email cannot be empty" = "Email vide";
+"Field mandatory" = "Champ obligatoire";
+"Email address" = "Adresse email";
+"Last name" = "Nom";
+"First name" = "Prénom";
+"Birthdate" = "Date de naissance";
+
+"add friends" = "Ajoutez des amis 😊";
+"try" = "Remplir mon premier questionnaire";
+"fill daily report" = "Questionnaire quotidien";
+
+"reports" = "Questionnaire";
+"report number format" = "Question %d/%d";
+"continue" = "Continuer";
+"end" = "Terminer";
+"close" = "Fermer";
+"Cancel" = "Annuler";
+"close report title" = "Souhaitez-vous réellement fermer ce formulaire ?";
+
+"refreshTokenFailed" = "Impossible de vous re-connecter pour le moment";
+"cantLogin" = "Impossible de vous connecter pour le moment";
+"Connect with facebook" = "Se connecter avec Facebook";
+"Connect with google" = "Se connecter avec Google";
+
+"ask location" = "CovidApp a besoin de votre position";
+"ask for location" = "Vos données de géolocalisation seront associées de manière anonyme à vos données de santé afin que les pouvoirs publics et les professionnels de santé puissent visualiser la répartition des cas sains et des cas suspects, en donc leur permetre de mieux anticiper les moyens par secteur géographique";
+"Activate" = "J'autorise le partage";
+"Not now" = "Je ne souhaite pas partager ma position";
+"ask notification" = "Rappels journaliers";
+"ask for notification" = "Le but de CovidApp est de collecter des données quotidiennes sur l'état des santé des personnes restant à domicile. Pour vous aider, CovidApp vous enverra une notification quotidienne pour vous rappeler de répondre à 5 questions simples.";
+"Activate notification" = "J'ai compris";
+"loading, please wait" = "Récupération des dernières données";
+
+"drippingNose short description" = "Nez";
+"cough short description" = "Toux";
+"fever short description" = "Fièvre";
+"throatSoreness short description" = "Gorge";
+"breathingIssues short description" = "Respiration";
+
+"settings" = "Paramètres";
+"reminder time" = "Heure de rappel : %@";
+"Attention" = "Attention";
+"About to Delete friend" = "Vous êtes sur le point de supprimer le partage envers un ami. Souhaitez-vous continuer ?";
+"confirm delete" = "Supprimer";
+
+"userNotLoggedIn" = "Vous n'êtes pas encore connecté";
+"addFriendFailed" = "Impossible d'ajouter cet ami pour l'instant. Merci de ré-essayer plus tard";
+"share format" = "http://api.kaiman.fr/public/api/share/%@";
+"add a friend" = "Ajouter un ami";
+"Notification" = "Notifications";
+"friend list" = "Je partage mes données avec";
+"It's time" = "C'est l'heure";
+"Answer your 5 questions" = "Répondez à vos 5 questions quotidiennes 😊";
+"Add me" = "Ajoute moi 🙏";
+"share from CovidApp" = "Je voudrais partager mes données de santé avec toi via l'app CovidApp de Kaiman. Télécharges là et restons connectés 😊";
+"userNotLoggedIn" = "Vous n'êtes pas encore connecté à CovidApp";
+"addFriendFailed" = "Impossible d'ajouter un ami pour l'instant";
+"cantAddSelf" = "Vous ne pouvez pas vous ajouter vous même en ami 😉";
+"alreadyAnsweredDailyQuestion" = "Vous avez déjà répondu à votre questionnaire quotidien";
+"profile instructions" = "Merci de renseigner et vérifier les champs suivants";
+"ask email instructions" = "Covid'App a besoin de votre email afin de vous identifier de façon unique";
+"login instructions" = "Merci de vous connecter afin de pouvoir utiliser Covid'App";
+"Disconnect" = "Me déconnecter";
