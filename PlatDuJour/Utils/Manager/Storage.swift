@@ -140,18 +140,9 @@ class CodableStorage {
 class DataStorage {
     private static let instance = DataStorage()
     private let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])))
-    private var storedMetrics: StoredMetrics!  {
-        didSet {
-            try? DataStorage.instance.save(storedMetrics, for: DataManagerKey.storedMetrics.key)
-        }
-    }
+    
 
     init() {
-        if let store: StoredMetrics = try? storage.fetch(for: DataManagerKey.storedMetrics.key) {
-            storedMetrics = store
-        } else {
-            storedMetrics = StoredMetrics()
-        }
     }
     
     func fetch<T: Decodable>(for key: StorageKey) throws -> T {
@@ -162,53 +153,24 @@ class DataStorage {
         try storage.save(value, for: key)
     }
     
-    func save(_ answers: Answers) throws {
-        try storage.save(answers, for: DataManagerKey.answers.key)
-    }
-    
-    func fecthAnswers() throws -> Answers? {
-        let answers: Answers? = try? storage.fetch(for: DataManagerKey.answers.key)
-        return answers
-    }
-    
-    func save(_ metrics: Metrics) throws {
-        storedMetrics.append(metrics)
-    }
-    
-    func fecthMetrics() throws -> [Metrics] {
-        return storedMetrics.metrics
-    }
-    
-    func sendRemainingMetrics() {
-        DataStorage.instance
-            .storedMetrics.metrics.forEach { [weak self] metrics in
-                CovidApi.shared
-                    .post(metric: metrics, saveOnFail: false)
-                    .done { [weak self] user in
-                        guard let self = self else { return }
-                        self.storedMetrics.remove(metrics)
-                    }
-                    .catch { [weak self] error in
-                        
-                    }
-        }
-    }
+//    func save(_ answers: Answers) throws {
+//        try storage.save(answers, for: DataManagerKey.answers.key)
+//    }
+//
+//    func fecthAnswers() throws -> Answers? {
+//        let answers: Answers? = try? storage.fetch(for: DataManagerKey.answers.key)
+//        return answers
+//    }
+//
+//    func save(_ metrics: Metrics) throws {
+//        storedMetrics.append(metrics)
+//    }
+//
+//    func fecthMetrics() throws -> [Metrics] {
+//        return storedMetrics.metrics
+//    }
     
     func save(_ user: CurrentUser) throws {
         try save(user, for: DataManagerKey.currentUser.key)
-    }
-}
-
-private struct StoredMetrics: Codable {
-    private (set) var metrics: [Metrics] = []
-    
-    mutating func append(_ metrics: Metrics) {
-        self.metrics.append(metrics)
-    }
-    
-    mutating func remove(_ metrics: Metrics) {
-        if let index = self.metrics.firstIndex(of: metrics) {
-            self.metrics.remove(at: index)
-        }
     }
 }

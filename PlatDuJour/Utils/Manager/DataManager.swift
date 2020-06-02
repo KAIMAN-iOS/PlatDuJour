@@ -26,14 +26,6 @@ class DataManager {
     private static let instance: DataManager = DataManager()
     private var storage = DataStorage()
     
-    func store(_ metrics: Metrics) {
-        do {
-            try DataManager.instance.storage.save(metrics)
-        } catch {
-            
-        }
-    }
-    
     func store(_ user: CurrentUser) {
         do {
             try DataManager.instance.storage.save(user)

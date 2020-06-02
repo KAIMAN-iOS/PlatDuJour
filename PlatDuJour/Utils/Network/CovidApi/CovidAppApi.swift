@@ -41,44 +41,6 @@ struct CovidApi {
             session.refreshToken = response.refreshToken
         }
     }
-    
-    func updateUser(name: String, firstname: String, dob: Date) -> Promise<CurrentUser> {
-        let route = UpdateUserRoute(name: name, firstname: firstname, dob: dob)
-        return perform(route: route).get { user in
-            DataManager().store(user)
-        }
-    }
-    
-    func post(metric: Metrics, saveOnFail: Bool = true) -> Promise<CurrentUser> {
-        let route = PostMetricRoute(metric: metric)
-        return perform(route: route).recover { error -> Promise<CurrentUser> in
-            if saveOnFail { DataManager().store(metric) }
-            return Promise<CurrentUser>.init(error: error)
-        }
-    }
-    
-    func postInitial(answer: Answers) -> Promise<CurrentUser> {
-        let route = PostInitialMetricsRoute(answer: answer)
-        return perform(route: route)
-    }
-    
-    func retrieveUser() -> Promise<CurrentUser> {
-        return perform(route: RetrieveUserRoute()).get { user in
-            DataManager().store(user)
-        }
-    }
-    
-    func retrieveFriends() -> Promise<[Friend]> {
-        return perform(route: FriendRoute())
-    }
-    
-    func deleteFriend(with id: Int) -> Promise<EmptyResponseData> {
-        return perform(route: DeleteFriendRoute(id: id))
-    }
-    
-    func addFriend(with email: String) -> Promise<EmptyResponseData> {
-        return perform(route: AddFriendRoute(email: email))
-    }
 }
 
 //MARK:- Internal class for API

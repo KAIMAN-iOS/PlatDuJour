@@ -9,7 +9,6 @@
 import UIKit
 import SnapKit
 import AudioToolbox
-import Loaf
 import TTGSnackbar
 
 public protocol MessageConfigurable {
@@ -251,11 +250,15 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
 
 //MARK: - MessageDisplayConfiguration
 public struct MessageDisplayConfiguration {
+    
+    enum State {
+        case success, error, information, warning
+    }
     var displayType: MessageDisplayType = .default
     var containerView: UIView? = nil
     var duration: Double = 5.0
     var interactiveHide: Bool = true
-    var bannerStyle: Loaf.State = .success
+    var bannerStyle: MessageDisplayConfiguration.State = .success
     var vibrate: Bool = false
     var buttonConfiguration: ButtonConfiguration? = nil
 //    var delegate: NotificationBannerDelegate?
@@ -413,14 +416,13 @@ class MessageManager {
     }
 }
 
-private extension Loaf.State {
+private extension MessageDisplayConfiguration.State {
     var color: UIColor {
         switch self {
         case .success:return Palette.basic.confirmation.color
         case .error:return Palette.basic.alert.color
         case .warning:return Palette.basic.primary.color.withAlphaComponent(0.6)
-        case .info:return Palette.basic.primary.color
-        case .custom: return Palette.basic.primary.color
+        case .information:return Palette.basic.primary.color
         }
     }
 }

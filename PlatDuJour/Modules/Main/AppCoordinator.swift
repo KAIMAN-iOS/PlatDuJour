@@ -8,23 +8,19 @@
 
 import UIKit
 import SwiftyUserDefaults
-import SwiftLocation
 import UserNotifications
 import CoreLocation
 import GoogleSignIn
 import FacebookCore
 import AuthenticationServices
 import Security
+import BLTNBoard
 
 //MARK: - Protocols
 protocol AppCoordinatorDelegate: class {
     func showEmailController()
     func showUserProfileController()
     func showMainController()
-    func showInitialMetrics()
-    func collectDailyMetrics()
-    func showSettings()
-    func showMetricsDetail(for user: User)
     func logOut()
 }
 
@@ -97,30 +93,7 @@ class AppCoordinator: Coordinator<DeepLink> {
     
     func open(from link: DeepLink) {
         switch link {
-        case .share(let userId):
-            guard SessionController().userLoggedIn == true else {
-                MessageManager.show(.request(.userNotLoggedIn), in: mainController)
-                return
-            }
-            
-            guard userId != SessionController().email else {
-                MessageManager.show(.request(.cantAddSelf), in: mainController)
-                return
-            }
-            
-            guard mainController.viewModel.user?.user.hasSubmittedRportForToday ?? true == false else {
-                MessageManager.show(.basic(.alreadyAnsweredDailyQuestion))
-                return
-            }
-            
-            CovidApi.shared.addFriend(with: userId).done { [weak self] _ in
-                self?.mainController.loadUser()
-            }.catch { [weak self] error in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    MessageManager.show(.request(.addFriendFailed), in: self.mainController)
-                }
-            }
+        case .share(let userId):()
             
         default: ()
         }
@@ -179,7 +152,7 @@ class AppCoordinator: Coordinator<DeepLink> {
     
     
     var bulletinManager: BLTNItemManager?
-    
+
     func showBulletin(for item: BLTNItem) {
         bulletinManager = BLTNItemManager(rootItem: item)
         if #available(iOS 12.0, *) {
@@ -187,39 +160,14 @@ class AppCoordinator: Coordinator<DeepLink> {
         }
         bulletinManager?.showBulletin(above: mainController)
     }
-    
-    lazy var locationItem: BLTNPageItem = {
-        let page = BLTNPageItem(title: "ask location".local())
-        page.requiresCloseButton = false
-        page.image = UIImage(named: "shareLocation")
-        page.descriptionText = "ask for location".local()
-        page.actionButtonTitle = "Activate".local()
-        page.alternativeButtonTitle = "Not now".local()
-        
-        page.actionHandler = { item in
-            self.bulletinManager?.dismissBulletin()
-            
-            LocationManager.shared.onAuthorizationChange.add { [weak self] state in
-                guard state != .undetermined else { return }
-                guard let self = self else { return }
-            }
-            LocationManager.shared.preferredAuthorization = .whenInUse
-            LocationManager.shared.requireUserAuthorization(.whenInUse)
-        }
-        page.alternativeHandler = { [weak self] item in
-            guard let self = self else { return }
-            self.bulletinManager?.dismissBulletin()
-        }
-        return page
-    } ()
-    
+
     lazy var notificationItem: BLTNPageItem = {
         let page = BLTNPageItem(title: "ask notification".local())
         page.requiresCloseButton = false
         page.image = UIImage(named: "sharePhone")
         page.descriptionText = "ask for notification".local()
         page.actionButtonTitle = "Activate notification".local()
-        
+
         page.actionHandler = { item in
             self.bulletinManager?.dismissBulletin()
             let center = UNUserNotificationCenter.current()
@@ -243,59 +191,9 @@ class AppCoordinator: Coordinator<DeepLink> {
         }
     }
     
-    func askForLocation() {
-        if LocationManager.state == .undetermined {
-            showBulletin(for: locationItem)
-        }
-    }
-    
     func askForNotification() {
         if Defaults[\.alreadyRequestedNotifications] == false {
             showBulletin(for: notificationItem)
-        }
-    }
-    
-    func send(dailyData: Metrics) {
-        CovidApi
-            .shared
-            .post(metric: dailyData)
-            .done { [weak self] _ in
-                self?.mainController.loadUser()
-        }
-    }
-    
-    private var locationRequest: LocationRequest?
-    func appendLocation(to dailyData: Metrics) {
-        guard LocationManager.state == .available || LocationManager.state == .restricted else {
-            send(dailyData: dailyData)
-            return
-        }
-        
-        locationRequest = LocationManager.shared.locateFromGPS(.oneShot, accuracy: .house, timeout: .absolute(120)) { [weak self] result in
-            guard let self = self else { return }
-            print("🏞 locateFromGPS \(result)")
-            self.locationRequest = nil
-            switch result {
-            case .failure(let error):
-                switch error {
-                case .requiredLocationNotFound(_, last: let lastLocation) :
-                    var updatedData = dailyData
-                    if let lastLocation = lastLocation {
-                        updatedData.update(coordinates: lastLocation)
-                    }
-                    self.send(dailyData: updatedData)
-                    
-                default:
-                    self.send(dailyData: dailyData)
-                    
-                }
-                self.send(dailyData: dailyData)
-                
-            case .success(let location):
-                var updatedData = dailyData
-                updatedData.update(coordinates: location)
-                self.send(dailyData: updatedData)
-            }
         }
     }
     
@@ -344,14 +242,14 @@ extension AppCoordinator: CloseDelegate {
         
         defer {
             // recheck for controller to ask for notification once controller has been dismiss
-            mainController.dismiss(animated: true) { [weak self] in
-                switch controller {
-                case is CollectInitialDataViewController:
-                    self?.askForNotification()
-                    
-                default: ()
-                }
-            }
+//            mainController.dismiss(animated: true) { [weak self] in
+//                switch controller {
+//                case is CollectInitialDataViewController:
+//                    self?.askForNotification()
+//                    
+//                default: ()
+//                }
+//            }
             start()
         }
         
@@ -380,7 +278,7 @@ extension AppCoordinator: AppCoordinatorDelegate {
     func showMainController() {
         router.setRootModule(mainController, hideBar: true, animated: true)
         if Defaults[\.initialValuesFilled] == false {
-            self.showInitialMetrics()
+//            self.showInitialMetrics()
         }
         // add a callback to check if the user denied notifications then enables them....
          if Defaults[\.alreadyRequestedNotifications] == true, Defaults[\.hourForNotification] == nil {
@@ -391,41 +289,6 @@ extension AppCoordinator: AppCoordinatorDelegate {
                     self.updateNotificationsForDefaultAlarm()
                 }
             }
-        }
-    }
-    
-    func showInitialMetrics() {
-        let coord = CollectDataInitialCoordinator(collectType: .initial)
-        coord.closeDelegate = self
-        coord.coordinatorDelegate = self
-        addChild(coord)
-        router.present(coord, animated: true)
-        coord.start()
-    }
-    
-    func collectDailyMetrics() {
-        let coord = CollectDataInitialCoordinator(collectType: .metrics)
-        coord.coordinatorDelegate = self
-        coord.collectDelegate = self
-        coord.closeDelegate = self
-        addChild(coord)
-        router.present(coord, animated: true)
-        coord.start()
-    }
-    
-    func showSettings() {
-        let nav = SettingsViewController.createNavigationStack()
-        (nav.viewControllers.first as? SettingsViewController)?.closeDelegate = self
-        (nav.viewControllers.first as? SettingsViewController)?.notificationDelegate = self
-        (nav.viewControllers.first as? SettingsViewController)?.shareDelegate = self
-        (nav.viewControllers.first as? SettingsViewController)?.coordinatorDelegate = self
-        router.present(nav, animated: true)
-    }
-    
-    func showMetricsDetail(for user: User) {
-        let ctrl = MetricsCollectionViewController.create(with: user)
-        router.push(ctrl, animated: true) {
-            self.router.navigationController.setNavigationBarHidden(true, animated: true)
         }
     }
     
@@ -450,35 +313,6 @@ extension AppCoordinator: ShareDelegate {
             let image = UIImage(named:"AppIcon60x60")!
             (controller ?? mainController).showShareViewController(with:[sharedString, image])
         }
-    }
-}
-
-extension AppCoordinator: CollectDataInitialCoordinatorDelegate {
-    func didFinishCollect(data: Answers) {
-        mainController.dismiss(animated: true, completion: nil)
-        askForNotification()
-        CovidApi.shared.postInitial(answer: data).done { _ in
-            
-        }.catch { error in
-            
-        }
-    }
-}
-
-extension AppCoordinator: CollectDailyMetricsDelegate {
-    func didCollect(data: Metrics) {
-        mainController.dismiss(animated: true, completion: nil)
-        
-        if LocationManager.state == .undetermined {
-            askForLocation()
-            LocationManager.shared.onAuthorizationChange.add { [weak self] state in
-                guard let self = self, state != .undetermined else { return }
-                self.appendLocation(to: data)
-            }
-        } else {
-            appendLocation(to: data)
-        }
-        
     }
 }
 
@@ -507,7 +341,7 @@ extension AppCoordinator: UNUserNotificationCenterDelegate {
     func handleTapOn(_ request: UNNotificationRequest) {
         // if it was a local notification, we have it in our container notificationDatas
         if request.identifier == Defaults[\.dailyNotificationId] {
-            collectDailyMetrics()
+//            collectDailyMetrics()
         } else { // otherwise it is a remote notification
             //TODO:
 //            handleRemoteNotificationData(request.content.userInfo, title: request.content.title, body: request.content.body)
