@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A91CEC75248690C50092DA52 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91CEC72248690C40092DA52 /* GoogleSignInDependencies.framework */; };
+		A91CEC76248690C50092DA52 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91CEC73248690C40092DA52 /* GoogleSignIn.framework */; };
+		A91CEC77248690C50092DA52 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A91CEC74248690C40092DA52 /* GoogleSignIn.bundle */; };
+		A9BD9D7B24868131003260CE /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7A24868131003260CE /* Swifter */; };
+		A9BD9D7E2486831D003260CE /* SwiftyInsta in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7D2486831D003260CE /* SwiftyInsta */; };
 		A9CB4ABA24815816007AACBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4AB924815816007AACBB /* AppDelegate.swift */; };
 		A9CB4ABC24815816007AACBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4ABB24815816007AACBB /* SceneDelegate.swift */; };
 		A9CB4AC62481581D007AACBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9CB4AC42481581D007AACBB /* LaunchScreen.storyboard */; };
@@ -50,10 +55,6 @@
 		A9CB4C662485814E007AACBB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB4C592485814D007AACBB /* LocalAuthentication.framework */; };
 		A9CB4C672485814E007AACBB /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB4C5A2485814D007AACBB /* UserNotificationsUI.framework */; };
 		A9CB4C682485814F007AACBB /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB4C5B2485814E007AACBB /* UserNotifications.framework */; };
-		A9CB4C6924858169007AACBB /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB4B5824818FA9007AACBB /* GoogleSignInDependencies.framework */; };
-		A9CB4C6A24858169007AACBB /* GoogleSignInDependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB4B5824818FA9007AACBB /* GoogleSignInDependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A9CB4C6C2485816B007AACBB /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB4B5924818FA9007AACBB /* GoogleSignIn.framework */; };
-		A9CB4C6D2485816B007AACBB /* GoogleSignIn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB4B5924818FA9007AACBB /* GoogleSignIn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A9CB4C6E24858254007AACBB /* WindowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B2B24818FA9007AACBB /* WindowRouter.swift */; };
 		A9CB4C6F24858254007AACBB /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B2C24818FA9007AACBB /* Presentable.swift */; };
 		A9CB4C7024858254007AACBB /* WindowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B2D24818FA9007AACBB /* WindowCoordinator.swift */; };
@@ -84,7 +85,6 @@
 		A9CB4C8924858280007AACBB /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B5D24818FA9007AACBB /* DynamicHeightCollectionView.swift */; };
 		A9CB4C8A24858280007AACBB /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B5E24818FA9007AACBB /* ActionButton.swift */; };
 		A9CB4C8B24858280007AACBB /* ErrorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B5F24818FA9007AACBB /* ErrorTextField.swift */; };
-		A9CB4C8C24858288007AACBB /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A9CB4B5724818FA9007AACBB /* GoogleSignIn.bundle */; };
 		A9CB4C8D24858298007AACBB /* CovidAppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B3F24818FA9007AACBB /* CovidAppApi.swift */; };
 		A9CB4C8F24858298007AACBB /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B4224818FA9007AACBB /* Register.swift */; };
 		A9CB4C9024858298007AACBB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B4324818FA9007AACBB /* User.swift */; };
@@ -117,22 +117,11 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		A9CB4C6B24858169007AACBB /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A9CB4C6A24858169007AACBB /* GoogleSignInDependencies.framework in Embed Frameworks */,
-				A9CB4C6D2485816B007AACBB /* GoogleSignIn.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		A91CEC7024868AFE0092DA52 /* PlatDuJour.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlatDuJour.entitlements; sourceTree = "<group>"; };
+		A91CEC72248690C40092DA52 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
+		A91CEC73248690C40092DA52 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		A91CEC74248690C40092DA52 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		A9CB4AB624815816007AACBB /* PlatDuJour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlatDuJour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CB4AB924815816007AACBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CB4ABB24815816007AACBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,9 +162,6 @@
 		A9CB4B5324818FA9007AACBB /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
 		A9CB4B5424818FA9007AACBB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		A9CB4B5524818FA9007AACBB /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
-		A9CB4B5724818FA9007AACBB /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
-		A9CB4B5824818FA9007AACBB /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
-		A9CB4B5924818FA9007AACBB /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
 		A9CB4B5B24818FA9007AACBB /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		A9CB4B5C24818FA9007AACBB /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		A9CB4B5D24818FA9007AACBB /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -195,7 +181,6 @@
 		A9CB4BB424818FED007AACBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9CB4BB524818FED007AACBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A9CB4BB624818FED007AACBB /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		A9CB4BB724818FED007AACBB /* CovidAppBridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CovidAppBridgingHeader.h; sourceTree = "<group>"; };
 		A9CB4BB824818FED007AACBB /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		A9CB4C4F2485814C007AACBB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A9CB4C502485814C007AACBB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -223,10 +208,9 @@
 				A9CB4C5E2485814E007AACBB /* UIKit.framework in Frameworks */,
 				A9CB4C5D2485814E007AACBB /* SystemConfiguration.framework in Frameworks */,
 				A9CB4AF7248159EC007AACBB /* NSAttributedStringBuilder in Frameworks */,
+				A9BD9D7E2486831D003260CE /* SwiftyInsta in Frameworks */,
 				A9CB4C662485814E007AACBB /* LocalAuthentication.framework in Frameworks */,
 				A9CB4AFA24815A99007AACBB /* PromiseKit in Frameworks */,
-				A9CB4C6924858169007AACBB /* GoogleSignInDependencies.framework in Frameworks */,
-				A9CB4C6C2485816B007AACBB /* GoogleSignIn.framework in Frameworks */,
 				A9CB4C602485814E007AACBB /* AudioToolbox.framework in Frameworks */,
 				A9CB4C622485814E007AACBB /* MessageUI.framework in Frameworks */,
 				A9CB4B0D24815C44007AACBB /* TTGSnackbar in Frameworks */,
@@ -235,9 +219,11 @@
 				A9CB4B0724815BE4007AACBB /* KeychainAccess in Frameworks */,
 				A9CB4C682485814F007AACBB /* UserNotifications.framework in Frameworks */,
 				A9CB4B0A24815C13007AACBB /* IQKeyboardManagerSwift in Frameworks */,
+				A91CEC75248690C50092DA52 /* GoogleSignInDependencies.framework in Frameworks */,
 				A9CB4AEB2481594F007AACBB /* Alamofire in Frameworks */,
 				A9CB4B0224815B5F007AACBB /* FacebookLogin in Frameworks */,
 				A9CB4C672485814E007AACBB /* UserNotificationsUI.framework in Frameworks */,
+				A91CEC76248690C50092DA52 /* GoogleSignIn.framework in Frameworks */,
 				A9CB4CE324867ABC007AACBB /* BLTNBoard in Frameworks */,
 				A9CB4C652485814E007AACBB /* CoreGraphics.framework in Frameworks */,
 				A9CB4AEE24815980007AACBB /* AlamofireImage in Frameworks */,
@@ -246,6 +232,7 @@
 				A9CB4B0424815B5F007AACBB /* FacebookShare in Frameworks */,
 				A9CB4C5C2485814E007AACBB /* AVFoundation.framework in Frameworks */,
 				A9CB4C5F2485814E007AACBB /* SafariServices.framework in Frameworks */,
+				A9BD9D7B24868131003260CE /* Swifter in Frameworks */,
 				A9CB4CE024858363007AACBB /* SwiftDate in Frameworks */,
 				A9CB4CE524867ABC007AACBB /* BLTNInterfaceBuilder in Frameworks */,
 				A9CB4C612485814E007AACBB /* AuthenticationServices.framework in Frameworks */,
@@ -295,6 +282,7 @@
 		A9CB4AB824815816007AACBB /* PlatDuJour */ = {
 			isa = PBXGroup;
 			children = (
+				A91CEC7024868AFE0092DA52 /* PlatDuJour.entitlements */,
 				A9CB4BB124818FED007AACBB /* Configuration */,
 				A9CB4B9124818FE1007AACBB /* Modules */,
 				A9CB4B0E24818FA9007AACBB /* Utils */,
@@ -431,9 +419,9 @@
 		A9CB4B5624818FA9007AACBB /* GoogleSignIn */ = {
 			isa = PBXGroup;
 			children = (
-				A9CB4B5724818FA9007AACBB /* GoogleSignIn.bundle */,
-				A9CB4B5824818FA9007AACBB /* GoogleSignInDependencies.framework */,
-				A9CB4B5924818FA9007AACBB /* GoogleSignIn.framework */,
+				A91CEC74248690C40092DA52 /* GoogleSignIn.bundle */,
+				A91CEC73248690C40092DA52 /* GoogleSignIn.framework */,
+				A91CEC72248690C40092DA52 /* GoogleSignInDependencies.framework */,
 			);
 			path = GoogleSignIn;
 			sourceTree = "<group>";
@@ -521,7 +509,6 @@
 				A9CB4BB424818FED007AACBB /* Assets.xcassets */,
 				A9CB4BB524818FED007AACBB /* GoogleService-Info.plist */,
 				A9CB4BB624818FED007AACBB /* Localizable.strings */,
-				A9CB4BB724818FED007AACBB /* CovidAppBridgingHeader.h */,
 				A9CB4BB824818FED007AACBB /* Configuration.swift */,
 			);
 			path = Configuration;
@@ -566,7 +553,6 @@
 				A9CB4AB224815816007AACBB /* Sources */,
 				A9CB4AB324815816007AACBB /* Frameworks */,
 				A9CB4AB424815816007AACBB /* Resources */,
-				A9CB4C6B24858169007AACBB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -591,6 +577,8 @@
 				A9CB4CE224867ABC007AACBB /* BLTNBoard */,
 				A9CB4CE424867ABC007AACBB /* BLTNInterfaceBuilder */,
 				A9CB4CE624867ABC007AACBB /* BLTNModels */,
+				A9BD9D7A24868131003260CE /* Swifter */,
+				A9BD9D7D2486831D003260CE /* SwiftyInsta */,
 			);
 			productName = PlatDuJour;
 			productReference = A9CB4AB624815816007AACBB /* PlatDuJour.app */;
@@ -678,6 +666,8 @@
 				A9CB4B0B24815C44007AACBB /* XCRemoteSwiftPackageReference "TTGSnackbar" */,
 				A9CB4CDE24858363007AACBB /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				A9CB4CE124867ABC007AACBB /* XCRemoteSwiftPackageReference "BulletinBoard" */,
+				A9BD9D7924868131003260CE /* XCRemoteSwiftPackageReference "Swifter" */,
+				A9BD9D7C2486831D003260CE /* XCRemoteSwiftPackageReference "SwiftyInsta" */,
 			);
 			productRefGroup = A9CB4AB724815816007AACBB /* Products */;
 			projectDirPath = "";
@@ -695,10 +685,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A91CEC77248690C50092DA52 /* GoogleSignIn.bundle in Resources */,
 				A9CB4AC62481581D007AACBB /* LaunchScreen.storyboard in Resources */,
 				A9CB4C8724858280007AACBB /* HeaderView.xib in Resources */,
 				A9CB4BBD24818FEE007AACBB /* Localizable.strings in Resources */,
-				A9CB4C8C24858288007AACBB /* GoogleSignIn.bundle in Resources */,
 				A9CB4BB924818FEE007AACBB /* shareImageData.png in Resources */,
 				A9CB4BA624818FE1007AACBB /* Main.storyboard in Resources */,
 				A9CB4BBC24818FEE007AACBB /* GoogleService-Info.plist in Resources */,
@@ -946,6 +936,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlatDuJour/PlatDuJour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -953,9 +944,14 @@
 					"$(PROJECT_DIR)/PlatDuJour/Utils/GoogleSignIn",
 				);
 				INFOPLIST_FILE = PlatDuJour/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaiman.PlatDuJour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -968,6 +964,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlatDuJour/PlatDuJour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -975,9 +972,14 @@
 					"$(PROJECT_DIR)/PlatDuJour/Utils/GoogleSignIn",
 				);
 				INFOPLIST_FILE = PlatDuJour/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaiman.PlatDuJour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1112,6 +1114,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A9BD9D7924868131003260CE /* XCRemoteSwiftPackageReference "Swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mattdonnelly/Swifter";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+		A9BD9D7C2486831D003260CE /* XCRemoteSwiftPackageReference "SwiftyInsta" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TheM4hd1/SwiftyInsta.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
 		A9CB4AE92481594F007AACBB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1219,6 +1237,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A9BD9D7A24868131003260CE /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9BD9D7924868131003260CE /* XCRemoteSwiftPackageReference "Swifter" */;
+			productName = Swifter;
+		};
+		A9BD9D7D2486831D003260CE /* SwiftyInsta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9BD9D7C2486831D003260CE /* XCRemoteSwiftPackageReference "SwiftyInsta" */;
+			productName = SwiftyInsta;
+		};
 		A9CB4AEA2481594F007AACBB /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A9CB4AE92481594F007AACBB /* XCRemoteSwiftPackageReference "Alamofire" */;

@@ -4,12 +4,12 @@
     <plist version="1.0">
     <dict>
       <key>CLIENT_ID</key>
-      <string>361098807316-tir0pul5maqn5b90rsdg5af5rmet47k2.apps.googleusercontent.com</string>
+      <string>251846339337-0m5iqpk1qmgaetop21vemm5j89dq4lot.apps.googleusercontent.com</string>
       <key>REVERSED_CLIENT_ID</key>
-      <string>com.googleusercontent.apps.361098807316-tir0pul5maqn5b90rsdg5af5rmet47k2</string>
+      <string>com.googleusercontent.apps.251846339337-0m5iqpk1qmgaetop21vemm5j89dq4lot</string>
       <key>PLIST_VERSION</key>
       <string>1</string>
       <key>BUNDLE_ID</key>
-      <string>com.kaiman.CovidApp</string>
+      <string>com.kaiman.PlatDuJour</string>
     </dict>
     </plist>

@@ -13,8 +13,18 @@ class MainViewController: UIViewController {
     weak var shareDelegate: ShareDelegate? = nil
     weak var coordinatorDelegate: AppCoordinatorDelegate? = nil
     static func create() -> MainViewController {
-        return MainViewController.loadFromStoryboard(identifier: "MainViewController", storyboardName: "Main")
+        guard let nav = UINavigationController.loadFromStoryboard(identifier: "MainNavigationController", storyboardName: "Main") as? UINavigationController,
+            let main = nav.viewControllers.first as? MainViewController else {
+                fatalError()
+        }
+        return main
     }
+    @IBOutlet var addButton: UIButton!  {
+        didSet {
+            addButton.roundedCorners = true
+        }
+    }
+    @IBOutlet var historyButton: ActionButton!
     
     let viewModel = MainViewModel()
     
@@ -37,5 +47,14 @@ class MainViewController: UIViewController {
     
     func loadUser() {
         MessageManager.show(.basic(.loadingPleaseWait), in: self)
+    }
+    
+    @IBAction func add(_ sender: Any) {
+    }
+    
+    @IBAction func showSettings(_ sender: Any) {
+    }
+    
+    @IBAction func showPreviousDishes(_ sender: Any) {
     }
 }
