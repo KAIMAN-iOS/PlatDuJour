@@ -246,7 +246,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZC-7e-6HZ" customClass="ActionButton" customModule="PlatDuJour" customModuleProvider="target">
-                                <rect key="frame" x="12" y="802" width="390" height="60"/>
+                                <rect key="frame" x="12" y="790" width="390" height="60"/>
                                 <color key="backgroundColor" name="primary"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="vf8-lt-Tqn"/>
@@ -264,7 +264,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="udm-kQ-0Dq" firstAttribute="trailing" secondItem="xZC-7e-6HZ" secondAttribute="trailing" constant="12" id="4SK-Y6-bYq"/>
-                            <constraint firstItem="xZC-7e-6HZ" firstAttribute="bottom" secondItem="udm-kQ-0Dq" secondAttribute="bottom" id="MAi-eW-ynS"/>
+                            <constraint firstItem="xZC-7e-6HZ" firstAttribute="bottom" secondItem="udm-kQ-0Dq" secondAttribute="bottom" constant="-12" id="MAi-eW-ynS"/>
                             <constraint firstItem="66i-Eu-5uh" firstAttribute="centerY" secondItem="Z4O-t5-CRn" secondAttribute="centerY" id="a6T-WX-Zth"/>
                             <constraint firstItem="66i-Eu-5uh" firstAttribute="leading" secondItem="udm-kQ-0Dq" secondAttribute="leading" constant="24" id="bZz-eP-UUR"/>
                             <constraint firstItem="udm-kQ-0Dq" firstAttribute="trailing" secondItem="66i-Eu-5uh" secondAttribute="trailing" constant="24" id="c13-Vd-wLt"/>

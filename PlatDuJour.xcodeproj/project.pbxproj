@@ -943,7 +943,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PlatDuJour/Utils/GoogleSignIn",
 				);
-				INFOPLIST_FILE = PlatDuJour/Info.plist;
+				INFOPLIST_FILE = "${SRCROOT}/PlatDuJour/info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -971,7 +971,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PlatDuJour/Utils/GoogleSignIn",
 				);
-				INFOPLIST_FILE = PlatDuJour/Info.plist;
+				INFOPLIST_FILE = "${SRCROOT}/PlatDuJour/info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

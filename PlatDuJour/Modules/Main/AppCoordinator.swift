@@ -53,11 +53,11 @@ fileprivate enum LaunchInstructor {
     
     static func configure(
         tutorialWasShown: Bool = onboardingWasShown) -> LaunchInstructor {
-        
-        switch tutorialWasShown {
-        case false: return .onboarding
-        case true: return .main
-        }
+        return .main
+//        switch tutorialWasShown {
+//        case false: return .onboarding
+//        case true: return .main
+//        }
     }
 }
 
@@ -73,7 +73,7 @@ class AppCoordinator: Coordinator<DeepLink> {
     
     override init(router: RouterType) {
         super.init(router: router)
-        router.setRootModule(mainController.navigationController!, hideBar: true, animated: false)
+        router.setRootModule(mainController, hideBar: true, animated: false)
         loginController.coordinatorDelegate = self
         mainController.shareDelegate = self
         mainController.coordinatorDelegate = self
@@ -276,7 +276,7 @@ extension AppCoordinator: AppCoordinatorDelegate {
     }
     
     func showMainController() {
-        router.setRootModule(mainController.navigationController!, hideBar: true, animated: true)
+        router.setRootModule(mainController, hideBar: false, animated: true)
         if Defaults[\.initialValuesFilled] == false {
 //            self.showInitialMetrics()
         }

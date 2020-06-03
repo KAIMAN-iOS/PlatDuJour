@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -17,27 +18,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qgy-Le-qIn">
-                                <rect key="frame" x="36" y="216" width="343" height="464"/>
+                                <rect key="frame" x="20" y="272" width="374" height="352"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="PlatDuJour" translatesAutoresizingMaskIntoConstraints="NO" id="3Oq-I8-r99">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="322"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFG-Oq-Eyz">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="260"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFM-fB-Bcm">
+                                                <rect key="frame" x="57" y="0.0" width="260" height="260"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="PlatDuJour" translatesAutoresizingMaskIntoConstraints="NO" id="3Oq-I8-r99">
+                                                        <rect key="frame" x="30" y="30" width="200" height="200"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="200" id="XV3-Yc-9nP"/>
+                                                            <constraint firstAttribute="width" constant="200" id="yFb-xU-wqP"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="3Oq-I8-r99" firstAttribute="centerX" secondItem="AFM-fB-Bcm" secondAttribute="centerX" id="ONq-OT-vJJ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3Oq-I8-r99" secondAttribute="trailing" constant="30" id="Sud-TM-BHh"/>
+                                                    <constraint firstItem="3Oq-I8-r99" firstAttribute="top" secondItem="AFM-fB-Bcm" secondAttribute="top" constant="30" id="X3M-x3-Bel"/>
+                                                    <constraint firstItem="3Oq-I8-r99" firstAttribute="centerY" secondItem="AFM-fB-Bcm" secondAttribute="centerY" id="v7D-AF-egX"/>
+                                                    <constraint firstAttribute="bottom" secondItem="3Oq-I8-r99" secondAttribute="bottom" constant="30" id="xsi-KH-uha"/>
+                                                    <constraint firstItem="3Oq-I8-r99" firstAttribute="leading" secondItem="AFM-fB-Bcm" secondAttribute="leading" constant="30" id="yQa-tB-6dg"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="3Oq-I8-r99" secondAttribute="height" multiplier="49:46" id="Gkq-uE-tHR"/>
+                                            <constraint firstItem="AFM-fB-Bcm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OFG-Oq-Eyz" secondAttribute="leading" id="0bz-zB-dpM"/>
+                                            <constraint firstItem="AFM-fB-Bcm" firstAttribute="centerX" secondItem="OFG-Oq-Eyz" secondAttribute="centerX" id="fNV-S4-iDc"/>
+                                            <constraint firstItem="AFM-fB-Bcm" firstAttribute="top" secondItem="OFG-Oq-Eyz" secondAttribute="top" id="run-mN-rBC"/>
+                                            <constraint firstItem="AFM-fB-Bcm" firstAttribute="centerY" secondItem="OFG-Oq-Eyz" secondAttribute="centerY" id="yg3-c3-0NU"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Partagez vos plats du jour simplement et rapidement " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUt-Nj-pIW">
-                                        <rect key="frame" x="0.0" y="342" width="343" height="122"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="0.0" y="280" width="374" height="72"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                        <color key="textColor" name="background"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="background"/>
+                        <color key="backgroundColor" name="primary"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qgy-Le-qIn" secondAttribute="trailing" constant="35" id="6WX-U1-9wN"/>
-                            <constraint firstItem="Qgy-Le-qIn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="BJV-v1-la3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qgy-Le-qIn" secondAttribute="trailing" constant="20" id="6WX-U1-9wN"/>
+                            <constraint firstItem="Qgy-Le-qIn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BJV-v1-la3"/>
                             <constraint firstItem="Qgy-Le-qIn" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="KB9-pc-LsK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Qgy-Le-qIn" secondAttribute="bottom" constant="32" id="ad0-Z5-ZOF"/>
                         </constraints>
@@ -46,13 +74,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
         <image name="PlatDuJour" width="343" height="343"/>
         <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.90588235294117647" green="0.29411764705882354" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
