@@ -22,6 +22,7 @@ protocol AppCoordinatorDelegate: class {
     func showUserProfileController()
     func showMainController()
     func logOut()
+    func addDailySpecial()
 }
 
 protocol DailyNotificationDelegate: class {
@@ -107,15 +108,16 @@ class AppCoordinator: Coordinator<DeepLink> {
             presentOnboardingFlow()
             
         case .main:
-            if SessionController().userLoggedIn == false {
-                router.setRootModule(loginController, hideBar: true, animated: false)
-            } else if SessionController().userProfileCompleted == false {
-                router.setRootModule(loginController, hideBar: true, animated: false)
-                showUserProfileController()
-            } else {
-                showMainController()
-                checkIfSessionExpired()
-            }
+//            if SessionController().userLoggedIn == false {
+//                router.setRootModule(loginController, hideBar: true, animated: false)
+//            } else if SessionController().userProfileCompleted == false {
+//                router.setRootModule(loginController, hideBar: true, animated: false)
+//                showUserProfileController()
+//            } else {
+//                showMainController()
+//                checkIfSessionExpired()
+//            }
+            showMainController()
         }
     }
     
@@ -296,6 +298,20 @@ extension AppCoordinator: AppCoordinatorDelegate {
         mainController.dismiss(animated: true, completion: nil)
         SessionController().logOut()
         start()
+    }
+    
+    func addDailySpecial() {
+        switch onboardingWasShown {
+        case false:
+            Defaults[\.onboardingWasShown] = true
+            presentOnboardingFlow()
+            
+        case true: addPicture()
+        }
+    }
+    
+    private func addPicture() {
+        
     }
 }
 

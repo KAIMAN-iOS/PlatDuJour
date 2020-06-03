@@ -32,6 +32,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         viewModel.shareDelegate = shareDelegate
         viewModel.coordinatorDelegate = coordinatorDelegate
+        navigationController?.navigationBar.isTranslucent = false
+        handleLayout()
+    }
+    
+    private func handleLayout() {
+        historyButton.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +56,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func add(_ sender: Any) {
+        coordinatorDelegate?.addDailySpecial()
     }
     
     @IBAction func showSettings(_ sender: Any) {

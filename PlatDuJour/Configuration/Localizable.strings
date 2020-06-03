@@ -8,16 +8,18 @@
 "yes" = "oui";
 "no" = "non";
 
-"Onboarding welcome title" = "Bienvenue dans l'application Covid'App";
-"Onboarding purpose title" = "Pourquoi Covid'App ?";
-"Onboarding governement title" = "Collecte anonyme des données";
-"Onboarding betterWhenShare title" = "C'est meilleur quand on partage";
+"Onboarding welcome title" = "Bienvenue dans l'application Daily Special";
+"Onboarding purpose title" = "Pourquoi Daily Special ?";
+"Onboarding addSocialNetwork title" = "Connectez vous ?";
+"Onboarding takePicture title" = "Prenez une photo";
+"Onboarding chooseFromTemplate title" = "Choisir un template";
 "Onboarding letsGo title" = "C'est parti";
 
 "Onboarding welcome subtitle" = "Nous allons vous présenter l'application en quelques points rapides. Cela ne sera pas long 😊";
-"Onboarding purpose subtitle" = "Covid'App répond à un besoin immédiat : informer en temps réel. Elle fournit aux institutions une cartographie de l'état du virus en France et vous permet de rester facilement en contact avec vos proches";
-"Onboarding governement subtitle" = "Les données anonymisées (nous ne collectons aucune donnée nominative) que vous fournissez chaque jour permettent d'aider le gouvernement et les personnels soignants dans la gestion de l'épidémie";
-"Onboarding betterWhenShare subtitle" = "En autorisant vos proches à avoir accès à vos données, Covid'App vous permet, sans aucun effort, de donner et prendre des nouvelles de vos proches";
+"Onboarding purpose subtitle" = "Daily Special vous permet de partager en un clic vos plats du jour sur les réseaux sociaux";
+"Onboarding addSocialNetwork subtitle" = "Commenencez par connecter vos comptes. Daily Special vous permet de partager sur Facebook, Instagram et Twitter en une seule fois";
+"Onboarding takePicture subtitle" = "Choisissez la photo du votre plat du jour";
+"Onboarding chooseFromTemplate subtitle" = "Choisissez parmi des templates pré-établies. Renseignez le prix et le nom du plat et Daily Special se charge du reste";
 "Onboarding letsGo subtitle" = "";
 
 "The email address entered is not valid" = "Email invalide";

@@ -11,16 +11,18 @@ import UIKit
 enum Onboarding: Int, CaseIterable {
     case welcome = 0
     case purpose
-    case governement
-    case betterWhenShare
+    case addSocialNetwork
+    case takePicture
+    case chooseFromTemplate
     case letsGo
     
     var title: String {
         switch self {
         case .welcome: return "Onboarding welcome title".local()
         case .purpose: return "Onboarding purpose title".local()
-        case .governement: return "Onboarding governement title".local()
-        case .betterWhenShare: return "Onboarding betterWhenShare title".local()
+        case .addSocialNetwork: return "Onboarding addSocialNetwork title".local()
+        case .takePicture: return "Onboarding takePicture title".local()
+        case .chooseFromTemplate: return "Onboarding chooseFromTemplate title".local()
         case .letsGo: return ""
         }
     }
@@ -29,8 +31,9 @@ enum Onboarding: Int, CaseIterable {
         switch self {
         case .welcome: return "Onboarding welcome subtitle".local()
         case .purpose: return "Onboarding purpose subtitle".local()
-        case .governement: return "Onboarding governement subtitle".local()
-        case .betterWhenShare: return "Onboarding betterWhenShare subtitle".local()
+        case .addSocialNetwork: return "Onboarding addSocialNetwork subtitle".local()
+        case .takePicture: return "Onboarding takePicture subtitle".local()
+        case .chooseFromTemplate: return "Onboarding chooseFromTemplate subtitle".local()
         case .letsGo: return ""
         }
     }
@@ -39,8 +42,9 @@ enum Onboarding: Int, CaseIterable {
         switch self {
         case .welcome: return UIImage(named: "welcome")!
         case .purpose: return UIImage(named: "purpose")!
-        case .governement: return UIImage(named: "government")!
-        case .betterWhenShare: return UIImage(named: "betterWhenShare")!
+        case .addSocialNetwork: return UIImage(named: "addSocialNetwork")!
+        case .takePicture: return UIImage(named: "takePicture")!
+        case .chooseFromTemplate: return UIImage(named: "chooseFromTemplate")!
         case .letsGo: return UIImage(named: "letsGo")!
         }
     }

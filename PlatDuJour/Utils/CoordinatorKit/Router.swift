@@ -13,7 +13,6 @@ public protocol RouterType: class, Presentable {
 	func popToRootModule(animated: Bool)
 }
 
-
 final public class Router: NSObject, RouterType, UINavigationControllerDelegate {
 	
     private var completions: [UIViewController : () -> Void]
