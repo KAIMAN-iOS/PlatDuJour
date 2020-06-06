@@ -82,7 +82,7 @@ class AppCoordinator: Coordinator<DeepLink> {
         UNUserNotificationCenter.current().delegate = self
         if Defaults[\.dailyNotificationId] == nil {
             Defaults[\.dailyNotificationId] = UUID().uuidString
-            print("🐞 SET - \(Defaults[\.dailyNotificationId])")
+            print("🐞 SET - \(String(describing: Defaults[\.dailyNotificationId]))")
         }
     }
     
@@ -94,7 +94,7 @@ class AppCoordinator: Coordinator<DeepLink> {
     
     func open(from link: DeepLink) {
         switch link {
-        case .share(let userId):()
+        case .share(let userId): ()
             
         default: ()
         }
@@ -244,14 +244,14 @@ extension AppCoordinator: CloseDelegate {
         
         defer {
             // recheck for controller to ask for notification once controller has been dismiss
-//            mainController.dismiss(animated: true) { [weak self] in
+            mainController.dismiss(animated: true) { [weak self] in
 //                switch controller {
 //                case is CollectInitialDataViewController:
 //                    self?.askForNotification()
 //                    
 //                default: ()
 //                }
-//            }
+            }
             start()
         }
         
@@ -311,7 +311,10 @@ extension AppCoordinator: AppCoordinatorDelegate {
     }
     
     private func addPicture() {
-        
+        let model = AddPictureCoordinator()
+        addChild(model)
+        model.start()
+        router.present(model, animated: true)
     }
 }
 
@@ -348,7 +351,7 @@ extension AppCoordinator: DailyNotificationDelegate {
         // removes previous notifications just in case...
         center.removeAllPendingNotificationRequests()
         let request = UNNotificationRequest(identifier: Defaults[\.dailyNotificationId]!, content: content, trigger: trigger)
-        print("🐞 - UPDATE NOTIF - \(Defaults[\.dailyNotificationId])")
+        print("🐞 - UPDATE NOTIF - \(String(describing: Defaults[\.dailyNotificationId]))")
         center.add(request)
     }
 }
@@ -369,7 +372,7 @@ extension AppCoordinator: UNUserNotificationCenterDelegate {
         defer {
             completionHandler()
         }
-        print("🐞 - GET NOTIF - \(Defaults[\.dailyNotificationId])")
+        print("🐞 - GET NOTIF - \(String(describing: Defaults[\.dailyNotificationId]))")
         // open a notification from outside the app
         handleTapOn(response.notification.request)
     }

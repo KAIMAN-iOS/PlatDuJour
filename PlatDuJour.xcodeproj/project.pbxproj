@@ -10,6 +10,17 @@
 		A91CEC75248690C50092DA52 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91CEC72248690C40092DA52 /* GoogleSignInDependencies.framework */; };
 		A91CEC76248690C50092DA52 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91CEC73248690C40092DA52 /* GoogleSignIn.framework */; };
 		A91CEC77248690C50092DA52 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A91CEC74248690C40092DA52 /* GoogleSignIn.bundle */; };
+		A92F6FF324891ED70048B352 /* AddPicture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92F6FF224891ED70048B352 /* AddPicture.storyboard */; };
+		A92F6FF524891EEB0048B352 /* AddPictureCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92F6FF424891EEB0048B352 /* AddPictureCoordinator.swift */; };
+		A92F6FF824891F2D0048B352 /* AddPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92F6FF724891F2D0048B352 /* AddPictureViewController.swift */; };
+		A9B15EC42489206B0061BAC3 /* ChooseTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15EC32489206B0061BAC3 /* ChooseTemplateViewController.swift */; };
+		A9B15EC7248AA6310061BAC3 /* GrowingTextView in Frameworks */ = {isa = PBXBuildFile; productRef = A9B15EC6248AA6310061BAC3 /* GrowingTextView */; };
+		A9B15ECC248AA6DF0061BAC3 /* AddPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15ECB248AA6DF0061BAC3 /* AddPictureCell.swift */; };
+		A9B15ECE248AA6F50061BAC3 /* AddSimpleFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15ECD248AA6F50061BAC3 /* AddSimpleFieldCell.swift */; };
+		A9B15ED0248AA7040061BAC3 /* AddDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15ECF248AA7040061BAC3 /* AddDescriptionCell.swift */; };
+		A9B15ED2248B811A0061BAC3 /* AddPictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15ED1248B811A0061BAC3 /* AddPictureViewModel.swift */; };
+		A9B15ED4248B87DD0061BAC3 /* PictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15ED3248B87DD0061BAC3 /* PictureModel.swift */; };
+		A9B15ED6248B8E140061BAC3 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15ED5248B8E140061BAC3 /* UITableViewCell+Extensions.swift */; };
 		A9BD9D7B24868131003260CE /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7A24868131003260CE /* Swifter */; };
 		A9BD9D7E2486831D003260CE /* SwiftyInsta in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7D2486831D003260CE /* SwiftyInsta */; };
 		A9CB4ABA24815816007AACBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4AB924815816007AACBB /* AppDelegate.swift */; };
@@ -122,6 +133,16 @@
 		A91CEC72248690C40092DA52 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
 		A91CEC73248690C40092DA52 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
 		A91CEC74248690C40092DA52 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		A92F6FF224891ED70048B352 /* AddPicture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPicture.storyboard; sourceTree = "<group>"; };
+		A92F6FF424891EEB0048B352 /* AddPictureCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureCoordinator.swift; sourceTree = "<group>"; };
+		A92F6FF724891F2D0048B352 /* AddPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureViewController.swift; sourceTree = "<group>"; };
+		A9B15EC32489206B0061BAC3 /* ChooseTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTemplateViewController.swift; sourceTree = "<group>"; };
+		A9B15ECB248AA6DF0061BAC3 /* AddPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureCell.swift; sourceTree = "<group>"; };
+		A9B15ECD248AA6F50061BAC3 /* AddSimpleFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimpleFieldCell.swift; sourceTree = "<group>"; };
+		A9B15ECF248AA7040061BAC3 /* AddDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionCell.swift; sourceTree = "<group>"; };
+		A9B15ED1248B811A0061BAC3 /* AddPictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureViewModel.swift; sourceTree = "<group>"; };
+		A9B15ED3248B87DD0061BAC3 /* PictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureModel.swift; sourceTree = "<group>"; };
+		A9B15ED5248B8E140061BAC3 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		A9CB4AB624815816007AACBB /* PlatDuJour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlatDuJour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CB4AB924815816007AACBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CB4ABB24815816007AACBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +252,7 @@
 				A9CB4AF4248159C2007AACBB /* SwiftyUserDefaults in Frameworks */,
 				A9CB4B0424815B5F007AACBB /* FacebookShare in Frameworks */,
 				A9CB4C5C2485814E007AACBB /* AVFoundation.framework in Frameworks */,
+				A9B15EC7248AA6310061BAC3 /* GrowingTextView in Frameworks */,
 				A9CB4C5F2485814E007AACBB /* SafariServices.framework in Frameworks */,
 				A9BD9D7B24868131003260CE /* Swifter in Frameworks */,
 				A9CB4CE024858363007AACBB /* SwiftDate in Frameworks */,
@@ -258,6 +280,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A92F6FF124891EC10048B352 /* AddPicture */ = {
+			isa = PBXGroup;
+			children = (
+				A9B15EC8248AA6BA0061BAC3 /* Templates */,
+				A92F6FF624891F190048B352 /* AddPicture */,
+				A92F6FF224891ED70048B352 /* AddPicture.storyboard */,
+				A92F6FF424891EEB0048B352 /* AddPictureCoordinator.swift */,
+			);
+			path = AddPicture;
+			sourceTree = "<group>";
+		};
+		A92F6FF624891F190048B352 /* AddPicture */ = {
+			isa = PBXGroup;
+			children = (
+				A9B15EC9248AA6C20061BAC3 /* Cells */,
+				A92F6FF724891F2D0048B352 /* AddPictureViewController.swift */,
+				A9B15ED1248B811A0061BAC3 /* AddPictureViewModel.swift */,
+			);
+			path = AddPicture;
+			sourceTree = "<group>";
+		};
+		A9B15EC8248AA6BA0061BAC3 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				A9B15EC32489206B0061BAC3 /* ChooseTemplateViewController.swift */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		A9B15EC9248AA6C20061BAC3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A9B15ECB248AA6DF0061BAC3 /* AddPictureCell.swift */,
+				A9B15ECD248AA6F50061BAC3 /* AddSimpleFieldCell.swift */,
+				A9B15ECF248AA7040061BAC3 /* AddDescriptionCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A9CB4AAD24815815007AACBB = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +415,7 @@
 				A9CB4B3A24818FA9007AACBB /* UIView+Ext.swift */,
 				A9CB4B3B24818FA9007AACBB /* UIImageExt.swift */,
 				A9CB4B3C24818FA9007AACBB /* UITableView+Extension.swift */,
+				A9B15ED5248B8E140061BAC3 /* UITableViewCell+Extensions.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -384,6 +446,7 @@
 				A9CB4B4224818FA9007AACBB /* Register.swift */,
 				A9CB4B4324818FA9007AACBB /* User.swift */,
 				A9CB4B4424818FA9007AACBB /* Onboarding.swift */,
+				A9B15ED3248B87DD0061BAC3 /* PictureModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -458,6 +521,7 @@
 		A9CB4B9124818FE1007AACBB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A92F6FF124891EC10048B352 /* AddPicture */,
 				A9CB4CE824867BB4007AACBB /* UserProfile */,
 				A9CB4B9224818FE1007AACBB /* Main */,
 				A9CB4BA024818FE1007AACBB /* Login */,
@@ -579,6 +643,7 @@
 				A9CB4CE624867ABC007AACBB /* BLTNModels */,
 				A9BD9D7A24868131003260CE /* Swifter */,
 				A9BD9D7D2486831D003260CE /* SwiftyInsta */,
+				A9B15EC6248AA6310061BAC3 /* GrowingTextView */,
 			);
 			productName = PlatDuJour;
 			productReference = A9CB4AB624815816007AACBB /* PlatDuJour.app */;
@@ -668,6 +733,7 @@
 				A9CB4CE124867ABC007AACBB /* XCRemoteSwiftPackageReference "BulletinBoard" */,
 				A9BD9D7924868131003260CE /* XCRemoteSwiftPackageReference "Swifter" */,
 				A9BD9D7C2486831D003260CE /* XCRemoteSwiftPackageReference "SwiftyInsta" */,
+				A9B15EC5248AA6310061BAC3 /* XCRemoteSwiftPackageReference "GrowingTextView" */,
 			);
 			productRefGroup = A9CB4AB724815816007AACBB /* Products */;
 			projectDirPath = "";
@@ -693,6 +759,7 @@
 				A9CB4BA624818FE1007AACBB /* Main.storyboard in Resources */,
 				A9CB4BBC24818FEE007AACBB /* GoogleService-Info.plist in Resources */,
 				A9CB4BBB24818FEE007AACBB /* Assets.xcassets in Resources */,
+				A92F6FF324891ED70048B352 /* AddPicture.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,9 +785,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9CB4C7124858254007AACBB /* Router.swift in Sources */,
+				A9B15EC42489206B0061BAC3 /* ChooseTemplateViewController.swift in Sources */,
 				A9CB4C8924858280007AACBB /* DynamicHeightCollectionView.swift in Sources */,
 				A9CB4C752485825B007AACBB /* StringExt.swift in Sources */,
 				A9CB4BA424818FE1007AACBB /* AppCoordinator.swift in Sources */,
+				A9B15ED2248B811A0061BAC3 /* AddPictureViewModel.swift in Sources */,
 				A9CB4C7E2485825B007AACBB /* UITableView+Extension.swift in Sources */,
 				A9CB4C7A2485825B007AACBB /* CLLocation+Extensions.swift in Sources */,
 				A9CB4C742485825B007AACBB /* UIFont+Extension.swift in Sources */,
@@ -732,12 +801,14 @@
 				A9CB4BBE24818FEE007AACBB /* Configuration.swift in Sources */,
 				A9CB4C772485825B007AACBB /* UIViewControllerExt.swift in Sources */,
 				A9CB4C8224858271007AACBB /* UserData.swift in Sources */,
+				A92F6FF524891EEB0048B352 /* AddPictureCoordinator.swift in Sources */,
 				A9CB4C7224858254007AACBB /* Coordinator.swift in Sources */,
 				A9CB4ABA24815816007AACBB /* AppDelegate.swift in Sources */,
 				A9CB4C8F24858298007AACBB /* Register.swift in Sources */,
 				A9CB4ABC24815816007AACBB /* SceneDelegate.swift in Sources */,
 				A9CB4C7024858254007AACBB /* WindowCoordinator.swift in Sources */,
 				A9CB4C762485825B007AACBB /* Date+Ext.swift in Sources */,
+				A92F6FF824891F2D0048B352 /* AddPictureViewController.swift in Sources */,
 				A9CB4BBA24818FEE007AACBB /* Palette.swift in Sources */,
 				A9CB4C6F24858254007AACBB /* Presentable.swift in Sources */,
 				A9CB4C7F24858271007AACBB /* Storage.swift in Sources */,
@@ -746,6 +817,7 @@
 				A9CB4C792485825B007AACBB /* UIColor+Ext.swift in Sources */,
 				A9CB4C782485825B007AACBB /* UIButton+Ext.swift in Sources */,
 				A9CB4C9024858298007AACBB /* User.swift in Sources */,
+				A9B15ED0248AA7040061BAC3 /* AddDescriptionCell.swift in Sources */,
 				A9CB4C8124858271007AACBB /* SessionController.swift in Sources */,
 				A9CB4C7B2485825B007AACBB /* Double+Extensions.swift in Sources */,
 				A9CB4C6E24858254007AACBB /* WindowRouter.swift in Sources */,
@@ -755,12 +827,16 @@
 				A9CB4C8A24858280007AACBB /* ActionButton.swift in Sources */,
 				A9CB4C94248582A3007AACBB /* RegisterRoute.swift in Sources */,
 				A9CB4C8D24858298007AACBB /* CovidAppApi.swift in Sources */,
+				A9B15ED4248B87DD0061BAC3 /* PictureModel.swift in Sources */,
 				A9CB4C862485827A007AACBB /* Result.swift in Sources */,
 				A9CB4C8824858280007AACBB /* HeaderView.swift in Sources */,
+				A9B15ED6248B8E140061BAC3 /* UITableViewCell+Extensions.swift in Sources */,
 				A9CB4C8B24858280007AACBB /* ErrorTextField.swift in Sources */,
 				A9CB4C7C2485825B007AACBB /* UIView+Ext.swift in Sources */,
 				A9CB4BA724818FE1007AACBB /* MainViewModel.swift in Sources */,
+				A9B15ECE248AA6F50061BAC3 /* AddSimpleFieldCell.swift in Sources */,
 				A9CB4BAF24818FE1007AACBB /* LoginViewController.swift in Sources */,
+				A9B15ECC248AA6DF0061BAC3 /* AddPictureCell.swift in Sources */,
 				A9CB4C732485825B007AACBB /* UILabel+Ext.swift in Sources */,
 				A9CB4C9224858298007AACBB /* API.swift in Sources */,
 				A9CB4C8324858271007AACBB /* MessageManager.swift in Sources */,
@@ -1114,6 +1190,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A9B15EC5248AA6310061BAC3 /* XCRemoteSwiftPackageReference "GrowingTextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KennethTsang/GrowingTextView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.7.2;
+			};
+		};
 		A9BD9D7924868131003260CE /* XCRemoteSwiftPackageReference "Swifter" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mattdonnelly/Swifter";
@@ -1237,6 +1321,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A9B15EC6248AA6310061BAC3 /* GrowingTextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9B15EC5248AA6310061BAC3 /* XCRemoteSwiftPackageReference "GrowingTextView" */;
+			productName = GrowingTextView;
+		};
 		A9BD9D7A24868131003260CE /* Swifter */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A9BD9D7924868131003260CE /* XCRemoteSwiftPackageReference "Swifter" */;
