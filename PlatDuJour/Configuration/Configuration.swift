@@ -20,6 +20,7 @@ enum FontType {
     case subTitle
     case `default`
     case footnote
+    case custom(_: Font.TextStyle, traits:[UIFontDescriptor.SymbolicTraits]?)
 }
 
 struct Constants {
@@ -59,6 +60,8 @@ extension FontType: Fontable {
             return Font.style(.callout)
         case .footnote:
             return Font.style(.footnote)
+        case .custom(let style, let traits):
+            return Font.style(style).withTraits(traits: traits ?? [])
         }
     }
 }

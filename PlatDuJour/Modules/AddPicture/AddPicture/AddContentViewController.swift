@@ -26,9 +26,9 @@ class AddContentViewController: UIViewController {
         }
     }
 
-    private let viewModel : AddPictureViewModel = AddPictureViewModel()
+    private let viewModel : AddContentViewModel = AddContentViewModel()
     static func create(with delegate: AddPictureCoordinatorDelegate) -> AddContentViewController {
-        let controller = AddContentViewController.loadFromStoryboard(identifier: "AddPictureViewController", storyboardName: "AddPicture") as! AddContentViewController
+        let controller = AddContentViewController.loadFromStoryboard(identifier: "AddContentViewController", storyboardName: "AddContent") as! AddContentViewController
         controller.coordinatorDelegate = delegate
         return controller
     }

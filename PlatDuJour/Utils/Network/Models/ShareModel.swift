@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyUserDefaults
+import Photos
 
 extension DefaultsKeys {
     var restaurantName: DefaultsKey<String?> { .init("restaurantName") }
@@ -15,6 +16,28 @@ extension DefaultsKeys {
 }
 
 class ShareModel: NSObject {
+    
+    enum ModelType {
+        case dailySpecial, event
+        
+        var fields: [ShareModel.Field] {
+            switch self {
+            case .dailySpecial: return [.picture, .price, .dishName, .restaurantName, .description]
+            case .event: return  [.picture, .eventName, .description]
+            }
+        }
+    }
+    
+    enum Field {
+        case picture, video, price, dishName, restaurantName, eventName, description
+    }
+    
+    var asset: PHAsset?  {
+        didSet {
+            updateValidity()
+        }
+    }
+
     var image: UIImage?  {
         didSet {
             updateValidity()
@@ -46,6 +69,10 @@ class ShareModel: NSObject {
     
     func update(_ image: UIImage) {
         self.image = image
+    }
+    
+    func update(_ asset: PHAsset) {
+        self.asset = asset
     }
     
     func update(_ price: Double) {

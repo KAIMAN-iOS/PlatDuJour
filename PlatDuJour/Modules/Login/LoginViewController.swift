@@ -12,7 +12,6 @@ import GoogleSignIn
 import AuthenticationServices
 
 class LoginViewController: UIViewController {
-
     enum CurrentSocialNetwork {
         case facebook, google, apple
     }

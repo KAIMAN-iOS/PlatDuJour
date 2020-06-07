@@ -10,6 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet var addLabel: UILabel!  {
+        didSet {
+            addLabel.set(text: "add new".local(), for: .custom(.title2, traits: nil), textColor: Palette.basic.mainTexts.color)
+        }
+    }
+
     weak var shareDelegate: ShareDelegate? = nil
     weak var coordinatorDelegate: AppCoordinatorDelegate? = nil
     static func create() -> MainViewController {

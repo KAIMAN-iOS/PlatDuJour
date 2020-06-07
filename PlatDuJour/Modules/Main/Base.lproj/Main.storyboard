@@ -90,6 +90,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="nLe-ON-h0h" id="vhN-OR-XeV"/>
+                        <outlet property="addLabel" destination="seg-wU-5M0" id="1LU-ID-fCq"/>
                         <outlet property="historyButton" destination="qtE-MJ-9kD" id="Hbb-tK-e2w"/>
                     </connections>
                 </viewController>

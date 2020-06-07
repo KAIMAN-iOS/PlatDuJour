@@ -16,10 +16,10 @@
 "Onboarding letsGo title" = "C'est parti";
 
 "Onboarding welcome subtitle" = "Nous allons vous présenter l'application en quelques points rapides. Cela ne sera pas long 😊";
-"Onboarding purpose subtitle" = "Daily Special vous permet de partager en un clic vos plats du jour sur les réseaux sociaux";
+"Onboarding purpose subtitle" = "Daily Special vous permet de partager en un clic vos plats du jour et évènements sur les réseaux sociaux";
 "Onboarding addSocialNetwork subtitle" = "Commenencez par connecter vos comptes. Daily Special vous permet de partager sur Facebook, Instagram et Twitter en une seule fois";
-"Onboarding takePicture subtitle" = "Choisissez la photo du votre plat du jour";
-"Onboarding chooseFromTemplate subtitle" = "Choisissez parmi des templates pré-établis. Renseignez le prix et le nom du plat et Daily Special se charge du reste";
+"Onboarding takePicture subtitle" = "Choisissez la photo ou vidéo que vous souhaitez partager";
+"Onboarding chooseFromTemplate subtitle" = "Choisissez parmi des templates pré-établis. Ajoutez les informations nécessaires et Daily Special se charge du reste";
 "Onboarding letsGo subtitle" = "";
 
 "The email address entered is not valid" = "Email invalide";
@@ -40,8 +40,8 @@
 "Connect with facebook" = "Se connecter avec Facebook";
 "Connect with google" = "Se connecter avec Google";
 "Activate" = "J'autorise le partage";
-"ask notification" = "Rappels journaliers";
-"ask for notification" = "Le but de DailySpecial est de collecter des données quotidiennes sur l'état des santé des personnes restant à domicile. Pour vous aider, DailySpecial vous enverra une notification quotidienne pour vous rappeler de répondre à 5 questions simples.";
+//"ask notification" = "Rappels journaliers";
+//"ask for notification" = "Le but de DailySpecial est de collecter des données quotidiennes sur l'état des santé des personnes restant à domicile. Pour vous aider, DailySpecial vous enverra une notification quotidienne pour vous rappeler de répondre à 5 questions simples.";
 "Activate notification" = "J'ai compris";
 "loading, please wait" = "Récupération des dernières données";
 
@@ -56,7 +56,7 @@
 "userNotLoggedIn" = "Vous n'êtes pas encore connecté à DailySpecial";
 "profile instructions" = "Merci de renseigner et vérifier les champs suivants";
 "ask email instructions" = "DailySpecial a besoin de votre email afin de vous identifier de façon unique";
-"login instructions" = "Merci de vous connecter afin de pouvoir utiliser Covid'App";
+"login instructions" = "Merci de vous connecter afin de pouvoir utiliser Daily Special";
 "Disconnect" = "Me déconnecter";
 "Choose an image" = "Choisir une image";
 "From Library" = "Depuis mes photos";
@@ -68,3 +68,10 @@
 "restaurantName" = "Restaurant";
 "dishName" = "Nom du plat";
 
+"logged" = "Connecté";
+"notLogged" = "Non connecté";
+"tap to connect" = "Tapez pour connecter";
+"tap to disconnect" = "Tapez pour déconnecter";
+"add new" = "Ajoutez du contenu";
+"add new daily special" = "Ajoutez un plat du jour";
+"add new event" = "Ajoutez un nouvel évènement";

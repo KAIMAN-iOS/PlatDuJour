@@ -13,9 +13,9 @@ protocol AddPictureCoordinatorDelegate: class {
     func updload(_ picture: UIImage)
 }
 
-class AddPictureCoordinator: Coordinator<DeepLink> {
+class AddContentCoordinator: Coordinator<DeepLink> {
     
-    lazy var addPictureController: AddPictureViewController = AddPictureViewController.create(with: self)
+    lazy var addPictureController: AddContentViewController = AddContentViewController.create(with: self)
     init() {
         let appNavigationController: UINavigationController = UINavigationController()
         appNavigationController.navigationBar.barTintColor = Palette.basic.primary.color
@@ -25,7 +25,7 @@ class AddPictureCoordinator: Coordinator<DeepLink> {
     }
 }
 
-extension AddPictureCoordinator: AddPictureCoordinatorDelegate {
+extension AddContentCoordinator: AddPictureCoordinatorDelegate {
     func showTemplates(for image: UIImage) {
         
     }

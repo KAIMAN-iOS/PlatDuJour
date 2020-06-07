@@ -311,7 +311,7 @@ extension AppCoordinator: AppCoordinatorDelegate {
     }
     
     private func addPicture() {
-        let model = AddPictureCoordinator()
+        let model = AddContentCoordinator()
         addChild(model)
         model.start()
         router.present(model, animated: true)
