@@ -15,6 +15,14 @@ class AddPictureViewController: UIViewController {
             tableView.dataSource = self
             tableView.delegate = self
             tableView.commonInit()
+            tableView.estimatedRowHeight = 250
+        }
+    }
+
+    @IBOutlet var continueButton: ActionButton!  {
+        didSet {
+            continueButton.actionButtonType = .primary
+            continueButton.isEnabled = false
         }
     }
 
@@ -29,6 +37,7 @@ class AddPictureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.showPickerDelegate = self
+        viewModel.updateButtonDelegate = self
         title = "Choose an image".local()
     }
     
@@ -90,12 +99,12 @@ extension AddPictureViewController: AddPictureCellDelegate {
 extension AddPictureViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.didSelectRow(at: indexPath, in: tableView)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return viewModel.heightForHeader(in: section)
     }
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return viewModel.header(for: section)
@@ -118,3 +127,8 @@ extension AddPictureViewController: UITableViewDataSource {
     }
 }
 
+extension AddPictureViewController: UpdateButtonDelegate {
+    func updateButton(_ enabled: Bool) {
+        continueButton.isEnabled = enabled
+    }
+}

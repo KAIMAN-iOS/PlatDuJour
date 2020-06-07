@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iwi-Cn-hq8">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddPictureCell" rowHeight="250" id="CBS-Df-XFJ" customClass="AddPictureCell" customModule="PlatDuJour" customModuleProvider="target">
@@ -97,36 +97,39 @@
                                             <outlet property="textField" destination="gEa-t7-51G" id="hJv-UC-wmb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddDescriptionCell" rowHeight="100" id="rfq-9d-men" customClass="AddDescriptionCell" customModule="PlatDuJour" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="338" width="414" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddDescriptionCell" rowHeight="150" id="rfq-9d-men" customClass="AddDescriptionCell" customModule="PlatDuJour" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="338" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rfq-9d-men" id="bLg-Az-GZ8">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZXd-oq-zEr">
-                                                    <rect key="frame" x="20" y="19" width="374" height="70"/>
+                                                    <rect key="frame" x="20" y="19" width="374" height="120"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wik-V1-NWo">
-                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="20"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Wik-V1-NWo">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Description du plat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqs-ZG-cS1">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="20"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-pO-vnZ">
-                                                                    <rect key="frame" x="350" y="0.0" width="24" height="20"/>
+                                                                    <rect key="frame" x="350" y="0.0" width="24" height="20.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <color key="textColor" name="barTtitleUnselected"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" text="Lorem ipsum dolor sit er elit lamet, consectetaur" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OwX-BY-zWe" customClass="GrowingTextView" customModule="GrowingTextView">
-                                                            <rect key="frame" x="0.0" y="20" width="374" height="50"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" text="Lorem ipsum dolor sit er elit lamet, consectetaur" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OwX-BY-zWe">
+                                                            <rect key="frame" x="0.0" y="20.5" width="374" height="99.5"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="99.5" id="j7F-Dj-ncr"/>
+                                                            </constraints>
                                                             <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -150,18 +153,34 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZp-3C-5Tp" customClass="ActionButton" customModule="PlatDuJour" customModuleProvider="target">
+                                <rect key="frame" x="12" y="714" width="390" height="60"/>
+                                <color key="backgroundColor" name="primary"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="d1l-p8-hZF"/>
+                                    <constraint firstAttribute="height" constant="60" id="rt7-68-Pqe"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Continuer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Iwi-Cn-hq8" secondAttribute="bottom" id="Dor-aQ-9js"/>
                             <constraint firstItem="Iwi-Cn-hq8" firstAttribute="leading" secondItem="rap-ej-Qho" secondAttribute="leading" id="Iye-fU-D7U"/>
+                            <constraint firstItem="rap-ej-Qho" firstAttribute="bottom" secondItem="gZp-3C-5Tp" secondAttribute="bottom" id="O9D-c5-jgs"/>
+                            <constraint firstItem="rap-ej-Qho" firstAttribute="trailing" secondItem="gZp-3C-5Tp" secondAttribute="trailing" constant="12" id="V1C-Sp-3U2"/>
+                            <constraint firstItem="gZp-3C-5Tp" firstAttribute="leading" secondItem="rap-ej-Qho" secondAttribute="leading" constant="12" id="b1z-rm-WXj"/>
                             <constraint firstItem="Iwi-Cn-hq8" firstAttribute="top" secondItem="rap-ej-Qho" secondAttribute="top" id="p1T-AD-Zjz"/>
+                            <constraint firstItem="gZp-3C-5Tp" firstAttribute="top" secondItem="Iwi-Cn-hq8" secondAttribute="bottom" constant="8" id="sJ1-aX-LUY"/>
                             <constraint firstItem="Iwi-Cn-hq8" firstAttribute="trailing" secondItem="rap-ej-Qho" secondAttribute="trailing" id="tpq-AM-lVU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rap-ej-Qho"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="continueButton" destination="gZp-3C-5Tp" id="48c-VO-bli"/>
                         <outlet property="tableView" destination="Iwi-Cn-hq8" id="4Pd-0Q-ed3"/>
                     </connections>
                 </viewController>

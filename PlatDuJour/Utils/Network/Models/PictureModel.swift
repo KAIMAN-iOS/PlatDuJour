@@ -7,31 +7,70 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
-struct PictureModel {
-    var image: UIImage?
-    var price: Double?
-    var dishName: String?
-    var restaurantName: String?
-    var dishDescription: String?
+extension DefaultsKeys {
+    var restaurantName: DefaultsKey<String?> { .init("restaurantName") }
+    var dishPrice: DefaultsKey<Double?> { .init("dishPrice") }
+}
+
+class PictureModel: NSObject {
+    var image: UIImage?  {
+        didSet {
+            updateValidity()
+        }
+    }
+    var price: Double?  {
+        didSet {
+            Defaults[\.dishPrice] = price
+            updateValidity()
+        }
+    }
+    var dishName: String? {
+        didSet {
+            updateValidity()
+        }
+    }
+    var restaurantName: String?  {
+        didSet {
+           Defaults[\.restaurantName] = restaurantName
+           updateValidity()
+         }
+     }
+    var dishDescription: String? {
+       didSet {
+           updateValidity()
+       }
+   }
+    @objc dynamic var isValid: Bool = false
     
-    mutating func update(_ image: UIImage) {
+    func update(_ image: UIImage) {
         self.image = image
     }
     
-    mutating func update(_ price: Double) {
+    func update(_ price: Double) {
         self.price = price
     }
     
-    mutating func update(dishName name: String) {
+    func update(dishName name: String) {
         self.dishName = name
     }
     
-    mutating func update(restaurantName name: String) {
+    func update(restaurantName name: String) {
         self.restaurantName = name
     }
     
-    mutating func update(dishDescription description: String) {
+    func update(dishDescription description: String) {
         self.dishDescription = description
+    }
+    
+    override init() {
+        restaurantName = Defaults[\.restaurantName]
+        price = Defaults[\.dishPrice]
+        super.init()
+    }
+    
+    private func updateValidity() {
+        isValid = image != nil && (price ?? 0 > 0) && dishName?.isEmpty == false && restaurantName?.isEmpty == false && dishDescription?.isEmpty == false
     }
 }
