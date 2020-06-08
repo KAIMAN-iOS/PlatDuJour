@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FieldCellDelegate: class {
-    func textFieldShouldReturn(_ textField: UITextField, for field: AddSimpleFieldCell.Field) -> Bool
+    func textFieldShouldReturn(_ textField: UITextField, for field: ShareModel.Field) -> Bool
 }
 
 class AddSimpleFieldCell: UITableViewCell {
@@ -19,32 +19,6 @@ class AddSimpleFieldCell: UITableViewCell {
         nb.numberStyle = .currency
         return nb
     } ()
-    enum Field {
-        case price, restaurantName, dishName
-        
-        var description: String {
-            switch self {
-            case .price: return "price".local()
-            case .restaurantName: return "restaurantName".local()
-            case .dishName: return "dishName".local()
-            }
-        }
-        
-        var placeholder: String {
-            switch self {
-                case .price: return "price placeholder".local()
-                case .restaurantName: return "restaurantName placeholder".local()
-                case .dishName: return "dishName placeholder".local()
-            }
-        }
-        
-        var keyboardType: UIKeyboardType {
-            switch self {
-            case .price: return .numberPad
-            default: return .asciiCapable
-            }
-        }
-    }
 
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var textField: UITextField!  {
@@ -59,7 +33,7 @@ class AddSimpleFieldCell: UITableViewCell {
         addDefaultSelectedBackground()
     }
 
-    private var field: Field!  {
+    private var field: ShareModel.Field!  {
         didSet {
             descriptionLabel.set(text: field.description, for: .default)
             textField.placeholder = field.placeholder
@@ -67,7 +41,7 @@ class AddSimpleFieldCell: UITableViewCell {
         }
     }
 
-    func configure<T>(with field: Field, value: T?) {
+    func configure<T>(with field: ShareModel.Field, value: T?) {
         self.field = field
         if let value =  value {
             textField.text = String(describing: value)

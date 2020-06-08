@@ -75,3 +75,14 @@
 "add new" = "Ajoutez du contenu";
 "add new daily special" = "Ajoutez un plat du jour";
 "add new event" = "Ajoutez un nouvel évènement";
+"Choose content" = "Quel type de contenu souhaitez vous partager ?";
+"content daily special" = "Plat du jour";
+"content event" = "Evènement";
+"picture" = "Choisissez une image";
+"asset" = "Choisissez une image ou une vidéo";
+"eventName" = "Nom de l'évènement";
+"description" = "Description";
+"picture placeholder" = "";
+"asset placeholder" = "";
+"eventName placeholder" = "Nom";
+"description placeholder" = "Entrez votre texte";

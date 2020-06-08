@@ -60,8 +60,10 @@ class AddContentViewModel: NSObject {
     
     @objc dynamic var isValid: Bool = true
     
-    override init() {
+    private var content: ShareModel.ModelType!
+    init(content: ShareModel.ModelType) {
         super.init()
+        self.content = content
         observation = observe(\.isValid,
                               options: [.old, .new]
         ) { [weak self] _, change in

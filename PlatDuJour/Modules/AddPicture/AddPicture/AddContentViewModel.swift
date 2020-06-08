@@ -7,33 +7,30 @@
 //
 
 import UIKit
+import Photos
 
 protocol UpdateButtonDelegate: class {
     func updateButton(_ enabled: Bool)
 }
 
 class AddContentViewModel: NSObject {
-    private enum cellType {
-        case picture, dishPrice, dishName, restaurantName, dishDescription
-        
-        var cellField: AddSimpleFieldCell.Field? {
-            switch self {
-            case .dishPrice: return .price
-            case .dishName: return .dishName
-            case .restaurantName: return .restaurantName
-            default: return nil
-            }
-        }
+    private enum CellType {
+        case asset(_ field: ShareModel.Field), singleField(_ field: ShareModel.Field), description
     }
-    private var cellTypes: [cellType] = [.picture, .dishPrice, .dishName, .restaurantName, .dishDescription]
+    private var cellTypes: [CellType] = []
     weak var showPickerDelegate: AddPictureCellDelegate? = nil
     weak var updateButtonDelegate: UpdateButtonDelegate? = nil
     var observation: NSKeyValueObservation?
+    private var content: ShareModel.ModelType
     
     // dish picture model
-    private (set) var pictureModel = ShareModel()
+    private (set) var pictureModel: ShareModel!
     func update(_ image: UIImage) {
         pictureModel.update(image)
+        isValid = pictureModel.isValid
+    }
+    func update(_ asset: PHAsset) {
+        pictureModel.update(asset)
         isValid = pictureModel.isValid
     }
     func update(_ price: Double) {
@@ -60,7 +57,20 @@ class AddContentViewModel: NSObject {
     
     @objc dynamic var isValid: Bool = true
     
-    override init() {
+    init(content: ShareModel.ModelType) {
+        self.content = content
+        cellTypes = content.fields.map({ field -> CellType in
+            switch field {
+            case .picture: return .asset(.picture)
+            case .asset: return .asset(.asset)
+            case .price: return .singleField(.price)
+            case .dishName: return .singleField(.dishName)
+            case .restaurantName: return .singleField(.restaurantName)
+            case .eventName: return .singleField(.eventName)
+            case .description: return .description
+            }
+        })
+        pictureModel = ShareModel(model: content)
         super.init()
         observation = observe(\.isValid,
                               options: [.old, .new]
@@ -69,20 +79,17 @@ class AddContentViewModel: NSObject {
         }
     }
     
-    private var currentSelectedField: AddSimpleFieldCell.Field? = nil
-    func didSelectRow(at indexPath: IndexPath, in tableView: UITableView) {
-        currentSelectedField = cellTypes[indexPath.row].cellField
-        
+    func didSelectRow(at indexPath: IndexPath, in tableView: UITableView) {        
         switch cellTypes[indexPath.row] {
-        case .picture: showPickerDelegate?.showImagePicker()
-        case .dishPrice, .dishName, .restaurantName:
+        case .asset: showPickerDelegate?.showImagePicker()
+        case .singleField(let field):
             guard let cell = tableView.cellForRow(at: indexPath) as? AddSimpleFieldCell else {
                 return
             }
             cell.textField.isUserInteractionEnabled = true
             cell.textField.becomeFirstResponder()
             
-        case .dishDescription:
+        case .description:
             guard let cell = tableView.cellForRow(at: indexPath) as? AddDescriptionCell else {
                 return
             }
@@ -92,7 +99,7 @@ class AddContentViewModel: NSObject {
 }
 
 extension AddContentViewModel: FieldCellDelegate {
-    func textFieldShouldReturn(_ textField: UITextField, for field: AddSimpleFieldCell.Field) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField, for field: ShareModel.Field) -> Bool {
         textField.isUserInteractionEnabled = false
         switch field {
         case .price:
@@ -106,7 +113,10 @@ extension AddContentViewModel: FieldCellDelegate {
         case .dishName:
             pictureModel.dishName = textField.text
             isValid = pictureModel.isValid
+            
+            default: ()
         }
+        
         return true
     }
 }
@@ -118,7 +128,7 @@ extension AddContentViewModel: TableViewModelable {
     
     func configureCell(at indexPath: IndexPath, in tableView: UITableView) -> UITableViewCell {
         switch cellTypes[indexPath.row] {
-        case .picture:
+        case .asset(let field):
             guard let cell: AddPictureCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
                 return UITableViewCell()
             }
@@ -126,35 +136,19 @@ extension AddContentViewModel: TableViewModelable {
             cell.configure(with: pictureModel.image)
             return cell
             
-        case .dishPrice:
+        case .singleField(let field):
             guard let cell: AddSimpleFieldCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
                 return UITableViewCell()
             }
-            cell.configure(with: .price, value: pictureModel.price)
+            cell.configure(with: field, value: pictureModel.value(for: field))
             cell.fieldDelegate = self
             return cell
             
-        case .dishName:
-            guard let cell: AddSimpleFieldCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
-                return UITableViewCell()
-            }
-            cell.configure(with: .dishName, value: pictureModel.dishName)
-            cell.fieldDelegate = self
-            return cell
-            
-        case .restaurantName:
-            guard let cell: AddSimpleFieldCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
-                return UITableViewCell()
-            }
-            cell.configure(with: .restaurantName, value: pictureModel.restaurantName)
-            cell.fieldDelegate = self
-            return cell
-            
-        case .dishDescription:
+        case .description:
             guard let cell: AddDescriptionCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
                 return UITableViewCell()
             }
-            cell.configure(with: pictureModel.dishDescription)
+            cell.configure(with: pictureModel.contentDescription)
             cell.delegate = self
             return cell
         }

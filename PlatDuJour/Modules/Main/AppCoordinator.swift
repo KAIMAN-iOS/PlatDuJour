@@ -22,7 +22,7 @@ protocol AppCoordinatorDelegate: class {
     func showUserProfileController()
     func showMainController()
     func logOut()
-    func addDailySpecial()
+    func addContent()
 }
 
 protocol DailyNotificationDelegate: class {
@@ -300,18 +300,39 @@ extension AppCoordinator: AppCoordinatorDelegate {
         start()
     }
     
-    func addDailySpecial() {
+    func addContent() {
         switch onboardingWasShown {
         case false:
             Defaults[\.onboardingWasShown] = true
             presentOnboardingFlow()
             
-        case true: addPicture()
+        case true: chooseContent()
         }
     }
     
-    private func addPicture() {
-        let model = AddContentCoordinator()
+    private func chooseContent() {
+        let actionSheet = UIAlertController(title: "Choose content".local(), message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "content daily special".local(), style: .default, handler: { [weak self] _ in
+            self?.mainController.dismiss(animated: true) { [weak self] in
+                self?.add(content: .dailySpecial)
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "content event".local(), style: .default, handler: { [weak self] _ in
+            self?.mainController.dismiss(animated: true) { [weak self] in
+                self?.add(content: .event)
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel".local(), style: .cancel, handler: { [weak self] _ in
+            self?.mainController.dismiss(animated: true, completion: nil)
+        }))
+        
+        mainController.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func add(content: ShareModel.ModelType) {
+        let model = AddContentCoordinator(content: content)
         addChild(model)
         model.start()
         router.present(model, animated: true)

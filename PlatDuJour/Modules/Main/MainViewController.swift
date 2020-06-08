@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func add(_ sender: Any) {
-        coordinatorDelegate?.addDailySpecial()
+        coordinatorDelegate?.addContent()
     }
     
     @IBAction func showSettings(_ sender: Any) {

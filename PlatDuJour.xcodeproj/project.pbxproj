@@ -26,6 +26,7 @@
 		A9B15EDD248D2C600061BAC3 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15EDC248D2C600061BAC3 /* AccountsViewController.swift */; };
 		A9B15EDF248D2DBE0061BAC3 /* AccountsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15EDE248D2DBE0061BAC3 /* AccountsViewModel.swift */; };
 		A9B15EE1248D2EA10061BAC3 /* ShareAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15EE0248D2EA10061BAC3 /* ShareAccountManager.swift */; };
+		A9B15EE3248E8ADF0061BAC3 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B15EE2248E8ADF0061BAC3 /* Photos.framework */; };
 		A9BD9D7B24868131003260CE /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7A24868131003260CE /* Swifter */; };
 		A9BD9D7E2486831D003260CE /* SwiftyInsta in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7D2486831D003260CE /* SwiftyInsta */; };
 		A9CB4ABA24815816007AACBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4AB924815816007AACBB /* AppDelegate.swift */; };
@@ -153,6 +154,7 @@
 		A9B15EDC248D2C600061BAC3 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		A9B15EDE248D2DBE0061BAC3 /* AccountsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewModel.swift; sourceTree = "<group>"; };
 		A9B15EE0248D2EA10061BAC3 /* ShareAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAccountManager.swift; sourceTree = "<group>"; };
+		A9B15EE2248E8ADF0061BAC3 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		A9CB4AB624815816007AACBB /* PlatDuJour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlatDuJour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CB4AB924815816007AACBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CB4ABB24815816007AACBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				A9CB4B0A24815C13007AACBB /* IQKeyboardManagerSwift in Frameworks */,
 				A91CEC75248690C50092DA52 /* GoogleSignInDependencies.framework in Frameworks */,
 				A9CB4AEB2481594F007AACBB /* Alamofire in Frameworks */,
+				A9B15EE3248E8ADF0061BAC3 /* Photos.framework in Frameworks */,
 				A9CB4B0224815B5F007AACBB /* FacebookLogin in Frameworks */,
 				A9CB4C672485814E007AACBB /* UserNotificationsUI.framework in Frameworks */,
 				A91CEC76248690C50092DA52 /* GoogleSignIn.framework in Frameworks */,
@@ -604,6 +607,7 @@
 		A9CB4C4E2485814C007AACBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9B15EE2248E8ADF0061BAC3 /* Photos.framework */,
 				A9CB4C532485814D007AACBB /* AudioToolbox.framework */,
 				A9CB4C542485814D007AACBB /* AuthenticationServices.framework */,
 				A9CB4C4F2485814C007AACBB /* AVFoundation.framework */,

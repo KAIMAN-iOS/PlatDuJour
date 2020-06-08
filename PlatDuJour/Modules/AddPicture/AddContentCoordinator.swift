@@ -15,12 +15,13 @@ protocol AddPictureCoordinatorDelegate: class {
 
 class AddContentCoordinator: Coordinator<DeepLink> {
     
-    lazy var addPictureController: AddContentViewController = AddContentViewController.create(with: self)
-    init() {
+    var addPictureController: AddContentViewController!
+    init(content: ShareModel.ModelType) {
         let appNavigationController: UINavigationController = UINavigationController()
         appNavigationController.navigationBar.barTintColor = Palette.basic.primary.color
         let appRouter: RouterType = Router(navigationController: appNavigationController)
         super.init(router: appRouter)
+        addPictureController = AddContentViewController.create(with: self, content: content)
         router.setRootModule(addPictureController, hideBar: false, animated: false)
     }
 }

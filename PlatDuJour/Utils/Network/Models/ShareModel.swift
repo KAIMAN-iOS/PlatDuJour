@@ -23,13 +23,44 @@ class ShareModel: NSObject {
         var fields: [ShareModel.Field] {
             switch self {
             case .dailySpecial: return [.picture, .price, .dishName, .restaurantName, .description]
-            case .event: return  [.picture, .eventName, .description]
+            case .event: return  [.asset, .eventName, .description]
             }
         }
     }
     
     enum Field {
-        case picture, video, price, dishName, restaurantName, eventName, description
+        case picture, asset, price, dishName, restaurantName, eventName, description
+        
+        var description: String {
+            switch self {
+            case .price: return "price".local()
+            case .restaurantName: return "restaurantName".local()
+            case .dishName: return "dishName".local()
+            case .picture: return "picture".local()
+            case .asset: return "asset".local()
+            case .eventName: return "eventName".local()
+            case .description: return "description".local()
+            }
+        }
+        
+        var placeholder: String {
+            switch self {
+                case .price: return "price placeholder".local()
+                case .restaurantName: return "restaurantName placeholder".local()
+                case .dishName: return "dishName placeholder".local()
+                case .picture: return "picture placeholder".local()
+                case .asset: return "asset placeholder".local()
+                case .eventName: return "eventName placeholder".local()
+                case .description: return "description placeholder".local()
+            }
+        }
+        
+        var keyboardType: UIKeyboardType {
+            switch self {
+            case .price: return .decimalPad
+            default: return .asciiCapable
+            }
+        }
     }
     
     var asset: PHAsset?  {
@@ -60,7 +91,12 @@ class ShareModel: NSObject {
            updateValidity()
          }
      }
-    var dishDescription: String? {
+     var eventName: String?  {
+         didSet {
+            updateValidity()
+          }
+      }
+    var contentDescription: String? {
        didSet {
            updateValidity()
        }
@@ -87,17 +123,45 @@ class ShareModel: NSObject {
         self.restaurantName = name
     }
     
-    func update(dishDescription description: String) {
-        self.dishDescription = description
+    func update(eventName name: String) {
+        self.eventName = name
     }
     
-    override init() {
+    func update(dishDescription description: String) {
+        self.contentDescription = description
+    }
+    
+    private var model: ModelType!
+    init(model: ModelType) {
+        self.model = model
         restaurantName = Defaults[\.restaurantName]
         price = Defaults[\.dishPrice]
         super.init()
     }
     
     private func updateValidity() {
-        isValid = image != nil && (price ?? 0 > 0) && dishName?.isEmpty == false && restaurantName?.isEmpty == false && dishDescription?.isEmpty == false
+        isValid = model.fields.reduce(false, { (result, field) -> Bool in
+            switch field {
+            case .picture: return result && image != nil
+            case .asset: return result && asset != nil
+            case .price: return result && (price ?? 0 > 0)
+            case .dishName: return result && dishName?.isEmpty == false
+            case .restaurantName: return result && restaurantName?.isEmpty == false
+            case .eventName: return result && eventName?.isEmpty == false
+            case .description: return result && contentDescription?.isEmpty == false
+            }
+        })
+    }
+    
+    func value(for field: Field) -> Any? {
+        switch field {
+        case .picture: return image
+        case .asset: return asset
+        case .price: return price
+        case .dishName: return dishName
+        case .restaurantName: return restaurantName
+        case .eventName: return eventName
+        case .description: return contentDescription
+        }
     }
 }

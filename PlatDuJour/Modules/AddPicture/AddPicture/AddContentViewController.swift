@@ -10,6 +10,7 @@ import UIKit
 
 class AddContentViewController: UIViewController {
 
+    var content: ShareModel.ModelType!
     @IBOutlet var tableView: UITableView!  {
         didSet {
             tableView.dataSource = self
@@ -26,10 +27,12 @@ class AddContentViewController: UIViewController {
         }
     }
 
-    private let viewModel : AddContentViewModel = AddContentViewModel()
-    static func create(with delegate: AddPictureCoordinatorDelegate) -> AddContentViewController {
+    private var viewModel : AddContentViewModel!
+    static func create(with delegate: AddPictureCoordinatorDelegate, content: ShareModel.ModelType) -> AddContentViewController {
         let controller = AddContentViewController.loadFromStoryboard(identifier: "AddContentViewController", storyboardName: "AddContent") as! AddContentViewController
         controller.coordinatorDelegate = delegate
+        controller.content = content
+        controller.viewModel = AddContentViewModel(content: content)
         return controller
     }
     weak var coordinatorDelegate: AddPictureCoordinatorDelegate? = nil
@@ -75,19 +78,19 @@ extension AddContentViewController: AddPictureCellDelegate {
         }
         
         let actionSheet = UIAlertController(title: "Choose an image".local(), message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "From Library", style: .default, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: "From Library".local(), style: .default, handler: { [weak self] _ in
             self?.dismiss(animated: true) { [weak self] in
                 self?.showImagePicker(with: .photoLibrary)
             }
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Take picture", style: .default, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: "Take picture".local(), style: .default, handler: { [weak self] _ in
             self?.dismiss(animated: true) { [weak self] in
                 self?.showImagePicker(with: .camera)
             }
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: "Cancel".local(), style: .cancel, handler: { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
         }))
         
