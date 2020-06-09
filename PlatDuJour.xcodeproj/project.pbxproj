@@ -10,6 +10,7 @@
 		A91CEC75248690C50092DA52 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91CEC72248690C40092DA52 /* GoogleSignInDependencies.framework */; };
 		A91CEC76248690C50092DA52 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91CEC73248690C40092DA52 /* GoogleSignIn.framework */; };
 		A91CEC77248690C50092DA52 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A91CEC74248690C40092DA52 /* GoogleSignIn.bundle */; };
+		A924BA08248FB04D001A5F80 /* AddDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A924BA07248FB04C001A5F80 /* AddDateCell.swift */; };
 		A92F6FF324891ED70048B352 /* AddContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92F6FF224891ED70048B352 /* AddContent.storyboard */; };
 		A92F6FF524891EEB0048B352 /* AddContentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92F6FF424891EEB0048B352 /* AddContentCoordinator.swift */; };
 		A92F6FF824891F2D0048B352 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92F6FF724891F2D0048B352 /* AddContentViewController.swift */; };
@@ -139,6 +140,7 @@
 		A91CEC72248690C40092DA52 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
 		A91CEC73248690C40092DA52 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
 		A91CEC74248690C40092DA52 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		A924BA07248FB04C001A5F80 /* AddDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateCell.swift; sourceTree = "<group>"; };
 		A92F6FF224891ED70048B352 /* AddContent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddContent.storyboard; sourceTree = "<group>"; };
 		A92F6FF424891EEB0048B352 /* AddContentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentCoordinator.swift; sourceTree = "<group>"; };
 		A92F6FF724891F2D0048B352 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				A9B15ECB248AA6DF0061BAC3 /* AddPictureCell.swift */,
 				A9B15ECD248AA6F50061BAC3 /* AddSimpleFieldCell.swift */,
 				A9B15ECF248AA7040061BAC3 /* AddDescriptionCell.swift */,
+				A924BA07248FB04C001A5F80 /* AddDateCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				A9B15EDB248D2C180061BAC3 /* AccountsCoordinator.swift in Sources */,
 				A9CB4C8024858271007AACBB /* DataManager.swift in Sources */,
 				A9CB4BBE24818FEE007AACBB /* Configuration.swift in Sources */,
+				A924BA08248FB04D001A5F80 /* AddDateCell.swift in Sources */,
 				A9CB4C772485825B007AACBB /* UIViewControllerExt.swift in Sources */,
 				A9CB4C8224858271007AACBB /* UserData.swift in Sources */,
 				A92F6FF524891EEB0048B352 /* AddContentCoordinator.swift in Sources */,

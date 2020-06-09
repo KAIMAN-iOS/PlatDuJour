@@ -150,6 +150,55 @@
                                             <outlet property="textView" destination="OwX-BY-zWe" id="S2Y-9x-L55"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddDateCell" rowHeight="210" id="SG5-qZ-RU8" customClass="AddDateCell" customModule="PlatDuJour" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="488" width="414" height="210"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SG5-qZ-RU8" id="Aw7-B9-PYr">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wpz-pP-FF4">
+                                                    <rect key="frame" x="20" y="19" width="374" height="172"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pAO-6e-wU9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKv-hu-e0v">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="324" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDL-B9-hvo">
+                                                                    <rect key="frame" x="332" y="0.0" width="42" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="hk1-u0-kzv">
+                                                            <rect key="frame" x="0.0" y="20.5" width="374" height="151.5"/>
+                                                            <connections>
+                                                                <action selector="dateChanged:" destination="SG5-qZ-RU8" eventType="valueChanged" id="fNv-zB-Qzf"/>
+                                                            </connections>
+                                                        </datePicker>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Wpz-pP-FF4" secondAttribute="bottom" constant="8" id="7iL-yE-bOL"/>
+                                                <constraint firstItem="Wpz-pP-FF4" firstAttribute="top" secondItem="Aw7-B9-PYr" secondAttribute="topMargin" constant="8" id="Pzr-9z-Dnj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wpz-pP-FF4" secondAttribute="trailing" id="gK4-oi-eep"/>
+                                                <constraint firstItem="Wpz-pP-FF4" firstAttribute="leading" secondItem="Aw7-B9-PYr" secondAttribute="leadingMargin" id="xdD-tq-Vr1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="WDL-B9-hvo" id="Oym-Dm-pQe"/>
+                                            <outlet property="datePicker" destination="hk1-u0-kzv" id="apm-oV-hmi"/>
+                                            <outlet property="title" destination="kKv-hu-e0v" id="igk-9x-gec"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <sections/>
                             </tableView>

@@ -86,3 +86,5 @@
 "asset placeholder" = "";
 "eventName placeholder" = "Nom";
 "description placeholder" = "Entrez votre texte";
+"date" = "Date";
+"date placeholder" = "dd/mm/yyyy - hh:MM";

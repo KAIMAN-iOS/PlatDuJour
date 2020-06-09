@@ -23,13 +23,13 @@ class ShareModel: NSObject {
         var fields: [ShareModel.Field] {
             switch self {
             case .dailySpecial: return [.picture, .price, .dishName, .restaurantName, .description]
-            case .event: return  [.asset, .eventName, .description]
+            case .event: return  [.asset, .eventName, .date, .description]
             }
         }
     }
     
     enum Field {
-        case picture, asset, price, dishName, restaurantName, eventName, description
+        case picture, asset, price, dishName, restaurantName, eventName, description, date
         
         var description: String {
             switch self {
@@ -40,6 +40,7 @@ class ShareModel: NSObject {
             case .asset: return "asset".local()
             case .eventName: return "eventName".local()
             case .description: return "description".local()
+            case .date: return "date".local()
             }
         }
         
@@ -52,6 +53,7 @@ class ShareModel: NSObject {
                 case .asset: return "asset placeholder".local()
                 case .eventName: return "eventName placeholder".local()
                 case .description: return "description placeholder".local()
+                case .date: return "date placeholder".local()
             }
         }
         
@@ -96,11 +98,18 @@ class ShareModel: NSObject {
             updateValidity()
           }
       }
-    var contentDescription: String? {
-       didSet {
-           updateValidity()
-       }
-   }
+       var contentDescription: String? {
+          didSet {
+              updateValidity()
+          }
+      }
+
+     var eventDate: Date? {
+        didSet {
+            updateValidity()
+        }
+    }
+    
     @objc dynamic var isValid: Bool = false
     
     func update(_ image: UIImage) {
@@ -131,6 +140,10 @@ class ShareModel: NSObject {
         self.contentDescription = description
     }
     
+    func update(_ date: Date) {
+        self.eventDate = date
+    }
+    
     private var model: ModelType!
     init(model: ModelType) {
         self.model = model
@@ -149,6 +162,7 @@ class ShareModel: NSObject {
             case .restaurantName: return result && restaurantName?.isEmpty == false
             case .eventName: return result && eventName?.isEmpty == false
             case .description: return result && contentDescription?.isEmpty == false
+            case .date: return result && eventDate != nil
             }
         })
     }
@@ -162,6 +176,7 @@ class ShareModel: NSObject {
         case .restaurantName: return restaurantName
         case .eventName: return eventName
         case .description: return contentDescription
+        case .date: return eventDate
         }
     }
 }
