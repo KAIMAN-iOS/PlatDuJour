@@ -104,7 +104,7 @@ class ShareModel: NSObject {
           }
       }
 
-     var eventDate: Date? {
+     var eventDate: Date = Date() {
         didSet {
             updateValidity()
         }
@@ -153,7 +153,9 @@ class ShareModel: NSObject {
     }
     
     private func updateValidity() {
-        isValid = model.fields.reduce(false, { (result, field) -> Bool in
+        print("😘 fields \(model.fields)")
+        isValid = model.fields.reduce(true, { (result, field) -> Bool in
+            print("😘 isValid \(result) - field")
             switch field {
             case .picture: return result && image != nil
             case .asset: return result && asset != nil

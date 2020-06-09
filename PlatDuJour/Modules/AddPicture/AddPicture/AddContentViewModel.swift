@@ -122,10 +122,14 @@ extension AddContentViewModel: FieldCellDelegate {
         case .restaurantName:
             pictureModel.restaurantName = textField.text
             isValid = pictureModel.isValid
-            
-        case .dishName:
-            pictureModel.dishName = textField.text
-            isValid = pictureModel.isValid
+                
+            case .dishName:
+                pictureModel.dishName = textField.text
+                isValid = pictureModel.isValid
+                    
+            case .eventName:
+                pictureModel.eventName = textField.text
+                isValid = pictureModel.isValid
             
             default: ()
         }
@@ -146,7 +150,11 @@ extension AddContentViewModel: TableViewModelable {
                 return UITableViewCell()
             }
             cell.delegate = showPickerDelegate
-            cell.configure(with: pictureModel.image)
+            switch content {
+            case .dailySpecial: cell.configure(with: pictureModel.image)
+            case .event: cell.configure(with: pictureModel.asset)
+            }
+            
             return cell
             
         case .singleField(let field):

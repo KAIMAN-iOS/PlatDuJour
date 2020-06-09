@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class AddContentViewController: UIViewController {
 
@@ -49,6 +50,12 @@ class AddContentViewController: UIViewController {
         picker.sourceType = type
         picker.delegate = self
         present(picker, animated: true, completion: nil)
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .notDetermined  {
+            PHPhotoLibrary.requestAuthorization({status in
+
+            })
+        }
     }
 }
 
@@ -60,10 +67,19 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
-            guard let image = (info[.editedImage] ?? info[.originalImage]) as? UIImage else {
-                return
+            
+            switch self.content! {
+            case .dailySpecial:
+                guard let image = (info[.editedImage] ?? info[.originalImage]) as? UIImage else {
+                    return
+                }
+                self.viewModel.update(image)
+            case .event:
+                guard let asset = info[.phAsset] as? PHAsset else {
+                    return
+                }
+                self.viewModel.update(asset)
             }
-            self.viewModel.update(image)
             self.tableView.reloadData()
         }
     }
