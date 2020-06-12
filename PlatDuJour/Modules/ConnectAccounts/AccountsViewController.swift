@@ -10,6 +10,7 @@ import UIKit
 
 class AccountsViewController: UIViewController {
 
+    weak var coordinatorDelegate: AccountsCoordinatorDelegate? = nil
     @IBOutlet var tableView: UITableView!  {
         didSet {
             tableView.commonInit()
@@ -31,6 +32,9 @@ class AccountsViewController: UIViewController {
 extension AccountsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        coordinatorDelegate?.switchState(for: viewModel.accounts[indexPath.row], completion: { [weak self] success in
+            self?.tableView.reloadRows(at: [indexPath], with: .fade)
+        })
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

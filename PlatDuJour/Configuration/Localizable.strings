@@ -78,6 +78,7 @@
 "Choose content" = "Quel type de contenu souhaitez vous partager ?";
 "content daily special" = "Plat du jour";
 "content event" = "Evènement";
+"content basic" = "Simple (photo/vidéo + texte)";
 "picture" = "Choisissez une image";
 "asset" = "Choisissez une image ou une vidéo";
 "eventName" = "Nom de l'évènement";

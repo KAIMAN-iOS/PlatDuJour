@@ -74,7 +74,7 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
                     return
                 }
                 self.viewModel.update(image)
-            case .event:
+            case .event, .basic:
                 guard let asset = info[.phAsset] as? PHAsset else {
                     return
                 }

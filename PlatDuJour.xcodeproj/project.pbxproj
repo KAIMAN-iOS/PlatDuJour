@@ -508,12 +508,12 @@
 		A9CB4B5024818FA9007AACBB /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				A9CB4B5124818FA9007AACBB /* Storage.swift */,
 				A9CB4B5224818FA9007AACBB /* DataManager.swift */,
-				A9CB4B5324818FA9007AACBB /* SessionController.swift */,
-				A9CB4B5424818FA9007AACBB /* UserData.swift */,
 				A9CB4B5524818FA9007AACBB /* MessageManager.swift */,
+				A9CB4B5324818FA9007AACBB /* SessionController.swift */,
 				A9B15EE0248D2EA10061BAC3 /* ShareAccountManager.swift */,
+				A9CB4B5124818FA9007AACBB /* Storage.swift */,
+				A9CB4B5424818FA9007AACBB /* UserData.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";

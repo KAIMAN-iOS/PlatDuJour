@@ -320,17 +320,13 @@ extension AppCoordinator: AppCoordinatorDelegate {
     
     private func chooseContent() {
         let actionSheet = UIAlertController(title: "Choose content".local(), message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "content daily special".local(), style: .default, handler: { [weak self] _ in
-            self?.mainController.dismiss(animated: true) { [weak self] in
-                self?.add(content: .dailySpecial)
-            }
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "content event".local(), style: .default, handler: { [weak self] _ in
-            self?.mainController.dismiss(animated: true) { [weak self] in
-                self?.add(content: .event)
-            }
-        }))
+        ShareModel.ModelType.allCases.forEach { model in
+            actionSheet.addAction(UIAlertAction(title: model.displayName, style: .default, handler: { [weak self] _ in
+                self?.mainController.dismiss(animated: true) { [weak self] in
+                    self?.add(content: model)
+                }
+            }))
+        }
         
         actionSheet.addAction(UIAlertAction(title: "Cancel".local(), style: .cancel, handler: { [weak self] _ in
             self?.mainController.dismiss(animated: true, completion: nil)

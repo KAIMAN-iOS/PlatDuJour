@@ -153,6 +153,7 @@ extension AddContentViewModel: TableViewModelable {
             switch content {
             case .dailySpecial: cell.configure(with: pictureModel.image)
             case .event: cell.configure(with: pictureModel.asset)
+            case .basic: cell.configure(with: pictureModel.asset)
             }
             
             return cell

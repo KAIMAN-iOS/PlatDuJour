@@ -70,7 +70,11 @@ class ShareAccountManager {
         }
     }
     
-    func askPermission(for accountType: AccountType, completion: @escaping ((Bool) -> Void)) {
+    func logOut(for accountType: AccountType, completion: @escaping ((Bool) -> Void)) {
+        completion(true)
+    }
+    
+    func askPermission(for accountType: AccountType, from controller: UIViewController, completion: @escaping ((Bool) -> Void)) {
         switch accountType {
         case .facebook:
             LoginManager().logOut()
@@ -79,7 +83,7 @@ class ShareAccountManager {
             if AccessToken.current?.hasGranted(Permission.email) == true {
                 completion(true)
             } else {
-                LoginManager().logIn(permissions: [.email, .publicProfile, .userBirthday], viewController: UIViewController.mainController()!) { result in
+                LoginManager().logIn(permissions: [.email, .publicProfile, .userBirthday], viewController: controller) { result in
                     print("res \(result)")
                     switch result {
                     case .success:
@@ -91,7 +95,7 @@ class ShareAccountManager {
 
                     case .failed(let error):
                         completion(false)
-                        MessageManager.show(.basic(.custom(title: "Oups".local(), message: error.localizedDescription, buttonTitle: nil, configuration: MessageDisplayConfiguration.alert)), in: UIViewController.mainController()!)
+                        MessageManager.show(.basic(.custom(title: "Oups".local(), message: error.localizedDescription, buttonTitle: nil, configuration: MessageDisplayConfiguration.alert)), in: controller)
 
                     default: ()
                     }
@@ -99,7 +103,19 @@ class ShareAccountManager {
             }
             
         case .instagram:
-            ()
+            let loginController = LoginWebViewController { controller, result in
+                controller.dismiss(animated: true, completion: nil)
+                // deal with authentication response.
+                guard let (response, _) = try? result.get() else { return print("Login failed.") }
+                print("Login successful.")
+                // persist cache safely in the keychain for logging in again in the future.
+                guard let key = response.persist() else { return print("`Authentication.Response` could not be persisted.") }
+                // store the `key` wherever you want, so you can access the `Authentication.Response` later.
+                // `UserDefaults` is just an example.
+            }
+            controller.present(loginController, animated: true, completion: {
+                
+            })
             
         case .twitter:
             ()

@@ -17,13 +17,22 @@ extension DefaultsKeys {
 
 class ShareModel: NSObject {
     
-    enum ModelType {
-        case dailySpecial, event
+    enum ModelType: Int, CaseIterable {
+        case dailySpecial, event, basic
         
         var fields: [ShareModel.Field] {
             switch self {
             case .dailySpecial: return [.picture, .price, .dishName, .restaurantName, .description]
             case .event: return  [.asset, .eventName, .date, .description]
+            case .basic: return  [.asset, .description]
+            }
+        }
+        
+        var displayName: String {
+            switch self {
+            case .dailySpecial: return "content daily special".local()
+            case .event: return "content event".local()
+            case .basic: return "content basic".local()
             }
         }
     }
@@ -164,7 +173,7 @@ class ShareModel: NSObject {
             case .restaurantName: return result && restaurantName?.isEmpty == false
             case .eventName: return result && eventName?.isEmpty == false
             case .description: return result && contentDescription?.isEmpty == false
-            case .date: return result && eventDate != nil
+            case .date: return result // date is never nil
             }
         })
     }
