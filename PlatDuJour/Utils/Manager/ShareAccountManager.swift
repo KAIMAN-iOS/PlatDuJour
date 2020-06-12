@@ -123,7 +123,7 @@ class ShareAccountManager {
     }
 }
 
-private extension UIViewController {
+extension UIViewController {
     static func mainController() -> UIViewController?  {
         return ((UIApplication.shared.delegate) as? AppDelegate)?.appCoordinator.mainController
     }

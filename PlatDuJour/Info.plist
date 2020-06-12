@@ -71,6 +71,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Pour vous permettre d'envoyer des photos et vidéos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Pour vous permettre d'envoyer des photos et vidéos</string>
 	<key>UIApplicationSceneManifest</key>

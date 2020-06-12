@@ -320,16 +320,14 @@ extension AppCoordinator: AppCoordinatorDelegate {
     
     private func chooseContent() {
         let actionSheet = UIAlertController(title: "Choose content".local(), message: nil, preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = Palette.basic.primary.color
         ShareModel.ModelType.allCases.forEach { model in
             actionSheet.addAction(UIAlertAction(title: model.displayName, style: .default, handler: { [weak self] _ in
-                self?.mainController.dismiss(animated: true) { [weak self] in
-                    self?.add(content: model)
-                }
+                self?.add(content: model)
             }))
         }
         
         actionSheet.addAction(UIAlertAction(title: "Cancel".local(), style: .cancel, handler: { [weak self] _ in
-            self?.mainController.dismiss(animated: true, completion: nil)
         }))
         
         mainController.present(actionSheet, animated: true, completion: nil)

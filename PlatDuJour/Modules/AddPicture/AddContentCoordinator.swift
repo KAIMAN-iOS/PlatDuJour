@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Photos
 
 protocol AddPictureCoordinatorDelegate: class {
     func showTemplates(for image: UIImage)
     func updload(_ picture: UIImage)
+    func showImagePicker(with type: UIImagePickerController.SourceType, delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate)
 }
 
 class AddContentCoordinator: Coordinator<DeepLink> {
@@ -27,6 +29,31 @@ class AddContentCoordinator: Coordinator<DeepLink> {
 }
 
 extension AddContentCoordinator: AddPictureCoordinatorDelegate {
+    func showImagePicker(with type: UIImagePickerController.SourceType, delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate) {
+        let showPicker: () -> (Void) = { [weak self] in
+            guard let self = self else { return }
+            let picker = UIImagePickerController()
+            picker.sourceType = type
+            picker.delegate = delegate
+//            self.router.present(picker, animated: true)
+//            (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController?.present(picker, animated: true, completion: nil)
+            self.addPictureController.present(picker, animated: true, completion: nil)
+        }
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({status in
+                showPicker()
+            })
+            
+        case .authorized:
+            showPicker()
+            
+        default: ()
+        }
+    }
+    
     func showTemplates(for image: UIImage) {
         
     }

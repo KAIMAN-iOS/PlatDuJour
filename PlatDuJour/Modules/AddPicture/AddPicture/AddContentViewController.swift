@@ -46,16 +46,7 @@ class AddContentViewController: UIViewController {
     }
     
     private func showImagePicker(with type: UIImagePickerController.SourceType) {
-        let picker = UIImagePickerController()
-        picker.sourceType = type
-        picker.delegate = self
-        present(picker, animated: true, completion: nil)
-        let status = PHPhotoLibrary.authorizationStatus()
-        if status == .notDetermined  {
-            PHPhotoLibrary.requestAuthorization({status in
-
-            })
-        }
+        coordinatorDelegate?.showImagePicker(with: type, delegate: self)
     }
 }
 
@@ -95,22 +86,18 @@ extension AddContentViewController: AddPictureCellDelegate {
         
         let actionSheet = UIAlertController(title: "Choose an image".local(), message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "From Library".local(), style: .default, handler: { [weak self] _ in
-            self?.dismiss(animated: true) { [weak self] in
-                self?.showImagePicker(with: .photoLibrary)
-            }
+            self?.showImagePicker(with: .photoLibrary)
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Take picture".local(), style: .default, handler: { [weak self] _ in
-            self?.dismiss(animated: true) { [weak self] in
-                self?.showImagePicker(with: .camera)
-            }
+            self?.showImagePicker(with: .camera)
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Cancel".local(), style: .cancel, handler: { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
+//            self?.dismiss(animated: true, completion: nil)
         }))
         
-        present(actionSheet, animated: true, completion: nil)
+        navigationController?.present(actionSheet, animated: true, completion: nil)
     }
 }
 
