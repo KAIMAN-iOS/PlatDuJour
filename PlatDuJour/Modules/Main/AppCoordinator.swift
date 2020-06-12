@@ -23,6 +23,7 @@ protocol AppCoordinatorDelegate: class {
     func showMainController()
     func logOut()
     func addContent()
+    func showSettings()
 }
 
 protocol DailyNotificationDelegate: class {
@@ -265,6 +266,13 @@ extension AppCoordinator: CloseDelegate {
 }
 
 extension AppCoordinator: AppCoordinatorDelegate {
+    func showSettings() {
+        let coord = AccountsCoordinator()
+        addChild(coord)
+        coord.start()
+        router.present(coord, animated: true)
+    }
+    
     func showEmailController() {
         let email = AskEmailViewController.create()
         email.coordinatorDelegate = self

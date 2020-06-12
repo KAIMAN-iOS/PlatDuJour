@@ -40,6 +40,7 @@ class MainViewController: UIViewController {
         viewModel.coordinatorDelegate = coordinatorDelegate
         navigationController?.navigationBar.isTranslucent = false
         handleLayout()
+        
     }
     
     private func handleLayout() {
@@ -66,8 +67,9 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func showSettings(_ sender: Any) {
+        coordinatorDelegate?.showSettings()
     }
     
-    @IBAction func showPreviousDishes(_ sender: Any) {
+    @IBAction func showPreviousContents(_ sender: Any) {
     }
 }

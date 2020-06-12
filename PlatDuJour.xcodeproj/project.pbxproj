@@ -14,6 +14,7 @@
 		A92F6FF324891ED70048B352 /* AddContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92F6FF224891ED70048B352 /* AddContent.storyboard */; };
 		A92F6FF524891EEB0048B352 /* AddContentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92F6FF424891EEB0048B352 /* AddContentCoordinator.swift */; };
 		A92F6FF824891F2D0048B352 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92F6FF724891F2D0048B352 /* AddContentViewController.swift */; };
+		A972603D24936A9100E85CDA /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972603C24936A9100E85CDA /* AccountCell.swift */; };
 		A9B15EC42489206B0061BAC3 /* ChooseTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15EC32489206B0061BAC3 /* ChooseTemplateViewController.swift */; };
 		A9B15EC7248AA6310061BAC3 /* GrowingTextView in Frameworks */ = {isa = PBXBuildFile; productRef = A9B15EC6248AA6310061BAC3 /* GrowingTextView */; };
 		A9B15ECC248AA6DF0061BAC3 /* AddPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15ECB248AA6DF0061BAC3 /* AddPictureCell.swift */; };
@@ -144,6 +145,7 @@
 		A92F6FF224891ED70048B352 /* AddContent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddContent.storyboard; sourceTree = "<group>"; };
 		A92F6FF424891EEB0048B352 /* AddContentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentCoordinator.swift; sourceTree = "<group>"; };
 		A92F6FF724891F2D0048B352 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
+		A972603C24936A9100E85CDA /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		A9B15EC32489206B0061BAC3 /* ChooseTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTemplateViewController.swift; sourceTree = "<group>"; };
 		A9B15ECB248AA6DF0061BAC3 /* AddPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureCell.swift; sourceTree = "<group>"; };
 		A9B15ECD248AA6F50061BAC3 /* AddSimpleFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSimpleFieldCell.swift; sourceTree = "<group>"; };
@@ -316,6 +318,14 @@
 			path = AddPicture;
 			sourceTree = "<group>";
 		};
+		A972603B24936A6D00E85CDA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A972603C24936A9100E85CDA /* AccountCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A9B15EC8248AA6BA0061BAC3 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +348,7 @@
 		A9B15ED7248D2BFC0061BAC3 /* ConnectAccounts */ = {
 			isa = PBXGroup;
 			children = (
+				A972603B24936A6D00E85CDA /* Cells */,
 				A9B15ED8248D2C0D0061BAC3 /* Accounts.storyboard */,
 				A9B15EDA248D2C180061BAC3 /* AccountsCoordinator.swift */,
 				A9B15EDC248D2C600061BAC3 /* AccountsViewController.swift */,
@@ -864,6 +875,7 @@
 				A9CB4C8D24858298007AACBB /* CovidAppApi.swift in Sources */,
 				A9B15ED4248B87DD0061BAC3 /* ShareModel.swift in Sources */,
 				A9CB4C862485827A007AACBB /* Result.swift in Sources */,
+				A972603D24936A9100E85CDA /* AccountCell.swift in Sources */,
 				A9CB4C8824858280007AACBB /* HeaderView.swift in Sources */,
 				A9B15ED6248B8E140061BAC3 /* UITableViewCell+Extensions.swift in Sources */,
 				A9CB4C8B24858280007AACBB /* ErrorTextField.swift in Sources */,
@@ -1055,7 +1067,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PlatDuJour/Utils/GoogleSignIn",
 				);
-				INFOPLIST_FILE = "${SRCROOT}/PlatDuJour/info.plist";
+				INFOPLIST_FILE = "${SRCROOT}/PlatDuJour/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1083,7 +1095,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PlatDuJour/Utils/GoogleSignIn",
 				);
-				INFOPLIST_FILE = "${SRCROOT}/PlatDuJour/info.plist";
+				INFOPLIST_FILE = "${SRCROOT}/PlatDuJour/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

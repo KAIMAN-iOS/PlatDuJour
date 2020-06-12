@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Accounts View Controller-->
         <scene sceneID="BbI-by-1uR">
             <objects>
-                <viewController id="lm9-Lp-hEs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountsViewController" id="lm9-Lp-hEs" customClass="AccountsViewController" customModule="PlatDuJour" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CNh-2r-H0n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="69" id="AKb-0L-whu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountCell" rowHeight="69" id="AKb-0L-whu" customClass="AccountCell" customModule="PlatDuJour" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AKb-0L-whu" id="lLO-fm-Awz">
@@ -58,6 +58,9 @@
                                                         </stackView>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIf-PG-7QW">
                                                             <rect key="frame" x="268" y="0.0" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="changeAccountStatus:" destination="AKb-0L-whu" eventType="valueChanged" id="M5b-XZ-kas"/>
+                                                            </connections>
                                                         </switch>
                                                     </subviews>
                                                 </stackView>
@@ -74,8 +77,18 @@
                                                 <constraint firstItem="GaE-Pa-6TL" firstAttribute="centerY" secondItem="pSk-fA-bk6" secondAttribute="centerY" id="yE6-BT-evU"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accountLogo" destination="pSk-fA-bk6" id="Sa6-9d-mFA"/>
+                                            <outlet property="accountName" destination="QML-uW-bEO" id="vhN-6r-JOm"/>
+                                            <outlet property="accountStatus" destination="Djd-tr-f1w" id="BTm-g3-erQ"/>
+                                            <outlet property="accountSwitch" destination="cIf-PG-7QW" id="Hik-iI-Dyq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lm9-Lp-hEs" id="he9-vj-V10"/>
+                                    <outlet property="delegate" destination="lm9-Lp-hEs" id="Siy-rk-bnU"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -87,6 +100,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NOH-oe-0ew"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="QOI-xF-aBi" id="wMk-wp-2wA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6b7-37-Wuc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

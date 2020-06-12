@@ -10,11 +10,11 @@ import UIKit
 class AccountsCoordinator: Coordinator<DeepLink> {
     
     lazy var accountsViewController: AccountsViewController = AccountsViewController.create()
-    override init(router: RouterType) {
-        super.init(router: router)
-    }
-    
-    override func toPresentable() -> UIViewController {
-        return  accountsViewController
+    init() {
+        let appNavigationController: UINavigationController = UINavigationController()
+        appNavigationController.navigationBar.barTintColor = Palette.basic.primary.color
+        let appRouter: RouterType = Router(navigationController: appNavigationController)
+        super.init(router: appRouter)
+        router.setRootModule(accountsViewController, hideBar: false, animated: false)
     }
 }
