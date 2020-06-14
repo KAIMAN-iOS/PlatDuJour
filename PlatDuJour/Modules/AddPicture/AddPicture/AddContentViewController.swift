@@ -46,7 +46,7 @@ class AddContentViewController: UIViewController {
     }
     
     private func showImagePicker(with type: UIImagePickerController.SourceType) {
-        coordinatorDelegate?.showImagePicker(with: type, delegate: self)
+        coordinatorDelegate?.showImagePicker(with: type, mediaTypes: content.mediaTypes, delegate: self)
     }
 }
 
@@ -65,11 +65,27 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
                     return
                 }
                 self.viewModel.update(image)
+                
             case .event, .basic:
-                guard let asset = info[.phAsset] as? PHAsset else {
+                guard let mediaType = info[.mediaType] as? String else {
                     return
                 }
-                self.viewModel.update(asset)
+                
+                switch mediaType {
+                case "public.movie":
+                    guard let mediaURL = info[.mediaURL] as? URL else {
+                        return
+                    }
+                    self.viewModel.update(mediaURL)
+                    
+                case "public.image":
+                    guard let image = (info[.editedImage] ?? info[.originalImage]) as? UIImage else {
+                        return
+                    }
+                    self.viewModel.update(image)
+                    
+                default: ()
+                }
             }
             self.tableView.reloadData()
         }
@@ -85,6 +101,7 @@ extension AddContentViewController: AddPictureCellDelegate {
         }
         
         let actionSheet = UIAlertController(title: "Choose an image".local(), message: nil, preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = Palette.basic.primary.color
         actionSheet.addAction(UIAlertAction(title: "From Library".local(), style: .default, handler: { [weak self] _ in
             self?.showImagePicker(with: .photoLibrary)
         }))
@@ -130,6 +147,9 @@ extension AddContentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return viewModel.configureCell(at: indexPath, in: tableView)
+    }
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return viewModel.willSelectRow(at: indexPath)
     }
 }
 

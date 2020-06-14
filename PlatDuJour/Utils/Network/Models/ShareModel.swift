@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftyUserDefaults
-import Photos
 
 extension DefaultsKeys {
     var restaurantName: DefaultsKey<String?> { .init("restaurantName") }
@@ -33,6 +32,14 @@ class ShareModel: NSObject {
             case .dailySpecial: return "content daily special".local()
             case .event: return "content event".local()
             case .basic: return "content basic".local()
+            }
+        }
+        
+        var mediaTypes: [String] {
+            switch self {
+            case .dailySpecial: return ["public.image"]
+            case .event: return ["public.image", "public.movie"]
+            case .basic: return ["public.image", "public.movie"]
             }
         }
     }
@@ -74,7 +81,7 @@ class ShareModel: NSObject {
         }
     }
     
-    var asset: PHAsset?  {
+    var mediaURL: URL?  {
         didSet {
             updateValidity()
         }
@@ -125,8 +132,8 @@ class ShareModel: NSObject {
         self.image = image
     }
     
-    func update(_ asset: PHAsset) {
-        self.asset = asset
+    func update(_ mediaURL: URL) {
+        self.mediaURL = mediaURL
     }
     
     func update(_ price: Double) {
@@ -167,7 +174,7 @@ class ShareModel: NSObject {
             print("😘 isValid \(result) - field")
             switch field {
             case .picture: return result && image != nil
-            case .asset: return result && asset != nil
+            case .asset: return result && mediaURL != nil
             case .price: return result && (price ?? 0 > 0)
             case .dishName: return result && dishName?.isEmpty == false
             case .restaurantName: return result && restaurantName?.isEmpty == false
@@ -181,7 +188,7 @@ class ShareModel: NSObject {
     func value(for field: Field) -> Any? {
         switch field {
         case .picture: return image
-        case .asset: return asset
+        case .asset: return mediaURL
         case .price: return price
         case .dishName: return dishName
         case .restaurantName: return restaurantName

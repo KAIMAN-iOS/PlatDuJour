@@ -7,16 +7,24 @@
 //
 
 import UIKit
-import Photos
+import AVKit
+import SwiftyUserDefaults
 
 protocol AddPictureCellDelegate: class {
     func showImagePicker()
+}
+
+fileprivate extension DefaultsKeys {
+    var videoPlayerTouchWarningWasShown: DefaultsKey<Bool> { .init("videoPlayerTouchWarningWasShown", defaultValue: false) }
 }
 
 class AddPictureCell: UITableViewCell {
 
     @IBOutlet var takePictureButton: UIButton!
     @IBOutlet var picture: UIImageView!
+
+    lazy var player: AVPlayerViewController = AVPlayerViewController()
+    lazy var longPress: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressDetected))
     weak var delegate: AddPictureCellDelegate? = nil
     
     @IBAction func takePicture(_ sender: Any) {
@@ -26,29 +34,40 @@ class AddPictureCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         addDefaultSelectedBackground()
+        contentView.addGestureRecognizer(longPress)
     }
     
-    func configure(with image: UIImage?) {
-        picture.image = image
-        takePictureButton.setTitle(image != nil ? nil : "Take picture".local(), for: .normal)
-        takePictureButton.setImage(image != nil ? nil : UIImage(named: "add"), for: .normal)
+    func configure(with model: ShareModel) {
+        
+        switch (model.image, model.mediaURL) {
+        case (let image, nil) where image != nil:
+            picture.image = image
+            takePictureButton.setTitle(nil, for: .normal)
+            takePictureButton.setImage(nil, for: .normal)
+            takePictureButton.isHidden = false
+            
+        case (nil, let url) where url != nil:
+            player.view.frame = picture.bounds
+            if player.view.superview == nil {
+                picture.addSubview(player.view)
+            }
+            player.player = AVPlayer(url: url!)
+            picture.isUserInteractionEnabled = true
+            takePictureButton.setTitle(nil, for: .normal)
+            takePictureButton.setImage(nil, for: .normal)
+            if Defaults[\.videoPlayerTouchWarningWasShown] == false {
+                Defaults[\.videoPlayerTouchWarningWasShown] = false
+            }
+            takePictureButton.isHidden = true
+            
+        default:
+            takePictureButton.setTitle("Take picture".local(), for: .normal)
+            takePictureButton.setImage(UIImage(named: "add"), for: .normal)
+            takePictureButton.isHidden = false
+        }
     }
     
-    func configure(with asset: PHAsset?) {
-        let image = asset != nil ? getAssetThumbnail(asset: asset!, size: CGSize(width: asset?.pixelWidth ?? 0, height: asset?.pixelHeight ?? 0)) : nil
-        picture.image = image
-        takePictureButton.setTitle(image != nil ? nil : "Take picture".local(), for: .normal)
-        takePictureButton.setImage(image != nil ? nil : UIImage(named: "add"), for: .normal)
-    }
-    
-    func getAssetThumbnail(asset: PHAsset, size: CGSize) -> UIImage {
-        let manager = PHImageManager.default()
-        let option = PHImageRequestOptions()
-        var image = UIImage()
-        option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            image = result!
-        })
-        return image
+    @objc private func longPressDetected() {
+        delegate?.showImagePicker()
     }
 }

@@ -29,8 +29,8 @@ class AddContentViewModel: NSObject {
         pictureModel.update(image)
         isValid = pictureModel.isValid
     }
-    func update(_ asset: PHAsset) {
-        pictureModel.update(asset)
+    func update(_ mediaURL: URL) {
+        pictureModel.update(mediaURL)
         isValid = pictureModel.isValid
     }
     func update(_ price: Double) {
@@ -109,6 +109,15 @@ class AddContentViewModel: NSObject {
             tableView.endUpdates()
         }
     }
+    
+    func willSelectRow(at indexPath: IndexPath) -> IndexPath? {
+        switch cellTypes[indexPath.row] {
+        case .asset(.asset):
+            return pictureModel.mediaURL != nil ? nil : indexPath
+            
+        default: return indexPath
+        }
+    }
 }
 
 extension AddContentViewModel: FieldCellDelegate {
@@ -150,12 +159,7 @@ extension AddContentViewModel: TableViewModelable {
                 return UITableViewCell()
             }
             cell.delegate = showPickerDelegate
-            switch content {
-            case .dailySpecial: cell.configure(with: pictureModel.image)
-            case .event: cell.configure(with: pictureModel.asset)
-            case .basic: cell.configure(with: pictureModel.asset)
-            }
-            
+            cell.configure(with: pictureModel)            
             return cell
             
         case .singleField(let field):
