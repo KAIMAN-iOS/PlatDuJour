@@ -21,8 +21,34 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InformationCell" rowHeight="36" id="3iQ-u9-2Fc" customClass="InformationCell" customModule="PlatDuJour" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="36"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3iQ-u9-2Fc" id="0Yj-9R-lLV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isy-3T-wzq">
+                                                    <rect key="frame" x="10" y="10" width="394" height="15"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <color key="textColor" name="placeholder"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="confirmation"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Isy-3T-wzq" secondAttribute="bottom" constant="11" id="63m-Ze-XgF"/>
+                                                <constraint firstItem="Isy-3T-wzq" firstAttribute="top" secondItem="0Yj-9R-lLV" secondAttribute="top" constant="10" id="8ts-aG-eMl"/>
+                                                <constraint firstItem="Isy-3T-wzq" firstAttribute="leading" secondItem="0Yj-9R-lLV" secondAttribute="leading" constant="10" id="eFe-yW-ju1"/>
+                                                <constraint firstAttribute="trailing" secondItem="Isy-3T-wzq" secondAttribute="trailing" constant="10" id="lfW-Ea-c01"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="information" destination="Isy-3T-wzq" id="qv1-mV-BzS"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddPictureCell" rowHeight="250" id="CBS-Df-XFJ" customClass="AddPictureCell" customModule="PlatDuJour" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="250"/>
+                                        <rect key="frame" x="0.0" y="64" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CBS-Df-XFJ" id="lbN-cj-RMx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
@@ -64,7 +90,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddSimpleFieldCell" rowHeight="60" id="oXV-f7-H3B" customClass="AddSimpleFieldCell" customModule="PlatDuJour" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="278" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="314" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oXV-f7-H3B" id="0MY-72-QQi">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -98,7 +124,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddDescriptionCell" rowHeight="150" id="rfq-9d-men" customClass="AddDescriptionCell" customModule="PlatDuJour" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="338" width="414" height="150"/>
+                                        <rect key="frame" x="0.0" y="374" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rfq-9d-men" id="bLg-Az-GZ8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
@@ -151,7 +177,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddDateCell" rowHeight="210" id="SG5-qZ-RU8" customClass="AddDateCell" customModule="PlatDuJour" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="488" width="414" height="210"/>
+                                        <rect key="frame" x="0.0" y="524" width="414" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SG5-qZ-RU8" id="Aw7-B9-PYr">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
@@ -257,6 +283,12 @@
         <image name="add" width="24.5" height="24.5"/>
         <namedColor name="barTtitleUnselected">
             <color red="0.6588235294117647" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="confirmation">
+            <color red="0.0" green="0.56300002336502075" blue="0.3190000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="placeholder">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.90588235294117647" green="0.29411764705882354" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

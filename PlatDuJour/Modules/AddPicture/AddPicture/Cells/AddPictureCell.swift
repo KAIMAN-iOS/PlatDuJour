@@ -22,7 +22,7 @@ class AddPictureCell: UITableViewCell {
 
     @IBOutlet var takePictureButton: UIButton!
     @IBOutlet var picture: UIImageView!
-
+    weak var informationDelegate: InformationDelegate? = nil
     lazy var player: AVPlayerViewController = AVPlayerViewController()
     lazy var longPress: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressDetected))
     weak var delegate: AddPictureCellDelegate? = nil
@@ -50,6 +50,9 @@ class AddPictureCell: UITableViewCell {
             player.view.frame = picture.bounds
             if player.view.superview == nil {
                 picture.addSubview(player.view)
+                DispatchQueue.main.async { [unowned self] in
+                    self.informationDelegate?.showInformation(for: .hintChoosePictureFromVideo)
+                }
             }
             player.player = AVPlayer(url: url!)
             picture.isUserInteractionEnabled = true

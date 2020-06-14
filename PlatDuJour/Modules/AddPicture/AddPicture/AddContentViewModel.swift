@@ -13,13 +13,31 @@ protocol UpdateButtonDelegate: class {
     func updateButton(_ enabled: Bool)
 }
 
+protocol InformationDelegate: class {
+    func showInformation(for type: InformationCell.InformationType)
+}
+
+extension AddContentViewModel.CellType: Equatable {
+    static func == (lhs: AddContentViewModel.CellType, rhs: AddContentViewModel.CellType) -> Bool {
+        switch (lhs, rhs) {
+        case (.information(let leftInformationType), .information(let rightInformationType)): return leftInformationType == rightInformationType
+        case (.date, .date): return true
+        case (.description, .description): return true
+        case (.singleField(let leftField), .singleField(let rightField)): return leftField == rightField
+        case (.asset(let leftField), .asset(let rightField)): return leftField == rightField
+        default: return false
+        }
+    }
+}
+
 class AddContentViewModel: NSObject {
-    private enum CellType {
-        case asset(_ field: ShareModel.Field), singleField(_ field: ShareModel.Field), description, date
+    fileprivate enum CellType {
+        case asset(_ field: ShareModel.Field), singleField(_ field: ShareModel.Field), description, date, information(_: InformationCell.InformationType)
     }
     private var cellTypes: [CellType] = []
     weak var showPickerDelegate: AddPictureCellDelegate? = nil
     weak var updateButtonDelegate: UpdateButtonDelegate? = nil
+    weak var informationDelegate: InformationDelegate? = nil
     var observation: NSKeyValueObservation?
     private var content: ShareModel.ModelType
     
@@ -107,6 +125,8 @@ class AddContentViewModel: NSObject {
             tableView.beginUpdates()
             cell.isExpanded.toggle()
             tableView.endUpdates()
+            
+        case .information: ()
         }
     }
     
@@ -116,6 +136,24 @@ class AddContentViewModel: NSObject {
             return pictureModel.mediaURL != nil ? nil : indexPath
             
         default: return indexPath
+        }
+    }
+    
+    func show(information: InformationCell.InformationType, in tableView: UITableView) {
+        if cellTypes.contains(.information(information)) == false {
+            cellTypes.insert(.information(information), at: 0)
+        }
+        tableView.beginUpdates()
+        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+        tableView.endUpdates()
+//        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            guard let self = self else { return }
+            self.cellTypes.remove(at: 0)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+            tableView.endUpdates()
         }
     }
 }
@@ -154,11 +192,12 @@ extension AddContentViewModel: TableViewModelable {
     
     func configureCell(at indexPath: IndexPath, in tableView: UITableView) -> UITableViewCell {
         switch cellTypes[indexPath.row] {
-        case .asset(let field):
+        case .asset:
             guard let cell: AddPictureCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
                 return UITableViewCell()
             }
             cell.delegate = showPickerDelegate
+            cell.informationDelegate = informationDelegate
             cell.configure(with: pictureModel)            
             return cell
             
@@ -185,6 +224,14 @@ extension AddContentViewModel: TableViewModelable {
             cell.configure(with: pictureModel.eventDate)
             cell.delegate = self
             return cell
+            
+        case .information:
+            guard let cell: InformationCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
+                return UITableViewCell()
+            }
+            cell.configure(with: .hintChoosePictureFromVideo)
+            return cell
+            
         }
     }
 }

@@ -42,6 +42,7 @@ class AddContentViewController: UIViewController {
         super.viewDidLoad()
         viewModel.showPickerDelegate = self
         viewModel.updateButtonDelegate = self
+        viewModel.informationDelegate = self
         title = "Choose an image".local()
     }
     
@@ -156,5 +157,11 @@ extension AddContentViewController: UITableViewDataSource {
 extension AddContentViewController: UpdateButtonDelegate {
     func updateButton(_ enabled: Bool) {
         continueButton.isEnabled = enabled
+    }
+}
+
+extension AddContentViewController: InformationDelegate {
+    func showInformation(for type: InformationCell.InformationType) {
+        viewModel.show(information: type, in: tableView)
     }
 }
