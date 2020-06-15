@@ -239,6 +239,9 @@
                                 <state key="normal" title="Continuer">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="continue:" destination="Naa-ZR-n6p" eventType="touchUpInside" id="cew-F5-gho"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

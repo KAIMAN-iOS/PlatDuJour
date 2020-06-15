@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
+
+enum HEICError: Error {
+  case heicNotSupported
+  case cgImageMissing
+  case couldNotFinalize
+}
+
 extension UIImage {
     
     /// Returns a image that fills in newSize
@@ -20,5 +28,35 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return newImage
+    }
+    
+    typealias quality = CGFloat
+    func heicData(compressionQuality: quality = 0.8) throws -> Data {
+        let data = NSMutableData()
+        guard let imageDestination =
+          CGImageDestinationCreateWithData(
+            data, AVFileType.heic as CFString, 1, nil
+          )
+          else {
+            throw HEICError.heicNotSupported
+        }
+
+        // 2
+        guard let cgImage = self.cgImage else {
+          throw HEICError.cgImageMissing
+        }
+
+        // 3
+        let options: NSDictionary = [
+          kCGImageDestinationLossyCompressionQuality: compressionQuality
+        ]
+
+        // 4
+        CGImageDestinationAddImage(imageDestination, cgImage, options)
+        guard CGImageDestinationFinalize(imageDestination) else {
+          throw HEICError.couldNotFinalize
+        }
+
+        return data as Data
     }
 }

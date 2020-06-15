@@ -49,6 +49,10 @@ class AddContentViewController: UIViewController {
     private func showImagePicker(with type: UIImagePickerController.SourceType) {
         coordinatorDelegate?.showImagePicker(with: type, mediaTypes: content.mediaTypes, delegate: self)
     }
+    
+    @IBAction func `continue`(_ sender: Any) {
+        try? DataManager.save(viewModel.pictureModel)
+    }
 }
 
 extension AddContentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

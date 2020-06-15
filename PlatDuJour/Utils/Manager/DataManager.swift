@@ -6,16 +6,14 @@
 //  Copyright © 2020 Jerome TONNELIER. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias StorageKey = String
 protocol StorableKey {
     var key: StorageKey { get }
 }
 enum DataManagerKey: String, StorableKey {
-    case currentUser = "CurrentUser"
-    case answers = "Answers"
-    case storedMetrics = "StoredMetrics"
+    case models = "models"
     
     var key: StorageKey {
         return StorageKey(rawValue)
@@ -23,27 +21,52 @@ enum DataManagerKey: String, StorableKey {
 }
 
 class DataManager {
-    private static let instance: DataManager = DataManager()
+    static let instance: DataManager = DataManager()
     private var storage = DataStorage()
     
-    func store(_ user: CurrentUser) {
-        do {
-            try DataManager.instance.storage.save(user)
-        } catch {
-            
+    private init() {
+        if let models: [ShareModel] = try? storage.fetch(for: DataManagerKey.models.key) {
+            self.models = models
         }
     }
+//
+//    func store(_ user: CurrentUser) {
+//        do {
+//            try DataManager.instance.storage.save(user)
+//        } catch {
+//
+//        }
+//    }
     
-    func retrieveUser() throws -> CurrentUser {
-        return try retrieve(for: DataManagerKey.currentUser.key)
-    }
+//    func retrieveUser() throws -> CurrentUser {
+//        return try retrieve(for: DataManagerKey.currentUser.key)
+//    }
     
-    func retrieve<T: Decodable>(for key: StorageKey) throws -> T {
+    static func retrieve<T: Decodable>(for key: StorageKey) throws -> T {
         do {
             return try DataManager.instance.storage.fetch(for: key)
         }
         catch {
             throw StorageError.notFound
         }
+    }
+    
+    
+    static func save(_ image: UIImage) throws -> URL {
+        try DataManager.instance.storage.save(image)
+    }
+    
+    static func fetchImage(at url: URL) throws -> UIImage? {
+        try DataManager.instance.storage.fetchImage(at: url)
+    }
+    
+    static func copyMovie(at path: URL) throws -> URL {
+        try DataManager.instance.storage.copyMovie(at: path)
+    }
+    
+    private (set) var models: [ShareModel] = []
+    static func save(_ model: ShareModel) throws {
+        DataManager.instance.models.append(model)
+        try DataManager.instance.storage.save(DataManager.instance.models, for: DataManagerKey.models.key)
     }
 }

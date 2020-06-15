@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
     }
     
     private func handleLayout() {
-        historyButton.isHidden = true
+        historyButton.isHidden = DataManager.instance.models.count == 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,10 +52,6 @@ class MainViewController: UIViewController {
         if SessionController().userLoggedIn == true {
             loadUser()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     func loadUser() {

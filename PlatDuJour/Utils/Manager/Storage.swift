@@ -6,7 +6,7 @@
 //  Copyright © 2020 Jerome TONNELIER. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias Handler<T> = (Result<T>) -> Void
 
@@ -16,8 +16,8 @@ protocol ReadableStorage {
 }
 
 protocol WritableStorage {
-    func save(value: Data, for key: String) throws
-    func save(value: Data, for key: String, handler: @escaping Handler<Data>)
+    func save(value: Data, for key: String) throws -> URL
+    func save(value: Data, for key: String, handler: @escaping Handler<URL>)
 }
 
 typealias Storage = ReadableStorage & WritableStorage
@@ -43,21 +43,22 @@ class DiskStorage {
 }
 
 extension DiskStorage: WritableStorage {
-    func save(value: Data, for key: String) throws {
+    func save(value: Data, for key: String) throws -> URL {
         let url = path.appendingPathComponent(key)
         do {
             try self.createFolders(in: url)
             try value.write(to: url, options: .atomic)
+            return url
         } catch {
             throw StorageError.cantWrite(error)
         }
     }
     
-    func save(value: Data, for key: String, handler: @escaping Handler<Data>) {
+    func save(value: Data, for key: String, handler: @escaping Handler<URL>) {
         queue.async {
             do {
-                try self.save(value: value, for: key)
-                handler(.success(value))
+                let url = try self.save(value: value, for: key)
+                handler(.success(url))
             } catch {
                 handler(.failure(error))
             }
@@ -112,7 +113,7 @@ extension DiskStorage: ReadableStorage {
  let cached: Timeline = try storage.fetch(for: "timeline")
  */
 class CodableStorage {
-    private let storage: DiskStorage
+    fileprivate let storage: DiskStorage
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
     
@@ -131,18 +132,33 @@ class CodableStorage {
         return try decoder.decode(T.self, from: data)
     }
     
-    func save<T: Encodable>(_ value: T, for key: String) throws {
+    @discardableResult
+    func save<T: Encodable>(_ value: T, for key: String) throws -> URL {
         let data = try encoder.encode(value)
-        try storage.save(value: data, for: key)
+        return try storage.save(value: data, for: key)
     }
 }
 
 class DataStorage {
     private static let instance = DataStorage()
-    private let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])))
+    private let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: URL.documentDirectoryPath)))
     
-
     init() {
+    }
+    
+    func save(_ image: UIImage) throws -> URL {
+        let data = try image.heicData()
+        return try storage.storage.save(value: data, for: UUID().uuidString)
+    }
+    
+    func fetchImage(at url: URL) throws -> UIImage? {
+        let data = try storage.storage.fetchValue(for: url.lastPathComponent)
+        return UIImage(data: data)
+    }
+    
+    func copyMovie(at path: URL) throws -> URL {
+        let data = try Data(contentsOf: path)
+        return try storage.save(data, for: UUID().uuidString)
     }
     
     func fetch<T: Decodable>(for key: StorageKey) throws -> T {
@@ -152,25 +168,10 @@ class DataStorage {
     func save<T: Encodable>(_ value: T, for key: StorageKey) throws {
         try storage.save(value, for: key)
     }
-    
-//    func save(_ answers: Answers) throws {
-//        try storage.save(answers, for: DataManagerKey.answers.key)
-//    }
-//
-//    func fecthAnswers() throws -> Answers? {
-//        let answers: Answers? = try? storage.fetch(for: DataManagerKey.answers.key)
-//        return answers
-//    }
-//
-//    func save(_ metrics: Metrics) throws {
-//        storedMetrics.append(metrics)
-//    }
-//
-//    func fecthMetrics() throws -> [Metrics] {
-//        return storedMetrics.metrics
-//    }
-    
-    func save(_ user: CurrentUser) throws {
-        try save(user, for: DataManagerKey.currentUser.key)
+}
+
+extension URL {
+    static var documentDirectoryPath: String {
+        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     }
 }

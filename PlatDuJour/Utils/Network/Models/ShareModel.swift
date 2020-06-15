@@ -14,7 +14,7 @@ extension DefaultsKeys {
     var dishPrice: DefaultsKey<Double?> { .init("dishPrice") }
 }
 
-class ShareModel: NSObject {
+class ShareModel: NSObject, Codable {
     
     enum ModelType: Int, CaseIterable {
         case dailySpecial, event, basic
@@ -114,17 +114,18 @@ class ShareModel: NSObject {
             updateValidity()
           }
       }
-       var contentDescription: String? {
+    var contentDescription: String? {
           didSet {
               updateValidity()
           }
-      }
+    }
 
-     var eventDate: Date = Date() {
+    var eventDate: Date = Date() {
         didSet {
             updateValidity()
         }
     }
+    var creationDate: Date = Date()
     
     @objc dynamic var isValid: Bool = false
     
@@ -166,6 +167,58 @@ class ShareModel: NSObject {
         restaurantName = Defaults[\.restaurantName]
         price = Defaults[\.dishPrice]
         super.init()
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case imageURL = "image"
+        case mediaURL = "mediaURL"
+        case price = "price"
+        case dishName = "dishName"
+        case restaurantName = "restaurantName"
+        case eventName = "eventName"
+        case contentDescription = "contentDescription"
+        case eventDate = "eventDate"
+        case creationDate = "creationDate"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        //mandatory
+        creationDate = try container.decode(Date.self, forKey: .creationDate)
+        eventDate = try container.decode(Date.self, forKey: .eventDate)
+        //optional
+        contentDescription = try container.decodeIfPresent(String.self, forKey: .contentDescription)
+        eventName = try container.decodeIfPresent(String.self, forKey: .eventName)
+        restaurantName = try container.decodeIfPresent(String.self, forKey: .restaurantName)
+        dishName = try container.decodeIfPresent(String.self, forKey: .dishName)
+        price = try container.decodeIfPresent(Double.self, forKey: .price)
+        mediaURL = try container.decodeIfPresent(URL.self, forKey: .mediaURL)
+        if let imagePathComponent = try container.decodeIfPresent(String.self, forKey: .imageURL),
+            let imageURL = Optional.some(URL(fileURLWithPath: URL.documentDirectoryPath + "/" + imagePathComponent)),
+//            let data = try? Data(contentsOf: imageURL),
+            let image = UIImage(contentsOfFile: imageURL.path) {
+            self.image = image
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(creationDate, forKey: .creationDate)
+        try container.encode(eventDate, forKey: .eventDate)
+        try container.encodeIfPresent(contentDescription, forKey: .contentDescription)
+        try container.encodeIfPresent(eventName, forKey: .eventName)
+        try container.encodeIfPresent(restaurantName, forKey: .restaurantName)
+        try container.encodeIfPresent(dishName, forKey: .dishName)
+        try container.encodeIfPresent(price, forKey: .price)
+        // mediaURL and image must save file and retrieve the URL
+        if let mediaUrl = self.mediaURL,
+            let copyUrl = try? DataManager.copyMovie(at: mediaUrl) {
+            try container.encodeIfPresent(copyUrl.lastPathComponent, forKey: .mediaURL)
+        }        
+        if let image = self.image,
+            let imageURL = try? DataManager.save(image) {
+            try container.encodeIfPresent(imageURL.lastPathComponent, forKey: .imageURL)
+        }
     }
     
     private func updateValidity() {
