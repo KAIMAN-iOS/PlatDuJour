@@ -246,12 +246,12 @@ extension AppCoordinator: CloseDelegate {
         defer {
             // recheck for controller to ask for notification once controller has been dismiss
             mainController.dismiss(animated: true) { [weak self] in
-//                switch controller {
-//                case is CollectInitialDataViewController:
-//                    self?.askForNotification()
-//                    
-//                default: ()
-//                }
+                switch controller {
+                case is OnboardingViewController:
+                    self?.addContent()
+                    
+                default: ()
+                }
             }
             start()
         }
