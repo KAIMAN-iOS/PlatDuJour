@@ -40,6 +40,12 @@ class AddContentViewModel: NSObject {
     weak var informationDelegate: InformationDelegate? = nil
     var observation: NSKeyValueObservation?
     private var content: ShareModel.ModelType
+    fileprivate static var numberFormatter: NumberFormatter = {
+        let nf = NumberFormatter()
+        nf.locale = .current
+        nf.numberStyle = .currency
+        return nf
+    } ()
     
     // dish picture model
     private (set) var pictureModel: ShareModel!
@@ -163,7 +169,7 @@ extension AddContentViewModel: FieldCellDelegate {
         textField.isUserInteractionEnabled = false
         switch field {
         case .price:
-            pictureModel.price = Double(textField.text ?? "")
+            pictureModel.price = Double(textField.text?.replacingOccurrences(of: ",", with: ".") ?? "")
             isValid = pictureModel.isValid
             
         case .restaurantName:
