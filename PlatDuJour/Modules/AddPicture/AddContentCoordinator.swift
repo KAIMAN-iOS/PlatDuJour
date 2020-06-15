@@ -18,12 +18,12 @@ protocol AddPictureCoordinatorDelegate: class {
 class AddContentCoordinator: Coordinator<DeepLink> {
     
     var addPictureController: AddContentViewController!
-    init(content: ShareModel.ModelType) {
+    init(content: ShareModel.ModelType, readOnlyController: Bool = false) {
         let appNavigationController: UINavigationController = UINavigationController()
         appNavigationController.navigationBar.barTintColor = Palette.basic.primary.color
         let appRouter: RouterType = Router(navigationController: appNavigationController)
         super.init(router: appRouter)
-        addPictureController = AddContentViewController.create(with: self, content: content)
+        addPictureController = AddContentViewController.create(with: self, content: content, readOnly: readOnlyController)
         router.setRootModule(addPictureController, hideBar: false, animated: false)
     }
 }
@@ -60,6 +60,6 @@ extension AddContentCoordinator: AddPictureCoordinatorDelegate {
     }
     
     func updload(_ picture: UIImage) {
-        
+        router.dismissModule(animated: true, completion: nil)
     }
 }

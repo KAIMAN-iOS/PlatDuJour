@@ -24,6 +24,7 @@ protocol AppCoordinatorDelegate: class {
     func logOut()
     func addContent()
     func showSettings()
+    func showHistory()
 }
 
 protocol DailyNotificationDelegate: class {
@@ -266,6 +267,11 @@ extension AppCoordinator: CloseDelegate {
 }
 
 extension AppCoordinator: AppCoordinatorDelegate {
+    func showHistory() {
+        let ctrl = HistoryViewController.create()
+        router.push(ctrl, animated: true, completion: nil)
+    }
+    
     func showSettings() {
         let coord = AccountsCoordinator()
         addChild(coord)

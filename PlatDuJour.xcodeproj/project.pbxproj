@@ -30,6 +30,9 @@
 		A9B15EE1248D2EA10061BAC3 /* ShareAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B15EE0248D2EA10061BAC3 /* ShareAccountManager.swift */; };
 		A9B15EE3248E8ADF0061BAC3 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B15EE2248E8ADF0061BAC3 /* Photos.framework */; };
 		A9BD117D24961C3C00DB46DC /* InformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD117C24961C3C00DB46DC /* InformationCell.swift */; };
+		A9BD11802497A67C00DB46DC /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD117F2497A67C00DB46DC /* HistoryViewController.swift */; };
+		A9BD11822497A6D100DB46DC /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD11812497A6D100DB46DC /* HistoryCell.swift */; };
+		A9BD11842497A7F000DB46DC /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD11832497A7F000DB46DC /* HistoryViewModel.swift */; };
 		A9BD9D7B24868131003260CE /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7A24868131003260CE /* Swifter */; };
 		A9BD9D7E2486831D003260CE /* SwiftyInsta in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7D2486831D003260CE /* SwiftyInsta */; };
 		A9CB4ABA24815816007AACBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4AB924815816007AACBB /* AppDelegate.swift */; };
@@ -161,6 +164,9 @@
 		A9B15EE0248D2EA10061BAC3 /* ShareAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAccountManager.swift; sourceTree = "<group>"; };
 		A9B15EE2248E8ADF0061BAC3 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		A9BD117C24961C3C00DB46DC /* InformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCell.swift; sourceTree = "<group>"; };
+		A9BD117F2497A67C00DB46DC /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		A9BD11812497A6D100DB46DC /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		A9BD11832497A7F000DB46DC /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		A9CB4AB624815816007AACBB /* PlatDuJour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlatDuJour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CB4AB924815816007AACBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CB4ABB24815816007AACBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -358,6 +364,16 @@
 				A9B15EDE248D2DBE0061BAC3 /* AccountsViewModel.swift */,
 			);
 			path = ConnectAccounts;
+			sourceTree = "<group>";
+		};
+		A9BD117E2497A65C00DB46DC /* History */ = {
+			isa = PBXGroup;
+			children = (
+				A9BD117F2497A67C00DB46DC /* HistoryViewController.swift */,
+				A9BD11812497A6D100DB46DC /* HistoryCell.swift */,
+				A9BD11832497A7F000DB46DC /* HistoryViewModel.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		A9CB4AAD24815815007AACBB = {
@@ -563,6 +579,7 @@
 		A9CB4B9124818FE1007AACBB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A9BD117E2497A65C00DB46DC /* History */,
 				A9B15ED7248D2BFC0061BAC3 /* ConnectAccounts */,
 				A92F6FF124891EC10048B352 /* AddPicture */,
 				A9CB4CE824867BB4007AACBB /* UserProfile */,
@@ -842,6 +859,7 @@
 				A9CB4C9124858298007AACBB /* Onboarding.swift in Sources */,
 				A9CB4C7D2485825B007AACBB /* UIImageExt.swift in Sources */,
 				A9CB4C8424858276007AACBB /* CovidAppMetaData.swift in Sources */,
+				A9BD11842497A7F000DB46DC /* HistoryViewModel.swift in Sources */,
 				A9B15EDB248D2C180061BAC3 /* AccountsCoordinator.swift in Sources */,
 				A9CB4C8024858271007AACBB /* DataManager.swift in Sources */,
 				A9CB4BBE24818FEE007AACBB /* Configuration.swift in Sources */,
@@ -858,6 +876,7 @@
 				A9CB4C7024858254007AACBB /* WindowCoordinator.swift in Sources */,
 				A9CB4C762485825B007AACBB /* Date+Ext.swift in Sources */,
 				A92F6FF824891F2D0048B352 /* AddContentViewController.swift in Sources */,
+				A9BD11822497A6D100DB46DC /* HistoryCell.swift in Sources */,
 				A9CB4BBA24818FEE007AACBB /* Palette.swift in Sources */,
 				A9BD117D24961C3C00DB46DC /* InformationCell.swift in Sources */,
 				A9CB4C6F24858254007AACBB /* Presentable.swift in Sources */,
@@ -868,6 +887,7 @@
 				A9CB4C782485825B007AACBB /* UIButton+Ext.swift in Sources */,
 				A9CB4C9024858298007AACBB /* User.swift in Sources */,
 				A9B15ED0248AA7040061BAC3 /* AddDescriptionCell.swift in Sources */,
+				A9BD11802497A67C00DB46DC /* HistoryViewController.swift in Sources */,
 				A9CB4C8124858271007AACBB /* SessionController.swift in Sources */,
 				A9CB4C7B2485825B007AACBB /* Double+Extensions.swift in Sources */,
 				A9CB4C6E24858254007AACBB /* WindowRouter.swift in Sources */,

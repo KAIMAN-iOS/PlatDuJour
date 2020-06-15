@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
     }
     
     private func handleLayout() {
-        historyButton.isHidden = DataManager.instance.models.count == 0
+        historyButton.isHidden = true //DataManager.instance.models.count == 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,5 +67,6 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func showPreviousContents(_ sender: Any) {
+        coordinatorDelegate?.showHistory()
     }
 }

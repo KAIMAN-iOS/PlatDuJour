@@ -7,6 +7,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -97,6 +98,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1656.521739130435" y="814.95535714285711"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="qdt-vS-wLf">
+            <objects>
+                <collectionViewController storyboardIdentifier="HistoryViewController" id="DKp-hJ-hpi" customClass="HistoryViewController" customModule="PlatDuJour" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="G8C-rE-bdo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0zP-Bn-qMe">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HistoryCell" id="jXS-9X-6lq" customClass="HistoryCell" customModule="PlatDuJour" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WCd-vj-u4b">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qNz-dp-T2w">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="qNz-dp-T2w" secondAttribute="height" multiplier="1:1" id="A71-eS-xEf"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9G-7J-aWw">
+                                            <rect key="frame" x="0.0" y="99" width="128" height="29"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="100" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yl-Tj-uu8">
+                                                    <rect key="frame" x="48.5" y="7" width="31" height="15"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <color key="textColor" name="placeholder"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="primary"/>
+                                            <constraints>
+                                                <constraint firstItem="4yl-Tj-uu8" firstAttribute="top" secondItem="N9G-7J-aWw" secondAttribute="top" constant="7" id="2Gb-NN-BmI"/>
+                                                <constraint firstAttribute="bottom" secondItem="4yl-Tj-uu8" secondAttribute="bottom" constant="7" id="DD7-8d-x62"/>
+                                                <constraint firstItem="4yl-Tj-uu8" firstAttribute="centerX" secondItem="N9G-7J-aWw" secondAttribute="centerX" id="qcB-EW-9tZ"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="N9G-7J-aWw" firstAttribute="leading" secondItem="WCd-vj-u4b" secondAttribute="leading" id="1o2-RT-fcF"/>
+                                        <constraint firstAttribute="bottom" secondItem="qNz-dp-T2w" secondAttribute="bottom" id="AYC-dK-j3u"/>
+                                        <constraint firstItem="qNz-dp-T2w" firstAttribute="top" secondItem="WCd-vj-u4b" secondAttribute="top" id="DKo-jH-Gon"/>
+                                        <constraint firstItem="qNz-dp-T2w" firstAttribute="leading" secondItem="WCd-vj-u4b" secondAttribute="leading" id="GMh-aW-ylP"/>
+                                        <constraint firstAttribute="trailing" secondItem="N9G-7J-aWw" secondAttribute="trailing" id="TmF-Dx-8fX"/>
+                                        <constraint firstAttribute="bottom" secondItem="N9G-7J-aWw" secondAttribute="bottom" id="fVo-pZ-hIb"/>
+                                        <constraint firstAttribute="trailing" secondItem="qNz-dp-T2w" secondAttribute="trailing" id="z9i-hV-bws"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="date" destination="4yl-Tj-uu8" id="eBR-xr-nXW"/>
+                                    <outlet property="image" destination="qNz-dp-T2w" id="lrx-ID-IIv"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="DKp-hJ-hpi" id="jFX-La-OPS"/>
+                            <outlet property="delegate" destination="DKp-hJ-hpi" id="Wr6-Yb-9BT"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zxW-8n-IqY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2392.753623188406" y="814.95535714285711"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="7bk-y7-wjP">
@@ -779,6 +852,9 @@
         </namedColor>
         <namedColor name="mainTexts">
             <color red="0.16078431372549021" green="0.19215686274509805" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="placeholder">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.90588235294117647" green="0.29411764705882354" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -11,6 +11,7 @@ import Photos
 
 class AddContentViewController: UIViewController {
 
+    var readOnly: Bool = false
     var content: ShareModel.ModelType!
     @IBOutlet var tableView: UITableView!  {
         didSet {
@@ -29,11 +30,12 @@ class AddContentViewController: UIViewController {
     }
 
     private var viewModel : AddContentViewModel!
-    static func create(with delegate: AddPictureCoordinatorDelegate, content: ShareModel.ModelType) -> AddContentViewController {
+    static func create(with delegate: AddPictureCoordinatorDelegate, content: ShareModel.ModelType, readOnly: Bool = false) -> AddContentViewController {
         let controller = AddContentViewController.loadFromStoryboard(identifier: "AddContentViewController", storyboardName: "AddContent") as! AddContentViewController
         controller.coordinatorDelegate = delegate
         controller.content = content
         controller.viewModel = AddContentViewModel(content: content)
+        controller.readOnly = readOnly
         return controller
     }
     weak var coordinatorDelegate: AddPictureCoordinatorDelegate? = nil
@@ -52,6 +54,7 @@ class AddContentViewController: UIViewController {
     
     @IBAction func `continue`(_ sender: Any) {
         try? DataManager.save(viewModel.pictureModel)
+        coordinatorDelegate?.updload(viewModel.pictureModel.image ?? UIImage())
     }
 }
 
@@ -154,6 +157,7 @@ extension AddContentViewController: UITableViewDataSource {
         return viewModel.configureCell(at: indexPath, in: tableView)
     }
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        guard readOnly == false else { return nil }
         return viewModel.willSelectRow(at: indexPath)
     }
 }
