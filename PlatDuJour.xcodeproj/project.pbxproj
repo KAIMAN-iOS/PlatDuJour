@@ -33,6 +33,7 @@
 		A9BD11802497A67C00DB46DC /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD117F2497A67C00DB46DC /* HistoryViewController.swift */; };
 		A9BD11822497A6D100DB46DC /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD11812497A6D100DB46DC /* HistoryCell.swift */; };
 		A9BD11842497A7F000DB46DC /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD11832497A7F000DB46DC /* HistoryViewModel.swift */; };
+		A9BD11882498F6CC00DB46DC /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9BD11872498F6CB00DB46DC /* credentials.plist */; };
 		A9BD9D7B24868131003260CE /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7A24868131003260CE /* Swifter */; };
 		A9BD9D7E2486831D003260CE /* SwiftyInsta in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7D2486831D003260CE /* SwiftyInsta */; };
 		A9CB4ABA24815816007AACBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4AB924815816007AACBB /* AppDelegate.swift */; };
@@ -62,7 +63,6 @@
 		A9CB4BB924818FEE007AACBB /* shareImageData.png in Resources */ = {isa = PBXBuildFile; fileRef = A9CB4BB224818FED007AACBB /* shareImageData.png */; };
 		A9CB4BBA24818FEE007AACBB /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4BB324818FED007AACBB /* Palette.swift */; };
 		A9CB4BBB24818FEE007AACBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9CB4BB424818FED007AACBB /* Assets.xcassets */; };
-		A9CB4BBC24818FEE007AACBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9CB4BB524818FED007AACBB /* GoogleService-Info.plist */; };
 		A9CB4BBD24818FEE007AACBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9CB4BB624818FED007AACBB /* Localizable.strings */; };
 		A9CB4BBE24818FEE007AACBB /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4BB824818FED007AACBB /* Configuration.swift */; };
 		A9CB4C5C2485814E007AACBB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB4C4F2485814C007AACBB /* AVFoundation.framework */; };
@@ -108,7 +108,7 @@
 		A9CB4C8924858280007AACBB /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B5D24818FA9007AACBB /* DynamicHeightCollectionView.swift */; };
 		A9CB4C8A24858280007AACBB /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B5E24818FA9007AACBB /* ActionButton.swift */; };
 		A9CB4C8B24858280007AACBB /* ErrorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B5F24818FA9007AACBB /* ErrorTextField.swift */; };
-		A9CB4C8D24858298007AACBB /* CovidAppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B3F24818FA9007AACBB /* CovidAppApi.swift */; };
+		A9CB4C8D24858298007AACBB /* DailySpecialApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B3F24818FA9007AACBB /* DailySpecialApi.swift */; };
 		A9CB4C8F24858298007AACBB /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B4224818FA9007AACBB /* Register.swift */; };
 		A9CB4C9024858298007AACBB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B4324818FA9007AACBB /* User.swift */; };
 		A9CB4C9124858298007AACBB /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4B4424818FA9007AACBB /* Onboarding.swift */; };
@@ -167,6 +167,7 @@
 		A9BD117F2497A67C00DB46DC /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A9BD11812497A6D100DB46DC /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		A9BD11832497A7F000DB46DC /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		A9BD11872498F6CB00DB46DC /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		A9CB4AB624815816007AACBB /* PlatDuJour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlatDuJour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CB4AB924815816007AACBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CB4ABB24815816007AACBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,7 +196,7 @@
 		A9CB4B3A24818FA9007AACBB /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		A9CB4B3B24818FA9007AACBB /* UIImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
 		A9CB4B3C24818FA9007AACBB /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		A9CB4B3F24818FA9007AACBB /* CovidAppApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidAppApi.swift; sourceTree = "<group>"; };
+		A9CB4B3F24818FA9007AACBB /* DailySpecialApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySpecialApi.swift; sourceTree = "<group>"; };
 		A9CB4B4224818FA9007AACBB /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		A9CB4B4324818FA9007AACBB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A9CB4B4424818FA9007AACBB /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
@@ -224,7 +225,6 @@
 		A9CB4BB224818FED007AACBB /* shareImageData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareImageData.png; sourceTree = "<group>"; };
 		A9CB4BB324818FED007AACBB /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		A9CB4BB424818FED007AACBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A9CB4BB524818FED007AACBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A9CB4BB624818FED007AACBB /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A9CB4BB824818FED007AACBB /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		A9CB4C4F2485814C007AACBB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -492,7 +492,7 @@
 		A9CB4B3E24818FA9007AACBB /* CovidApi */ = {
 			isa = PBXGroup;
 			children = (
-				A9CB4B3F24818FA9007AACBB /* CovidAppApi.swift */,
+				A9CB4B3F24818FA9007AACBB /* DailySpecialApi.swift */,
 			);
 			path = CovidApi;
 			sourceTree = "<group>";
@@ -631,7 +631,7 @@
 				A9CB4BB224818FED007AACBB /* shareImageData.png */,
 				A9CB4BB324818FED007AACBB /* Palette.swift */,
 				A9CB4BB424818FED007AACBB /* Assets.xcassets */,
-				A9CB4BB524818FED007AACBB /* GoogleService-Info.plist */,
+				A9BD11872498F6CB00DB46DC /* credentials.plist */,
 				A9CB4BB624818FED007AACBB /* Localizable.strings */,
 				A9CB4BB824818FED007AACBB /* Configuration.swift */,
 			);
@@ -819,7 +819,7 @@
 				A9CB4BB924818FEE007AACBB /* shareImageData.png in Resources */,
 				A9CB4BA624818FE1007AACBB /* Main.storyboard in Resources */,
 				A9B15ED9248D2C0D0061BAC3 /* Accounts.storyboard in Resources */,
-				A9CB4BBC24818FEE007AACBB /* GoogleService-Info.plist in Resources */,
+				A9BD11882498F6CC00DB46DC /* credentials.plist in Resources */,
 				A9CB4BBB24818FEE007AACBB /* Assets.xcassets in Resources */,
 				A92F6FF324891ED70048B352 /* AddContent.storyboard in Resources */,
 			);
@@ -896,7 +896,7 @@
 				A9CB4C9324858298007AACBB /* RequestObject.swift in Sources */,
 				A9CB4C8A24858280007AACBB /* ActionButton.swift in Sources */,
 				A9CB4C94248582A3007AACBB /* RegisterRoute.swift in Sources */,
-				A9CB4C8D24858298007AACBB /* CovidAppApi.swift in Sources */,
+				A9CB4C8D24858298007AACBB /* DailySpecialApi.swift in Sources */,
 				A9B15ED4248B87DD0061BAC3 /* ShareModel.swift in Sources */,
 				A9CB4C862485827A007AACBB /* Result.swift in Sources */,
 				A972603D24936A9100E85CDA /* AccountCell.swift in Sources */,
@@ -1086,6 +1086,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PlatDuJour/PlatDuJour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1114,6 +1115,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PlatDuJour/PlatDuJour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

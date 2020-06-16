@@ -20,10 +20,12 @@ extension DefaultsKeys {
 
 struct SessionController {
     
+    static let googleId = "251846339337-0m5iqpk1qmgaetop21vemm5j89dq4lot.apps.googleusercontent.com"
+    
     enum LoginOrigin: Int, DefaultsSerializable {
         case facebook, google, apple
     }
-    private static let keychain = Keychain.init(service: "CovidApp", accessGroup: "group.com.kaiman.apps")
+    private static let keychain = Keychain.init(service: "DailySpecial", accessGroup: "group.com.kaiman.apps")
     private static var instance = SessionController()
     
     var name: String?  {

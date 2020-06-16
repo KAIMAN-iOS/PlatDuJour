@@ -55,7 +55,7 @@ class AskEmailViewController: UIViewController {
     
     @IBAction func `continue`(_ sender: Any) {
         continueButton.isLoading = true
-        CovidApi
+        AppAPI
             .shared
             .retrieveToken()
             .done { [weak self] user in

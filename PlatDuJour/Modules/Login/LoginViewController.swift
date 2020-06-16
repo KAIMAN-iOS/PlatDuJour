@@ -122,7 +122,7 @@ class LoginViewController: UIViewController {
         case .apple: appleButton?.isEnabled = false
         }
         
-        CovidApi
+        AppAPI
             .shared
             .retrieveToken()
             .done { [weak self] user in
@@ -133,7 +133,11 @@ class LoginViewController: UIViewController {
         }
         .catch { [weak self] error in
             guard let self = self else { return }
-            self.facebookButton.isLoading = false
+            switch self.currentSocialNetwork {
+            case .facebook: self.facebookButton.isLoading = false
+            case .google: self.googleButton.isLoading = false
+            case .apple: self.appleButton?.isEnabled = true
+            }
             SessionController().clear()
             MessageManager.show(.sso(.cantLogin(message: error.localizedDescription)), in: self)
         }

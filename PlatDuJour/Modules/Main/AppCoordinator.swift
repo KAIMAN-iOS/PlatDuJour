@@ -110,21 +110,20 @@ class AppCoordinator: Coordinator<DeepLink> {
             presentOnboardingFlow()
             
         case .main:
-//            if SessionController().userLoggedIn == false {
-//                router.setRootModule(loginController, hideBar: true, animated: false)
-//            } else if SessionController().userProfileCompleted == false {
-//                router.setRootModule(loginController, hideBar: true, animated: false)
-//                showUserProfileController()
-//            } else {
-//                showMainController()
-//                checkIfSessionExpired()
-//            }
-            showMainController()
+            if SessionController().userLoggedIn == false {
+                router.setRootModule(loginController, hideBar: true, animated: false)
+            } else if SessionController().userProfileCompleted == false {
+                router.setRootModule(loginController, hideBar: true, animated: false)
+                showUserProfileController()
+            } else {
+                showMainController()
+                checkIfSessionExpired()
+            }
         }
     }
     
     func configureGoogleSignIn() {
-        GIDSignIn.sharedInstance()?.clientID = "361098807316-tir0pul5maqn5b90rsdg5af5rmet47k2.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance()?.clientID = SessionController.googleId
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {

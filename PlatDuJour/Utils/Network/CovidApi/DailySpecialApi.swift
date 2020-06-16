@@ -13,9 +13,9 @@ import PromiseKit
 
 // MARK: - BrestTransportAPI
 // -
-struct CovidApi {
-    private let api = CovidAppApi.shared
-    static let shared: CovidApi = CovidApi()
+struct AppAPI {
+    private let api = DailySpecialApi.shared
+    static let shared: AppAPI = AppAPI()
     private init() {}
     
     enum ApiError: Error {
@@ -44,9 +44,9 @@ struct CovidApi {
 }
 
 //MARK:- Internal class for API
-private class CovidAppApi: API {
+private class DailySpecialApi: API {
     // Singleton
-    static let shared: CovidAppApi = CovidAppApi()
+    static let shared: DailySpecialApi = DailySpecialApi()
     
     /// URL de base de l'api Transport de Brest.
     var baseURL: URL {
@@ -76,7 +76,7 @@ class CovidAppApiCommonParameters: RequestParameters {
 
 
 //MARK:- Covid Private extension
-private extension CovidApi {
+private extension AppAPI {
     func perform<T>(route: RequestObject<T>, showMessageOnFail: Bool = true) -> Promise<T> {
         return Promise<T>.init { resolver in
             performAndRetry(route: route)

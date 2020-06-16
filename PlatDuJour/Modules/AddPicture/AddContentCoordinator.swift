@@ -40,19 +40,19 @@ extension AddContentCoordinator: AddPictureCoordinatorDelegate {
 //            (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController?.present(picker, animated: true, completion: nil)
             self.addPictureController.present(picker, animated: true, completion: nil)
         }
+        showPicker()
         
-        let status = PHPhotoLibrary.authorizationStatus()
-        switch status {
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization({status in
-                showPicker()
-            })
-            
-        case .authorized:
-            showPicker()
-            
-        default: ()
-        }
+//        let status = PHPhotoLibrary.authorizationStatus()
+//        switch status {
+//        case .notDetermined:
+//            PHPhotoLibrary.requestAuthorization({status in
+//                showPicker()
+//            })
+//
+//        case .authorized:
+//
+//        default: ()
+//        }
     }
     
     func showTemplates(for image: UIImage) {
