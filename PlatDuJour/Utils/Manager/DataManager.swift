@@ -14,6 +14,7 @@ protocol StorableKey {
 }
 enum DataManagerKey: String, StorableKey {
     case models = "models"
+    case currentUser = "CurrentUser"
     
     var key: StorageKey {
         return StorageKey(rawValue)
@@ -29,20 +30,20 @@ class DataManager {
             self.models = models
         }
     }
-//
-//    func store(_ user: CurrentUser) {
-//        do {
-//            try DataManager.instance.storage.save(user)
-//        } catch {
-//
-//        }
-//    }
+
+    func store(_ user: CurrentUser) {
+        do {
+            try DataManager.instance.storage.save(user)
+        } catch {
+
+        }
+    }
     
-//    func retrieveUser() throws -> CurrentUser {
-//        return try retrieve(for: DataManagerKey.currentUser.key)
-//    }
+    func retrieveUser() throws -> CurrentUser {
+        return try retrieve(for: DataManagerKey.currentUser.key)
+    }
     
-    static func retrieve<T: Decodable>(for key: StorageKey) throws -> T {
+    func retrieve<T: Decodable>(for key: StorageKey) throws -> T {
         do {
             return try DataManager.instance.storage.fetch(for: key)
         }

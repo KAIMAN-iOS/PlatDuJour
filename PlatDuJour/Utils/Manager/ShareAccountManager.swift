@@ -40,6 +40,13 @@ class ShareAccountManager {
         func text(for status: AccountStatus, hasSwitch: Bool = false) -> String {
             return status.text(for: self, hasSwitch: hasSwitch)
         }
+        
+        var isEnabled: Bool {
+            switch self {
+            case .facebook: return true
+            default: return false
+            }
+        }
     }
     
     enum AccountStatus {
@@ -65,31 +72,47 @@ class ShareAccountManager {
     
     func status(for accountType: AccountType, completion: @escaping ((AccountStatus) -> Void)) {
         switch accountType {
-        case .facebook: completion(AccessToken.current != nil ? .logged : .notLogged)
+        case .facebook: completion((AccessToken.current?.hasGranted(permission: "pages_manage_posts") ?? false) ? .logged : .notLogged)
         default: completion(.notLogged)
         }
     }
     
     func logOut(for accountType: AccountType, completion: @escaping ((Bool) -> Void)) {
-        completion(true)
+        switch accountType {
+        case .facebook:
+            GraphRequest.init(graphPath: "me/permissions/pages_manage_posts", httpMethod: .delete).start { (connexion, result, error) in
+                let success = Int((result as? [String:Any])?["success"] as? Int ?? 0) == 1
+                if success {
+                    AccessToken.refreshCurrentAccessToken {(connexion, result, error) in
+                        completion(AccessToken.current?.hasGranted(permission: "pages_manage_posts") ?? false)
+                    }
+                } else {
+                    completion(false)
+                }
+            }
+            
+        default: completion(true)
+        }
     }
     
     func askPermission(for accountType: AccountType, from controller: UIViewController, completion: @escaping ((Bool) -> Void)) {
         switch accountType {
         case .facebook:
-            LoginManager().logOut()
-            
             // pages_manage_posts, pages_read_engagement
-            if AccessToken.current?.hasGranted(Permission.email) == true {
+            if AccessToken.current?.hasGranted(permission: "pages_manage_posts") == true {
                 completion(true)
             } else {
-                LoginManager().logIn(permissions: [.email, .publicProfile, .userBirthday], viewController: controller) { result in
+                LoginManager().logIn(permissions: ["pages_manage_posts"/*, "pages_manage_metadata", "pages_manage_read_engagement"*/], viewController: controller) { result in
                     print("res \(result)")
                     switch result {
                     case .success:
-                        GraphRequest.init(graphPath: "me/feed", parameters: ["message" : "this is a test"], httpMethod: .post).start { [weak self] (connection, result, error) in
-                            guard let self = self else { return }
-                            
+                        // the pageId is in data>id
+                        GraphRequest.init(graphPath: "me/accounts").start { (connexion, result, error) in
+                            guard let result = result as? [String:Any],
+                                  let dataArray = result["data"] as? Array<Any>,
+                                  let data = dataArray.first as? [String:Any],
+                                  let pageId = data["id"] as? String else { return }
+                            print("\(pageId)")
                         }
                         completion(true)
 
@@ -103,19 +126,7 @@ class ShareAccountManager {
             }
             
         case .instagram:
-            let loginController = LoginWebViewController { controller, result in
-                controller.dismiss(animated: true, completion: nil)
-                // deal with authentication response.
-                guard let (response, _) = try? result.get() else { return print("Login failed.") }
-                print("Login successful.")
-                // persist cache safely in the keychain for logging in again in the future.
-                guard let key = response.persist() else { return print("`Authentication.Response` could not be persisted.") }
-                // store the `key` wherever you want, so you can access the `Authentication.Response` later.
-                // `UserDefaults` is just an example.
-            }
-            controller.present(loginController, animated: true, completion: {
-                
-            })
+            ()
             
         case .twitter:
             ()

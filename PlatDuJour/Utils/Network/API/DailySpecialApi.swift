@@ -41,6 +41,13 @@ struct AppAPI {
             session.refreshToken = response.refreshToken
         }
     }
+    
+    func updateUser(name: String, firstname: String, dob: Date) -> Promise<CurrentUser> {
+        let route = UpdateUserRoute(name: name, firstname: firstname, dob: dob)
+        return perform(route: route).get { user in
+            DataManager.instance.store(user)
+        }
+    }
 }
 
 //MARK:- Internal class for API

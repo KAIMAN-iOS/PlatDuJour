@@ -168,6 +168,10 @@ class DataStorage {
     func save<T: Encodable>(_ value: T, for key: StorageKey) throws {
         try storage.save(value, for: key)
     }
+    
+    func save(_ user: CurrentUser) throws {
+        try save(user, for: DataManagerKey.currentUser.key)
+    }
 }
 
 extension URL {

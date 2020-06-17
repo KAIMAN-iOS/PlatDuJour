@@ -110,6 +110,11 @@ class AppCoordinator: Coordinator<DeepLink> {
             presentOnboardingFlow()
             
         case .main:
+            guard Constants.skipLogin == false else {
+                showMainController()
+                return
+            }
+            
             if SessionController().userLoggedIn == false {
                 router.setRootModule(loginController, hideBar: true, animated: false)
             } else if SessionController().userProfileCompleted == false {

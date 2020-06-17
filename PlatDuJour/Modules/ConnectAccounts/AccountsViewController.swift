@@ -45,6 +45,10 @@ extension AccountsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return viewModel.header(for: section)
     }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return viewModel.willSelectRow(at: indexPath)
+    }
 }
 
 //MARK: UITableViewDataSource

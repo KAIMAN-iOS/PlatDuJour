@@ -24,4 +24,8 @@ extension AccountsViewModel: TableViewModelable {
         cell.configure(with: accounts[indexPath.row])
         return cell
     }
+    
+    func willSelectRow(at indexPath: IndexPath) -> IndexPath? {
+        return accounts[indexPath.row].isEnabled ? indexPath : nil
+    }
 }

@@ -41,8 +41,8 @@ struct Constants {
             }
         }
     }
-    
     static var defaultComponentShape: Constants.ComponentShape { return .capsule }
+    static var skipLogin: Bool = false
 }
 
 extension FontType: Fontable {

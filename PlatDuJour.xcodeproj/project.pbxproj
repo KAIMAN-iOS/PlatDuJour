@@ -34,6 +34,8 @@
 		A9BD11822497A6D100DB46DC /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD11812497A6D100DB46DC /* HistoryCell.swift */; };
 		A9BD11842497A7F000DB46DC /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD11832497A7F000DB46DC /* HistoryViewModel.swift */; };
 		A9BD11882498F6CC00DB46DC /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9BD11872498F6CB00DB46DC /* credentials.plist */; };
+		A9BD118B249A3CEC00DB46DC /* SelectAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD118A249A3CEC00DB46DC /* SelectAccountsViewController.swift */; };
+		A9BD118D249A510C00DB46DC /* UserRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BD118C249A510B00DB46DC /* UserRoutes.swift */; };
 		A9BD9D7B24868131003260CE /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7A24868131003260CE /* Swifter */; };
 		A9BD9D7E2486831D003260CE /* SwiftyInsta in Frameworks */ = {isa = PBXBuildFile; productRef = A9BD9D7D2486831D003260CE /* SwiftyInsta */; };
 		A9CB4ABA24815816007AACBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB4AB924815816007AACBB /* AppDelegate.swift */; };
@@ -168,6 +170,8 @@
 		A9BD11812497A6D100DB46DC /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		A9BD11832497A7F000DB46DC /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		A9BD11872498F6CB00DB46DC /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		A9BD118A249A3CEC00DB46DC /* SelectAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAccountsViewController.swift; sourceTree = "<group>"; };
+		A9BD118C249A510B00DB46DC /* UserRoutes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRoutes.swift; sourceTree = "<group>"; };
 		A9CB4AB624815816007AACBB /* PlatDuJour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlatDuJour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CB4AB924815816007AACBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9CB4ABB24815816007AACBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 		A92F6FF124891EC10048B352 /* AddPicture */ = {
 			isa = PBXGroup;
 			children = (
+				A9BD1189249A3CD300DB46DC /* Select Accounts */,
 				A9B15EC8248AA6BA0061BAC3 /* Templates */,
 				A92F6FF624891F190048B352 /* AddPicture */,
 				A92F6FF224891ED70048B352 /* AddContent.storyboard */,
@@ -374,6 +379,14 @@
 				A9BD11832497A7F000DB46DC /* HistoryViewModel.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		A9BD1189249A3CD300DB46DC /* Select Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				A9BD118A249A3CEC00DB46DC /* SelectAccountsViewController.swift */,
+			);
+			path = "Select Accounts";
 			sourceTree = "<group>";
 		};
 		A9CB4AAD24815815007AACBB = {
@@ -519,6 +532,7 @@
 		A9CB4B4A24818FA9007AACBB /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				A9BD118C249A510B00DB46DC /* UserRoutes.swift */,
 				A9CB4B4B24818FA9007AACBB /* RegisterRoute.swift */,
 			);
 			path = Auth;
@@ -878,11 +892,13 @@
 				A92F6FF824891F2D0048B352 /* AddContentViewController.swift in Sources */,
 				A9BD11822497A6D100DB46DC /* HistoryCell.swift in Sources */,
 				A9CB4BBA24818FEE007AACBB /* Palette.swift in Sources */,
+				A9BD118D249A510C00DB46DC /* UserRoutes.swift in Sources */,
 				A9BD117D24961C3C00DB46DC /* InformationCell.swift in Sources */,
 				A9CB4C6F24858254007AACBB /* Presentable.swift in Sources */,
 				A9CB4C7F24858271007AACBB /* Storage.swift in Sources */,
 				A9CB4BA524818FE1007AACBB /* MainViewController.swift in Sources */,
 				A9CB4C852485827A007AACBB /* TableViewModelable.swift in Sources */,
+				A9BD118B249A3CEC00DB46DC /* SelectAccountsViewController.swift in Sources */,
 				A9CB4C792485825B007AACBB /* UIColor+Ext.swift in Sources */,
 				A9CB4C782485825B007AACBB /* UIButton+Ext.swift in Sources */,
 				A9CB4C9024858298007AACBB /* User.swift in Sources */,

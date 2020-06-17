@@ -114,14 +114,14 @@ class AskProfileViewController: UIViewController {
         session.name  = name
         session.firstname  = firstname
         session.birthday  = dob
-//        
-//        CovidApi
-//            .shared
-//            .updateUser(name: name, firstname: firstname, dob: dob)
-//            .done { [weak self] user in
-//                self?.coordinatorDelegate?.showMainController()
-//            }.catch { _ in
-//                
-//            }
+        
+        AppAPI
+            .shared
+            .updateUser(name: name, firstname: firstname, dob: dob)
+            .done { [weak self] user in
+                self?.coordinatorDelegate?.showMainController()
+            }.catch { _ in
+                
+            }
     }
 }

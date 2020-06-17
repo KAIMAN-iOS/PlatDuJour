@@ -13,6 +13,7 @@ protocol AddPictureCoordinatorDelegate: class {
     func showTemplates(for image: UIImage)
     func updload(_ picture: UIImage)
     func showImagePicker(with type: UIImagePickerController.SourceType, mediaTypes: [String], delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate)
+    func chooseAccounts()
 }
 
 class AddContentCoordinator: Coordinator<DeepLink> {
@@ -61,5 +62,10 @@ extension AddContentCoordinator: AddPictureCoordinatorDelegate {
     
     func updload(_ picture: UIImage) {
         router.dismissModule(animated: true, completion: nil)
+    }
+    
+    func chooseAccounts() {
+        let ctrl = SelectAccountsViewController.create()
+        router.push(ctrl, animated: true, completion: nil)
     }
 }

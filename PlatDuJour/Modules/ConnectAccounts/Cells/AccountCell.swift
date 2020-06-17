@@ -13,7 +13,12 @@ class AccountCell: UITableViewCell {
     @IBOutlet var accountLogo: UIImageView!
     @IBOutlet var accountName: UILabel!
     @IBOutlet var accountStatus: UILabel!
-    @IBOutlet var accountSwitch: UISwitch!
+    @IBOutlet var accountSwitch: UISwitch!  {
+        didSet {
+            accountSwitch.onTintColor = Palette.basic.primary.color
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -34,6 +39,7 @@ class AccountCell: UITableViewCell {
             guard let self = self else { return }
             self.accountStatus.set(text: status.text(for: account, hasSwitch: self.accountSwitch.isHidden == false), for: .footnote, textColor: status == .logged ? Palette.basic.confirmation.color : Palette.basic.mainTexts.color)
         }
+        accountSwitch.isEnabled = account.isEnabled
     }
 }
  
