@@ -1,6 +1,6 @@
 //
-//  CovidAppApi.swift
-//  CovidApp
+//  AppAPI.swift
+//  AppAPI
 //
 //  Created by jerome on 31/03/2020.
 //  Copyright © 2020 Jerome TONNELIER. All rights reserved.
@@ -11,7 +11,7 @@ import Alamofire
 import PromiseKit
 
 
-// MARK: - BrestTransportAPI
+// MARK: - AppAPI
 // -
 struct AppAPI {
     private let api = DailySpecialApi.shared
@@ -48,9 +48,9 @@ private class DailySpecialApi: API {
     // Singleton
     static let shared: DailySpecialApi = DailySpecialApi()
     
-    /// URL de base de l'api Transport de Brest.
+    /// URL de base de l'api Transport.
     var baseURL: URL {
-        URL(string: "http://api.kaiman.fr/public/api")!
+        URL(string: "http://www.apiportail.kaiman.fr/public/api/")!
     }
     
     /// Headers communs à tous les appels (aucun pour cette api)/

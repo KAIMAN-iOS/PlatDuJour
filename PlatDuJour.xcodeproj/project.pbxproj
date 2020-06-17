@@ -480,7 +480,7 @@
 		A9CB4B3D24818FA9007AACBB /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A9CB4B3E24818FA9007AACBB /* CovidApi */,
+				A9CB4B3E24818FA9007AACBB /* API */,
 				A9CB4B4024818FA9007AACBB /* Models */,
 				A9CB4B4524818FA9007AACBB /* API.swift */,
 				A9CB4B4624818FA9007AACBB /* RequestObject.swift */,
@@ -489,12 +489,12 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		A9CB4B3E24818FA9007AACBB /* CovidApi */ = {
+		A9CB4B3E24818FA9007AACBB /* API */ = {
 			isa = PBXGroup;
 			children = (
 				A9CB4B3F24818FA9007AACBB /* DailySpecialApi.swift */,
 			);
-			path = CovidApi;
+			path = API;
 			sourceTree = "<group>";
 		};
 		A9CB4B4024818FA9007AACBB /* Models */ = {
