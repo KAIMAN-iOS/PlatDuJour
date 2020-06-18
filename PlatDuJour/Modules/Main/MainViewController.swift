@@ -55,7 +55,6 @@ class MainViewController: UIViewController {
     }
     
     func loadUser() {
-        MessageManager.show(.basic(.loadingPleaseWait), in: self)
     }
     
     @IBAction func add(_ sender: Any) {

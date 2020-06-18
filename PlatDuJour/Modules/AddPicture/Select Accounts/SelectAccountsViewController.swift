@@ -24,6 +24,7 @@ class SelectAccountsViewController: UIViewController {
         }
         accountsViewController = ctrl
         ctrl.coordinatorDelegate = accountsCoordinator
+        title = "Share".local()
         // Do any additional setup after loading the view.
     }
 }

@@ -86,6 +86,13 @@ class AppCoordinator: Coordinator<DeepLink> {
             Defaults[\.dailyNotificationId] = UUID().uuidString
             print("🐞 SET - \(String(describing: Defaults[\.dailyNotificationId]))")
         }
+        
+        // for debug purposes
+        #if DEBUG
+            if Constants.resetAtStart == true {
+                SessionController().clear()
+            }
+        #endif
     }
     
     private func customize() {
@@ -151,7 +158,6 @@ class AppCoordinator: Coordinator<DeepLink> {
     }
     
     func presentOnboardingFlow() {
-        SessionController().clear()
         let onboarding = OnboardingViewController.create()
         onboarding.modalPresentationStyle = .overFullScreen
         onboarding.delegate = self
@@ -297,19 +303,6 @@ extension AppCoordinator: AppCoordinatorDelegate {
     
     func showMainController() {
         router.setRootModule(mainController, hideBar: false, animated: true)
-        if Defaults[\.initialValuesFilled] == false {
-//            self.showInitialMetrics()
-        }
-        // add a callback to check if the user denied notifications then enables them....
-         if Defaults[\.alreadyRequestedNotifications] == true, Defaults[\.hourForNotification] == nil {
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: [.alert, .sound]) { [weak self] granted, error in
-                guard let self = self else { return }
-                if granted {
-                    self.updateNotificationsForDefaultAlarm()
-                }
-            }
-        }
     }
     
     func logOut() {

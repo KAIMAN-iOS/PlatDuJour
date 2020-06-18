@@ -45,7 +45,7 @@ class AddContentViewController: UIViewController {
         viewModel.showPickerDelegate = self
         viewModel.updateButtonDelegate = self
         viewModel.informationDelegate = self
-        title = "Choose an image".local()
+        title = content.displayName
     }
     
     private func showImagePicker(with type: UIImagePickerController.SourceType) {

@@ -42,10 +42,10 @@ struct AppAPI {
         }
     }
     
-    func updateUser(name: String, firstname: String, dob: Date) -> Promise<CurrentUser> {
+    func updateUser(name: String, firstname: String, dob: Date) -> Promise<User> {
         let route = UpdateUserRoute(name: name, firstname: firstname, dob: dob)
         return perform(route: route).get { user in
-            DataManager.instance.store(user)
+            DataManager.instance.store(user.currentUser)
         }
     }
 }

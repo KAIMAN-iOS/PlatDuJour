@@ -44,6 +44,7 @@ class ShareAccountManager {
         var isEnabled: Bool {
             switch self {
             case .facebook: return true
+            case .instagram: return true
             default: return false
             }
         }
@@ -56,7 +57,7 @@ class ShareAccountManager {
             var text: String = ""//accountType.displayName + " - "
             
             switch self {
-            case .logged: text += "logged".local() + "(\(ShareAccountManager.shared.accountName(for: accountType) ?? ""))" + (hasSwitch ? "" : "tap to disconnect".local())
+            case .logged: text += "logged".local() /*+ "(\(ShareAccountManager.shared.accountName(for: accountType) ?? ""))" */ + (hasSwitch ? "" : "tap to disconnect".local())
             case .notLogged: text += "notLogged".local() + (hasSwitch ? "" : "tap to connect".local())
             }
             return text
@@ -72,7 +73,8 @@ class ShareAccountManager {
     
     func status(for accountType: AccountType, completion: @escaping ((AccountStatus) -> Void)) {
         switch accountType {
-        case .facebook: completion((AccessToken.current?.hasGranted(permission: "pages_manage_posts") ?? false) ? .logged : .notLogged)
+            case .facebook: completion((AccessToken.current?.hasGranted(permission: "pages_manage_posts") ?? false) ? .logged : .notLogged)
+            case .instagram: completion((AccessToken.current?.hasGranted(permission: "instagram_basic") ?? false) ? .logged : .notLogged)
         default: completion(.notLogged)
         }
     }
@@ -85,6 +87,18 @@ class ShareAccountManager {
                 if success {
                     AccessToken.refreshCurrentAccessToken {(connexion, result, error) in
                         completion(AccessToken.current?.hasGranted(permission: "pages_manage_posts") ?? false)
+                    }
+                } else {
+                    completion(false)
+                }
+            }
+            
+        case .instagram:
+            GraphRequest.init(graphPath: "me/permissions/instagram_basic", httpMethod: .delete).start { (connexion, result, error) in
+                let success = Int((result as? [String:Any])?["success"] as? Int ?? 0) == 1
+                if success {
+                    AccessToken.refreshCurrentAccessToken {(connexion, result, error) in
+                        completion(AccessToken.current?.hasGranted(permission: "instagram_basic") ?? false)
                     }
                 } else {
                     completion(false)
@@ -125,8 +139,32 @@ class ShareAccountManager {
                 }
             }
             
-        case .instagram:
-            ()
+        case .instagram: // instagram_content_publish
+            if AccessToken.current?.hasGranted(permission: "instagram_basic") == true {
+                completion(true)
+            } else {
+                LoginManager().logIn(permissions: ["instagram_basic"/*, "instagram_content_publish", "publish_video", "manage_pages", "publish_pages"*/], viewController: controller) { result in
+                    print("res \(result)")
+                    switch result {
+                    case .success:
+                        // the pageId is in data>id
+                        GraphRequest.init(graphPath: "me/accounts").start { (connexion, result, error) in
+                            guard let result = result as? [String:Any],
+                                  let dataArray = result["data"] as? Array<Any>,
+                                  let data = dataArray.first as? [String:Any],
+                                  let pageId = data["id"] as? String else { return }
+                            print("\(pageId)")
+                        }
+                        completion(true)
+
+                    case .failed(let error):
+                        completion(false)
+                        MessageManager.show(.basic(.custom(title: "Oups".local(), message: error.localizedDescription, buttonTitle: nil, configuration: MessageDisplayConfiguration.alert)), in: controller)
+
+                    default: ()
+                    }
+                }
+            }
             
         case .twitter:
             ()

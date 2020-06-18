@@ -1118,6 +1118,7 @@
 					"$(OTHER_LDFLAGS)",
 					"-ObjC",
 				);
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaiman.PlatDuJour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

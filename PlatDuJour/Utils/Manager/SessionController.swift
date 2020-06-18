@@ -129,14 +129,14 @@ struct SessionController {
         if #available(iOS 13.0, *) {
             appleUserData = SessionController().appleUserData
         }
-        try? SessionController.keychain.removeAll()
+        try? SessionController.keychain.removeAll() 
         if #available(iOS 13.0, *) {
             SessionController.instance.appleUserData = appleUserData
         }
     }
     
     var userLoggedIn: Bool {
-        return SessionController().email != nil
+        return SessionController.instance.email != nil
     }
     
     var userProfileCompleted: Bool {

@@ -17,7 +17,7 @@ import Alamofire
  Obtenir les arrêts d’une ligne.
  - Returns: les arrêts dans l’ordre pour une ligne et une destination
  */
-class UpdateUserRoute: RequestObject<CurrentUser> {
+class UpdateUserRoute: RequestObject<User> {
     // MARK: - RequestObject Protocol
     
     override var method: HTTPMethod {
@@ -80,7 +80,7 @@ class UpdateUserParameter: CovidAppApiCommonParameters {
  Obtenir les arrêts d’une ligne.
  - Returns: les arrêts dans l’ordre pour une ligne et une destination
  */
-class RetrieveUserRoute: RequestObject<CurrentUser> {
+class RetrieveUserRoute: RequestObject<User> {
     // MARK: - RequestObject Protocol
     
     override var method: HTTPMethod {

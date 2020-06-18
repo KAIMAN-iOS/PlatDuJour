@@ -43,6 +43,13 @@ struct Constants {
     }
     static var defaultComponentShape: Constants.ComponentShape { return .capsule }
     static var skipLogin: Bool = false
+    
+    #if DEBUG
+    static var resetAtStart: Bool = false
+    #else
+    // ⚠️ do not change this value for release purposes! 
+    static var resetAtStart: Bool = false
+    #endif
 }
 
 extension FontType: Fontable {

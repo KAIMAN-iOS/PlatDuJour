@@ -11,6 +11,25 @@ import Foundation
 class EmptyResponseData: Codable {
 }
 
+class User: Codable {
+    private (set) var currentUser: CurrentUser
+    
+    enum CodingKeys: String, CodingKey {
+        case currentUser = "current"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        //mandatory
+        currentUser = try container.decode(CurrentUser.self, forKey: .currentUser)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(currentUser, forKey: .currentUser)
+    }
+}
+
 class CurrentUser: Codable {
     private (set) var id: Int
     private (set) var name: String
