@@ -14,10 +14,6 @@ import FacebookLogin
 import AuthenticationServices
 import SwiftyUserDefaults
 
-extension DefaultsKeys {
-    var loginOrigin: DefaultsKey<Int?> { .init("LoginOrigin", defaultValue: nil) }
-}
-
 struct SessionController {
     
     static let googleId = "251846339337-0m5iqpk1qmgaetop21vemm5j89dq4lot.apps.googleusercontent.com"
@@ -133,6 +129,7 @@ struct SessionController {
         if #available(iOS 13.0, *) {
             SessionController.instance.appleUserData = appleUserData
         }
+        Defaults[\.facebookPageId] = nil
     }
     
     var userLoggedIn: Bool {

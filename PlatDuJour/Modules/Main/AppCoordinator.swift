@@ -36,17 +36,6 @@ protocol ShareDelegate: class {
 }
 
 //MARK: - Launch
-extension DefaultsKeys {
-    var username: DefaultsKey<String?> { .init("username") }
-    var onboardingWasShown: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
-    var initialValuesFilled: DefaultsKey<Bool> { .init("initialValuesFilled", defaultValue: false) }
-    var alreadyRequestedNotifications: DefaultsKey<Bool> { .init("alreadyRequestedNotifications", defaultValue: false) }
-    var notificationsEnabled: DefaultsKey<Bool> { .init("notificationsEnabled", defaultValue: false) }
-    var collectedFirstData: DefaultsKey<Bool> { .init("collectedFirstData", defaultValue: false) }
-    var hourForNotification: DefaultsKey<Date?> { .init("hourForNotification", defaultValue: nil) }
-    var dailyNotificationId: DefaultsKey<String?> { .init("dailyNotificationId", defaultValue: nil) }
-}
-
 fileprivate var onboardingWasShown: Bool {
     return Defaults[\.onboardingWasShown]
 }

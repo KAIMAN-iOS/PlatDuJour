@@ -14,8 +14,8 @@
             filePath = "PlatDuJour/Modules/AddPicture/AddPicture/Cells/AddPictureCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "configure(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -101,22 +101,6 @@
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "init(from:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D7BE06F1-0EB7-4799-932E-6076F347B479"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PlatDuJour/Utils/Manager/ShareAccountManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "status(for:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

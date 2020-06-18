@@ -14,10 +14,6 @@ protocol AddPictureCellDelegate: class {
     func showImagePicker()
 }
 
-fileprivate extension DefaultsKeys {
-    var videoPlayerTouchWarningWasShown: DefaultsKey<Bool> { .init("videoPlayerTouchWarningWasShown", defaultValue: false) }
-}
-
 class AddPictureCell: UITableViewCell {
 
     @IBOutlet var takePictureButton: UIButton!

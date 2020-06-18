@@ -13,6 +13,8 @@ import FacebookLogin
 import FacebookCore
 import SwiftyInsta
 import Swifter
+import SwiftyUserDefaults
+
 
 class ShareAccountManager {
     private init() {}
@@ -46,6 +48,22 @@ class ShareAccountManager {
             case .facebook: return true
             case .instagram: return true
             default: return false
+            }
+        }
+        
+        func toggleSwitch() {
+            switch self {
+            case .facebook: Defaults[\.facebookSwitchOn].toggle()
+            case .instagram: Defaults[\.instagramSwitchOn].toggle()
+            case .twitter: Defaults[\.twitterSwitchOn].toggle()
+            }
+        }
+        
+        var switchState: Bool {
+            switch self {
+            case .facebook: return Defaults[\.facebookSwitchOn]
+            case .instagram: return Defaults[\.instagramSwitchOn]
+            case .twitter: return Defaults[\.twitterSwitchOn]
             }
         }
     }
@@ -121,6 +139,7 @@ class ShareAccountManager {
                     switch result {
                     case .success:
                         // the pageId is in data>id
+                        Defaults[\.facebookSwitchOn] = true
                         GraphRequest.init(graphPath: "me/accounts").start { (connexion, result, error) in
                             guard let result = result as? [String:Any],
                                   let dataArray = result["data"] as? Array<Any>,
@@ -147,6 +166,7 @@ class ShareAccountManager {
                     print("res \(result)")
                     switch result {
                     case .success:
+                        Defaults[\.instagramSwitchOn] = true
                         // the pageId is in data>id
                         GraphRequest.init(graphPath: "me/accounts").start { (connexion, result, error) in
                             guard let result = result as? [String:Any],
@@ -154,6 +174,7 @@ class ShareAccountManager {
                                   let data = dataArray.first as? [String:Any],
                                   let pageId = data["id"] as? String else { return }
                             print("\(pageId)")
+                            Defaults[\.facebookPageId] = pageId
                         }
                         completion(true)
 

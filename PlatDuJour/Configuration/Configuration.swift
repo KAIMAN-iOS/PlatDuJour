@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import SwiftyUserDefaults
 
 protocol Fontable {
     var font: UIFont { get }
@@ -71,4 +72,33 @@ extension FontType: Fontable {
             return Font.style(style).withTraits(traits: traits ?? [])
         }
     }
+}
+
+extension DefaultsKeys {
+    // facebook specific
+    var facebookPageId: DefaultsKey<String?> { .init("facebookPageId") }
+    // social networks
+    var facebookSwitchOn: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
+    var instagramSwitchOn: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
+    var twitterSwitchOn: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
+    // warnings
+    var videoPlayerTouchWarningWasShown: DefaultsKey<Bool> { .init("videoPlayerTouchWarningWasShown", defaultValue: false) }
+    // init
+    var username: DefaultsKey<String?> { .init("username") }
+    var onboardingWasShown: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
+    var initialValuesFilled: DefaultsKey<Bool> { .init("initialValuesFilled", defaultValue: false) }
+    var alreadyRequestedNotifications: DefaultsKey<Bool> { .init("alreadyRequestedNotifications", defaultValue: false) }
+    var notificationsEnabled: DefaultsKey<Bool> { .init("notificationsEnabled", defaultValue: false) }
+    var collectedFirstData: DefaultsKey<Bool> { .init("collectedFirstData", defaultValue: false) }
+    var hourForNotification: DefaultsKey<Date?> { .init("hourForNotification", defaultValue: nil) }
+    var dailyNotificationId: DefaultsKey<String?> { .init("dailyNotificationId", defaultValue: nil) }
+    var loginOrigin: DefaultsKey<Int?> { .init("LoginOrigin", defaultValue: nil) }
+    // model
+    var restaurantName: DefaultsKey<String?> { .init("restaurantName") }
+    var dishPrice: DefaultsKey<Double?> { .init("dishPrice") }
+    
+    
+//    func clearUserDefaults() {
+//        Defaults[\.facebookPageId] = nil
+//    }
 }

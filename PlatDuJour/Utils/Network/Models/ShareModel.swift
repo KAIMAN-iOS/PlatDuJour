@@ -9,11 +9,6 @@
 import UIKit
 import SwiftyUserDefaults
 
-extension DefaultsKeys {
-    var restaurantName: DefaultsKey<String?> { .init("restaurantName") }
-    var dishPrice: DefaultsKey<Double?> { .init("dishPrice") }
-}
-
 class ShareModel: NSObject, Codable {
     
     enum ModelType: Int, CaseIterable {

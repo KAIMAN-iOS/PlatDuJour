@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AccountStateDelegate: class {
+    func stateChanged(for account: ShareAccountManager.AccountType)
+}
+
 class AccountCell: UITableViewCell {
 
     @IBOutlet var accountLogo: UIImageView!
@@ -18,25 +22,21 @@ class AccountCell: UITableViewCell {
             accountSwitch.onTintColor = Palette.basic.primary.color
         }
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    weak var stateDelegate: AccountStateDelegate? = nil
 
     @IBAction func changeAccountStatus(_ sender: UISwitch) {
+        stateDelegate?.stateChanged(for: accountType)
     }
     
+    private var accountType: ShareAccountManager.AccountType!
     func configure(with account: ShareAccountManager.AccountType, showSwitch: Bool) {
+        accountType = account
         accountLogo.image = account.icon
         accountName.set(text: account.displayName, for: .default)
         ShareAccountManager.shared.status(for: account) { [weak self] status in
             guard let self = self else { return }
+            self.accountSwitch.isOn = account.switchState && status == .logged
+            self.accountSwitch.isEnabled = status == .logged
             self.accountStatus.set(text: status.text(for: account, hasSwitch: self.accountSwitch.isHidden == false), for: .footnote, textColor: status == .logged ? Palette.basic.confirmation.color : Palette.basic.mainTexts.color)
         }
         accountSwitch.isEnabled = account.isEnabled
