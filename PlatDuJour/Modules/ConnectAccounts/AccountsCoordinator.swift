@@ -13,12 +13,13 @@ protocol AccountsCoordinatorDelegate: class {
 
 class AccountsCoordinator: Coordinator<DeepLink> {
     
-    lazy var accountsViewController: AccountsViewController = AccountsViewController.create()
-    init() {
+    var accountsViewController: AccountsViewController!
+    init(with displayMode: AccountsViewController.DisplayMode = .settings) {
         let appNavigationController: UINavigationController = UINavigationController()
         appNavigationController.navigationBar.barTintColor = Palette.basic.primary.color
         let appRouter: RouterType = Router(navigationController: appNavigationController)
         super.init(router: appRouter)
+        accountsViewController = AccountsViewController.create(for: displayMode)
         router.setRootModule(accountsViewController, hideBar: false, animated: false)
         accountsViewController.coordinatorDelegate = self
     }

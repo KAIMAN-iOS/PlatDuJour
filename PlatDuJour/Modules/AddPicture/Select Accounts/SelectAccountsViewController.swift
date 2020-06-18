@@ -15,7 +15,7 @@ class SelectAccountsViewController: UIViewController {
     }
     
     private var accountsViewController: AccountsViewController!
-    private let accountsCoordinator = AccountsCoordinator()
+    private let accountsCoordinator = AccountsCoordinator(with: .share)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class SelectAccountsViewController: UIViewController {
             fatalError()
         }
         accountsViewController = ctrl
+        accountsViewController.displayMode = .share
         ctrl.coordinatorDelegate = accountsCoordinator
         title = "Share".local()
         // Do any additional setup after loading the view.

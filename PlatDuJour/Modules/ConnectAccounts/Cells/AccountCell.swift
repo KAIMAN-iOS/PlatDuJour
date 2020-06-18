@@ -32,7 +32,7 @@ class AccountCell: UITableViewCell {
     @IBAction func changeAccountStatus(_ sender: UISwitch) {
     }
     
-    func configure(with account: ShareAccountManager.AccountType) {
+    func configure(with account: ShareAccountManager.AccountType, showSwitch: Bool) {
         accountLogo.image = account.icon
         accountName.set(text: account.displayName, for: .default)
         ShareAccountManager.shared.status(for: account) { [weak self] status in
@@ -40,6 +40,7 @@ class AccountCell: UITableViewCell {
             self.accountStatus.set(text: status.text(for: account, hasSwitch: self.accountSwitch.isHidden == false), for: .footnote, textColor: status == .logged ? Palette.basic.confirmation.color : Palette.basic.mainTexts.color)
         }
         accountSwitch.isEnabled = account.isEnabled
+        accountSwitch.isHidden = showSwitch == false
     }
 }
  

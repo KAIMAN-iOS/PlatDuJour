@@ -10,6 +10,10 @@ import UIKit
 
 class AccountsViewModel: NSObject {
     let accounts: [ShareAccountManager.AccountType] = ShareAccountManager.AccountType.allCases
+    private var displayMode: AccountsViewController.DisplayMode!
+    init(displayMode: AccountsViewController.DisplayMode) {
+        self.displayMode = displayMode
+    }
 }
 
 extension AccountsViewModel: TableViewModelable {
@@ -21,7 +25,7 @@ extension AccountsViewModel: TableViewModelable {
         guard let cell: AccountCell = tableView.automaticallyDequeueReusableCell(forIndexPath: indexPath) else {
             return UITableViewCell()
         }
-        cell.configure(with: accounts[indexPath.row])
+        cell.configure(with: accounts[indexPath.row], showSwitch: displayMode.showSwitches)
         return cell
     }
     

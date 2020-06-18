@@ -11,19 +11,35 @@ import UIKit
 class AccountsViewController: UIViewController {
 
     weak var coordinatorDelegate: AccountsCoordinatorDelegate? = nil
-    @IBOutlet var tableView: UITableView!  {
+    @IBOutlet var tableView: UITableView!
+
+    enum DisplayMode {
+        case settings, share
+        
+        var showSwitches: Bool {
+            switch self {
+            case .settings: return false
+            case .share: return true
+            }
+        }
+    }
+    
+    var displayMode: DisplayMode = .settings {
         didSet {
-            tableView.commonInit()
+            viewModel = AccountsViewModel(displayMode: displayMode)
         }
     }
 
-    static func create() -> AccountsViewController {
-        return AccountsViewController.loadFromStoryboard(identifier: "AccountsViewController", storyboardName: "Accounts")
+    static func create(for displayMode: DisplayMode) -> AccountsViewController {
+        let ctrl: AccountsViewController = AccountsViewController.loadFromStoryboard(identifier: "AccountsViewController", storyboardName: "Accounts")
+        ctrl.displayMode = displayMode
+        return  ctrl
     }
     
-    let viewModel = AccountsViewModel()
+    var viewModel: AccountsViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.commonInit()
     }
 }
 
@@ -55,11 +71,11 @@ extension AccountsViewController: UITableViewDelegate {
 extension AccountsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections()
+        return viewModel?.numberOfSections() ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(in: section)
+        return viewModel?.numberOfRows(in: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
