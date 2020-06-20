@@ -219,10 +219,10 @@ class ShareModel: NSObject, Codable {
     private func updateValidity() {
         print("😘 fields \(model.fields)")
         isValid = model.fields.reduce(true, { (result, field) -> Bool in
-            print("😘 isValid \(result) - field")
+            print("😘 isValid \(result) - \(field)")
             switch field {
             case .picture: return result && image != nil
-            case .asset: return result && mediaURL != nil
+            case .asset: return result && (mediaURL != nil || image != nil)
             case .price: return result && (price ?? 0 > 0)
             case .dishName: return result && dishName?.isEmpty == false
             case .restaurantName: return result && restaurantName?.isEmpty == false
