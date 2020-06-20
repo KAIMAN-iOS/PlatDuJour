@@ -53,12 +53,7 @@ class AddContentViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        // somehow expensive, so use it on a background queue
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            try? DataManager.save(self.viewModel.pictureModel)
-        }
-        coordinatorDelegate?.chooseAccounts()
+        coordinatorDelegate?.chooseAccounts(for: viewModel.pictureModel)
     }
 }
 

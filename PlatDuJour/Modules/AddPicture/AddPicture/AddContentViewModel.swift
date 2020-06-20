@@ -111,7 +111,7 @@ class AddContentViewModel: NSObject {
     func didSelectRow(at indexPath: IndexPath, in tableView: UITableView) {        
         switch cellTypes[indexPath.row] {
         case .asset: showPickerDelegate?.showImagePicker()
-        case .singleField(let field):
+        case .singleField:
             guard let cell = tableView.cellForRow(at: indexPath) as? AddSimpleFieldCell else {
                 return
             }

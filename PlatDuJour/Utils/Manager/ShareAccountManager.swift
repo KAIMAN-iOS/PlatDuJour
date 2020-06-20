@@ -16,12 +16,53 @@ import Swifter
 import SwiftyUserDefaults
 
 
-class ShareAccountManager {
-    private init() {}
+class ShareAccountManager: NSObject {
+    private var facebookSwitchObservation: NSKeyValueObservation?
+    private var instagramSwitchObservation: NSKeyValueObservation?
+    private var twitterSwitchObservation: NSKeyValueObservation?
+    @objc dynamic var atLeastOneServiceIsActivated: Bool = false
+    
     static let shared: ShareAccountManager = ShareAccountManager()
+    
+    private override init() {
+        super.init()
+        // observe the UserDefaults for the switches states and update the atLeastOneServiceIsActivated accordingly
+        facebookSwitchObservation = UserDefaults.standard.observe(\.facebookSwitchOn,
+                              options: [.old, .new]
+        ) { [weak self] _, change in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.atLeastOneServiceIsActivated = AccountType.atLeastOneServiceIsActivated
+            }
+        }
+        
+        instagramSwitchObservation = UserDefaults.standard.observe(\.instagramSwitchOn,
+                              options: [.old, .new]
+        ) { [weak self] _, change in
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.atLeastOneServiceIsActivated = AccountType.atLeastOneServiceIsActivated
+            }
+        }
+        
+        twitterSwitchObservation = UserDefaults.standard.observe(\.twitterSwitchOn,
+                              options: [.old, .new]
+        ) { [weak self] _, change in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.atLeastOneServiceIsActivated = AccountType.atLeastOneServiceIsActivated
+            }
+        }
+    }
     
     enum AccountType: Int, CaseIterable {
         case facebook, instagram, twitter
+        
+        static var atLeastOneServiceIsActivated: Bool {
+            print("🏂 \(AccountType.allCases.compactMap({ $0.switchState }))")
+            return AccountType.allCases.reduce(false, { $0 || $1.switchState })
+        }
         
         var icon: UIImage? {
             switch self {
@@ -199,3 +240,8 @@ extension UIViewController {
     }
 }
 
+extension ShareAccountManager: AccountStateDelegate {
+    func stateChanged(for account: AccountType) {
+        account.toggleSwitch()
+    }
+}

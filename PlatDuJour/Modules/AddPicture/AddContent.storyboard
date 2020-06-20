@@ -302,6 +302,7 @@
                                 </state>
                                 <connections>
                                     <action selector="continue:" destination="Naa-ZR-n6p" eventType="touchUpInside" id="tua-Ro-cwU"/>
+                                    <action selector="publish:" destination="tHb-6L-G6x" eventType="touchUpInside" id="5kS-FG-qNi"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6E4-ep-JKf">
@@ -323,6 +324,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MNa-8j-CHf"/>
                     </view>
+                    <connections>
+                        <outlet property="publishButton" destination="Nne-dz-2lK" id="vfh-Ir-0vn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BnN-Dq-b95" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

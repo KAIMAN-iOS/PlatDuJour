@@ -22,10 +22,10 @@ class AccountCell: UITableViewCell {
             accountSwitch.onTintColor = Palette.basic.primary.color
         }
     }
-    weak var stateDelegate: AccountStateDelegate? = nil
+    let stateDelegate: AccountStateDelegate = ShareAccountManager.shared
 
     @IBAction func changeAccountStatus(_ sender: UISwitch) {
-        stateDelegate?.stateChanged(for: accountType)
+        stateDelegate.stateChanged(for: accountType)
     }
     
     private var accountType: ShareAccountManager.AccountType!
@@ -39,7 +39,6 @@ class AccountCell: UITableViewCell {
             self.accountSwitch.isEnabled = status == .logged
             self.accountStatus.set(text: status.text(for: account, hasSwitch: self.accountSwitch.isHidden == false), for: .footnote, textColor: status == .logged ? Palette.basic.confirmation.color : Palette.basic.mainTexts.color)
         }
-        accountSwitch.isEnabled = account.isEnabled
         accountSwitch.isHidden = showSwitch == false
     }
 }

@@ -74,31 +74,54 @@ extension FontType: Fontable {
     }
 }
 
+private enum Keys: String {
+    case facebookPageId = "facebookPageId"
+    case networks = "networks"
+    case facebookSwitchOn = "facebookSwitchOn"
+    case instagramSwitchOn = "instagramSwitchOn"
+    case twitterSwitchOn = "twitterSwitchOn"
+    case videoPlayerTouchWarningWasShown = "videoPlayerTouchWarningWasShown"
+    case username = "username"
+    case onboardingWasShown = "onboardingWasShown"
+    case initialValuesFilled = "initialValuesFilled"
+    case alreadyRequestedNotifications = "alreadyRequestedNotifications"
+    case notificationsEnabled = "notificationsEnabled"
+    case collectedFirstData = "collectedFirstData"
+    case hourForNotification = "hourForNotification"
+    case dailyNotificationId = "dailyNotificationId"
+    case loginOrigin = "loginOrigin"
+    case restaurantName = "restaurantName"
+    case dishPrice = "dishPrice"
+}
+
 extension DefaultsKeys {
-    // facebook specific
-    var facebookPageId: DefaultsKey<String?> { .init("facebookPageId") }
-    // social networks
-    var facebookSwitchOn: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
-    var instagramSwitchOn: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
-    var twitterSwitchOn: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
-    // warnings
-    var videoPlayerTouchWarningWasShown: DefaultsKey<Bool> { .init("videoPlayerTouchWarningWasShown", defaultValue: false) }
-    // init
-    var username: DefaultsKey<String?> { .init("username") }
-    var onboardingWasShown: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
-    var initialValuesFilled: DefaultsKey<Bool> { .init("initialValuesFilled", defaultValue: false) }
-    var alreadyRequestedNotifications: DefaultsKey<Bool> { .init("alreadyRequestedNotifications", defaultValue: false) }
-    var notificationsEnabled: DefaultsKey<Bool> { .init("notificationsEnabled", defaultValue: false) }
-    var collectedFirstData: DefaultsKey<Bool> { .init("collectedFirstData", defaultValue: false) }
-    var hourForNotification: DefaultsKey<Date?> { .init("hourForNotification", defaultValue: nil) }
-    var dailyNotificationId: DefaultsKey<String?> { .init("dailyNotificationId", defaultValue: nil) }
-    var loginOrigin: DefaultsKey<Int?> { .init("LoginOrigin", defaultValue: nil) }
-    // model
-    var restaurantName: DefaultsKey<String?> { .init("restaurantName") }
-    var dishPrice: DefaultsKey<Double?> { .init("dishPrice") }
-    
-    
-//    func clearUserDefaults() {
-//        Defaults[\.facebookPageId] = nil
-//    }
+    var facebookPageId: DefaultsKey<String?> { .init(Keys.facebookPageId.rawValue) }
+    var facebookSwitchOn: DefaultsKey<Bool> { .init(Keys.facebookSwitchOn.rawValue, defaultValue: false) }
+    var instagramSwitchOn: DefaultsKey<Bool> { .init(Keys.instagramSwitchOn.rawValue, defaultValue: false) }
+    var twitterSwitchOn: DefaultsKey<Bool> { .init(Keys.twitterSwitchOn.rawValue, defaultValue: false) }
+    var videoPlayerTouchWarningWasShown: DefaultsKey<Bool> { .init(Keys.videoPlayerTouchWarningWasShown.rawValue, defaultValue: false) }
+    var username: DefaultsKey<String?> { .init(Keys.username.rawValue) }
+    var onboardingWasShown: DefaultsKey<Bool> { .init(Keys.onboardingWasShown.rawValue, defaultValue: false) }
+    var initialValuesFilled: DefaultsKey<Bool> { .init(Keys.initialValuesFilled.rawValue, defaultValue: false) }
+    var alreadyRequestedNotifications: DefaultsKey<Bool> { .init(Keys.alreadyRequestedNotifications.rawValue, defaultValue: false) }
+    var notificationsEnabled: DefaultsKey<Bool> { .init(Keys.notificationsEnabled.rawValue, defaultValue: false) }
+    var collectedFirstData: DefaultsKey<Bool> { .init(Keys.collectedFirstData.rawValue, defaultValue: false) }
+    var hourForNotification: DefaultsKey<Date?> { .init(Keys.hourForNotification.rawValue, defaultValue: nil) }
+    var dailyNotificationId: DefaultsKey<String?> { .init(Keys.dailyNotificationId.rawValue, defaultValue: nil) }
+    var loginOrigin: DefaultsKey<Int?> { .init(Keys.loginOrigin.rawValue, defaultValue: nil) }
+    var restaurantName: DefaultsKey<String?> { .init(Keys.restaurantName.rawValue) }
+    var dishPrice: DefaultsKey<Double?> { .init(Keys.dishPrice.rawValue) }
+}
+
+// for KVO purposes
+extension UserDefaults {
+    @objc dynamic var facebookSwitchOn: Bool {
+        return bool(forKey: Keys.facebookSwitchOn.rawValue)
+    }
+    @objc dynamic var instagramSwitchOn: Bool {
+        return bool(forKey: Keys.instagramSwitchOn.rawValue)
+    }
+    @objc dynamic var twitterSwitchOn: Bool {
+        return bool(forKey: Keys.twitterSwitchOn.rawValue)
+    }
 }

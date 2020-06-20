@@ -24,6 +24,7 @@ enum DataManagerKey: String, StorableKey {
 class DataManager {
     static let instance: DataManager = DataManager()
     private var storage = DataStorage()
+    let saveQueue = DispatchQueue.init(label: "ModelBackgroundSave", qos: .background)
     
     private init() {
         if let models: [ShareModel] = try? storage.fetch(for: DataManagerKey.models.key) {
@@ -67,7 +68,9 @@ class DataManager {
     
     private (set) var models: [ShareModel] = []
     static func save(_ model: ShareModel) throws {
-        DataManager.instance.models.append(model)
-        try DataManager.instance.storage.save(DataManager.instance.models, for: DataManagerKey.models.key)
+        instance.saveQueue.async {
+            DataManager.instance.models.append(model)
+            try? DataManager.instance.storage.save(DataManager.instance.models, for: DataManagerKey.models.key)
+        }
     }
 }
