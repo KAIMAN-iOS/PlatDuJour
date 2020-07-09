@@ -41,6 +41,14 @@ class SelectAccountsViewController: UIViewController {
     }
     
     @IBAction func publish(_ sender: Any) {
-        try? DataManager.save(model)
+        ShareAccountManager.shared.publish(model: &model) { [weak self] results in
+            guard let self = self else { return }
+            try? DataManager.save(self.model)
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: {
+                    
+                })
+            }
+        }
     }
 }

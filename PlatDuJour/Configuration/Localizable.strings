@@ -67,11 +67,11 @@
 "price" = "Prix";
 "restaurantName" = "Restaurant";
 "dishName" = "Nom du plat";
-
+"description" = "Description";
 "logged" = "Connecté";
 "notLogged" = "Non connecté";
-"tap to connect" = "Tapez pour connecter";
-"tap to disconnect" = "Tapez pour déconnecter";
+"tap to connect" = " - Tapez pour connecter";
+"tap to disconnect" = " - Tapez pour déconnecter";
 "add new" = "Ajoutez du contenu";
 "add new daily special" = "Ajoutez un plat du jour";
 "add new event" = "Ajoutez un nouvel évènement";

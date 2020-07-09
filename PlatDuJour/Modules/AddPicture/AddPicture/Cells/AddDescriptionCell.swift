@@ -15,7 +15,12 @@ protocol AddDescriptionCellDelegate: class {
 class AddDescriptionCell: UITableViewCell {
 
     static let maxDigits = 250
-    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!  {
+        didSet {
+            descriptionLabel.set(text: "description".local(), for: .default)
+        }
+    }
+
     @IBOutlet var countDownLabel: UILabel!
     @IBOutlet var textView: UITextView!  {
         didSet {

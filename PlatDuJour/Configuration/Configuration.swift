@@ -46,10 +46,12 @@ struct Constants {
     static var skipLogin: Bool = false
     
     #if DEBUG
-    static var resetAtStart: Bool = false
+    static let resetAtStart: Bool = false
     #else
-    // ⚠️ do not change this value for release purposes! 
-    static var resetAtStart: Bool = false
+    // ⚠️⚠️⚠️
+    // do not change this value for release purposes!
+    static let resetAtStart: Bool = false
+    // ⚠️⚠️⚠️
     #endif
 }
 
@@ -76,6 +78,7 @@ extension FontType: Fontable {
 
 private enum Keys: String {
     case facebookPageId = "facebookPageId"
+    case facebookPageAccessToken = "facebookPageAccessToken"
     case networks = "networks"
     case facebookSwitchOn = "facebookSwitchOn"
     case instagramSwitchOn = "instagramSwitchOn"
@@ -96,6 +99,7 @@ private enum Keys: String {
 
 extension DefaultsKeys {
     var facebookPageId: DefaultsKey<String?> { .init(Keys.facebookPageId.rawValue) }
+    var facebookPageAccessToken: DefaultsKey<String?> { .init(Keys.facebookPageAccessToken.rawValue) }
     var facebookSwitchOn: DefaultsKey<Bool> { .init(Keys.facebookSwitchOn.rawValue, defaultValue: false) }
     var instagramSwitchOn: DefaultsKey<Bool> { .init(Keys.instagramSwitchOn.rawValue, defaultValue: false) }
     var twitterSwitchOn: DefaultsKey<Bool> { .init(Keys.twitterSwitchOn.rawValue, defaultValue: false) }

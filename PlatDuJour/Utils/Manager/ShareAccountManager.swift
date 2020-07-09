@@ -56,7 +56,7 @@ class ShareAccountManager: NSObject {
         }
     }
     
-    enum AccountType: Int, CaseIterable {
+    enum AccountType: Int, CaseIterable, Codable {
         case facebook, instagram, twitter
         
         static var atLeastOneServiceIsActivated: Bool {
@@ -175,7 +175,7 @@ class ShareAccountManager: NSObject {
             if AccessToken.current?.hasGranted(permission: "pages_manage_posts") == true {
                 completion(true)
             } else {
-                LoginManager().logIn(permissions: ["pages_manage_posts"/*, "pages_manage_metadata", "pages_manage_read_engagement"*/], viewController: controller) { result in
+                LoginManager().logIn(permissions: ["pages_manage_posts", "pages_read_engagement", "pages_show_list"], viewController: controller) { result in
                     print("res \(result)")
                     switch result {
                     case .success:
@@ -185,8 +185,11 @@ class ShareAccountManager: NSObject {
                             guard let result = result as? [String:Any],
                                   let dataArray = result["data"] as? Array<Any>,
                                   let data = dataArray.first as? [String:Any],
-                                  let pageId = data["id"] as? String else { return }
+                                  let pageId = data["id"] as? String,
+                                  let access = data["access_token"] as? String else { return }
                             print("\(pageId)")
+                            Defaults[\.facebookPageId] = pageId
+                            Defaults[\.facebookPageAccessToken] = access
                         }
                         completion(true)
 
@@ -203,7 +206,7 @@ class ShareAccountManager: NSObject {
             if AccessToken.current?.hasGranted(permission: "instagram_basic") == true {
                 completion(true)
             } else {
-                LoginManager().logIn(permissions: ["instagram_basic"/*, "instagram_content_publish", "publish_video", "manage_pages", "publish_pages"*/], viewController: controller) { result in
+                LoginManager().logIn(permissions: ["instagram_basic", "instagram_content_publish"], viewController: controller) { result in
                     print("res \(result)")
                     switch result {
                     case .success:
@@ -230,6 +233,95 @@ class ShareAccountManager: NSObject {
             
         case .twitter:
             ()
+        }
+    }
+    
+    
+    /**
+     publish the model to the AccountTypes where the switchState is On
+     
+     - parameters:
+         - model : the model to publish. The function will update the model with all the publication URL for each accountType that succeeded
+         - completion : the completion block to inform if the publication went well or not
+     */
+    func publish(model: inout ShareModel, completion: @escaping (([AccountType:Result<Bool>]) -> Void)) {
+        let group = DispatchGroup()
+        let queue = DispatchQueue(label: "publishQueue", qos: .default)
+        var publishStates: [AccountType:Result<Bool>] = [:]
+        
+        AccountType.allCases.filter({ $0.switchState == true }).forEach { [weak self] accountType in
+            guard let self = self else { return }
+            group.enter()
+            self.publish(model: &model, on: accountType, in: group) { success in
+                publishStates[accountType] = success
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: queue) {
+            completion(publishStates)
+        }
+    }
+    
+    enum AccountError: Error {
+        case notImplementedYet
+        case notConnected
+        case noMediaToUpload
+    }
+    
+    private func requetsPageToken(completion: @escaping ((String?) -> Void)) {
+        GraphRequest.init(graphPath: "me/accounts", parameters: ["access_token" : AccessToken.current!.tokenString]).start { (connexion, result, error) in
+            guard let result = result as? [String:Any],
+            let dataArray = result["data"] as? Array<Any>,
+            let data = dataArray.first as? [String:Any],
+            let access = data["access_token"] as? String  else {
+                completion(nil)
+                return
+            }
+            completion(access)
+        }
+    }
+    
+    private func publish(model: inout ShareModel, on accountType: AccountType, in group: DispatchGroup, completion: @escaping ((Result<Bool>) -> Void)) {
+        switch accountType {
+        case .facebook:
+            guard let pageId = Defaults[\.facebookPageId],
+                let token = Defaults[\.facebookPageAccessToken],
+                let tokenData = token.data(using: .utf8) else {
+                completion(Result.failure(AccountError.notConnected))
+                return
+            }
+            guard let data = try? model.image?.heicData(), let contentDescription = model.contentDescription, let contentData = contentDescription.data(using: .utf8) else {
+                completion(Result.failure(AccountError.noMediaToUpload))
+                return
+            }
+            
+            self.requetsPageToken { token in
+                guard let token = token else { return }
+//
+//                let image =  GraphRequestDataAttachment(data: data, filename: "source", contentType: "image/heic")
+//                let text = GraphRequestDataAttachment(data: contentData, filename: "caption", contentType: "text")
+//                let accessToken = GraphRequestDataAttachment(data: tokenData, filename: "access_token", contentType: "text")
+//                GraphRequest
+//                    .init(graphPath: "\(pageId)/photos",
+//                    parameters: ["source" : image, "caption" : text, "access_token" : token, "published" : false],
+//                        httpMethod: .post)
+//                    .start { (connexion, result, error) in
+//                    completion(Result.success(true))
+//                }
+                
+                // test
+                GraphRequest
+                    .init(graphPath: "\(pageId)/photos",
+                        parameters: ["caption" : contentDescription, "url" : "https://www.cdiscount.com/pdt2/9/2/8/1/700x700/889698377928/rw/figurine-funko-pop-deluxe-game-of-thrones-daen.jpg", "access_token" : token],
+                        httpMethod: .post)
+                    .start { (connexion, result, error) in
+                    completion(Result.success(true))
+                }
+            }
+            completion(Result.success(true))
+            
+        default: completion(Result.failure(AccountError.notImplementedYet))
         }
     }
 }

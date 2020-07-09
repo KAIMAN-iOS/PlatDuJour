@@ -121,6 +121,11 @@ class ShareModel: NSObject, Codable {
         }
     }
     var creationDate: Date = Date()
+    var publicationUrls: [ShareAccountManager.AccountType : URL] = [:]
+    
+    func addPublication(with url: URL, for accountType: ShareAccountManager.AccountType) {
+        publicationUrls[accountType] = url
+    }
     
     @objc dynamic var isValid: Bool = false
     
@@ -174,6 +179,7 @@ class ShareModel: NSObject, Codable {
         case contentDescription = "contentDescription"
         case eventDate = "eventDate"
         case creationDate = "creationDate"
+        case publicationUrls = "publicationUrls"
     }
     
     required init(from decoder: Decoder) throws {
@@ -181,6 +187,7 @@ class ShareModel: NSObject, Codable {
         //mandatory
         creationDate = try container.decode(Date.self, forKey: .creationDate)
         eventDate = try container.decode(Date.self, forKey: .eventDate)
+        publicationUrls = try container.decode([ShareAccountManager.AccountType : URL].self, forKey: .publicationUrls)
         //optional
         contentDescription = try container.decodeIfPresent(String.self, forKey: .contentDescription)
         eventName = try container.decodeIfPresent(String.self, forKey: .eventName)
@@ -200,6 +207,7 @@ class ShareModel: NSObject, Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(creationDate, forKey: .creationDate)
         try container.encode(eventDate, forKey: .eventDate)
+        try container.encode(publicationUrls, forKey: .publicationUrls)
         try container.encodeIfPresent(contentDescription, forKey: .contentDescription)
         try container.encodeIfPresent(eventName, forKey: .eventName)
         try container.encodeIfPresent(restaurantName, forKey: .restaurantName)

@@ -166,6 +166,7 @@ class AddContentViewModel: NSObject {
 
 extension AddContentViewModel: FieldCellDelegate {
     func textFieldShouldReturn(_ textField: UITextField, for field: ShareModel.Field) -> Bool {
+        print("textField TAG \(textField.tag)")
         textField.isUserInteractionEnabled = false
         switch field {
         case .price:
@@ -213,6 +214,7 @@ extension AddContentViewModel: TableViewModelable {
             }
             cell.configure(with: field, value: pictureModel.value(for: field))
             cell.fieldDelegate = self
+            cell.updateTextViews(with: indexPath.row)
             return cell
                 
         case .description:
@@ -221,6 +223,7 @@ extension AddContentViewModel: TableViewModelable {
             }
             cell.configure(with: pictureModel.contentDescription)
             cell.delegate = self
+            cell.updateTextViews(with: indexPath.row)
             return cell
             
         case .date:
@@ -237,7 +240,6 @@ extension AddContentViewModel: TableViewModelable {
             }
             cell.configure(with: .hintChoosePictureFromVideo)
             return cell
-            
         }
     }
 }
@@ -252,5 +254,19 @@ extension AddContentViewModel: AddDescriptionCellDelegate {
 extension AddContentViewModel: AddDateCellDelegate {
     func dateChanged(_ date: Date) {
         update(date)
+    }
+}
+
+fileprivate extension UIView {
+    fileprivate func updateTextViews(with tag: Int) {
+        subviews.forEach { view in
+            guard view.subviews.count == 0 else {
+                view.updateTextViews(with: tag)
+                return
+            }
+            if view.isKind(of: UITextField.self) || view.isKind(of: UITextView.self) {
+                view.tag = tag
+            }
+        }
     }
 }
